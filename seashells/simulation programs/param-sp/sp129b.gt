@@ -1,0 +1,78 @@
+All or nothing activation of a gene by inhibition of an Inhibition: JAK/STAT
+#
+An interesting case for an all-or-non activation of a gene is the JAK/STAT
+activation during Drosophila oocyte development. These border cells (red
+in the simulation) are responsible for the departure of the pole cells (green)
+and their movement towards the proper oocyte.
+#
+As shown for pattern formation, the self-enhancement can be realized by an 
+inhibition of an inhibition. Modeling has shown that the switch-like 
+activation of JAK/STAT depends on such a mutual inhibition. In the following 
+simulations, the components will be added step by step.
+#
+.
+.
+Initial situation: two polar cells exist. These produce a diffusible signal 
+(UPT, grey) that activates JAK/STAT in the surrounding cells.... 
+r129b
+bd=0
+dw
+bca
+s
+#
+Thus, on its own, such a system would lead to a graded distribution of 
+JAK/STAT. The next ingredient is an inhibitor, APT (blue in the simulation), 
+that is produced under  JAK/STAT control. It would lead to a 
+down-regulation of  JAK/STAT
+bd=.0001
+be=0
+dw
+dbca
+s
+#
+This inhibition of APT is counteracted by an inhibitor of an inhibitor, SLOBO
+(black curve). SLOBO is also under JAK/STAT control and activated at higher
+concentration. It makes sure that JAK/STAT is NOT downregulated in regions
+close to the polar cells
+s129b
+#
+This model accounts for many observations. For instance, ...
+ .... without APT, JAK/STAT obtains a graded profile....
+
+bd=0
+s
+#
+ .... without APT, JAK/STAT obtains a graded profile....
+Next: with an APT overproduction, JAK/STAT would be repressed
+even if SLOBO is present ....
+
+bd=.0003
+s
+#
+ Thus, with an APT overproduction, JAK/STAT would be repressed
+even if SLOBO is present ....
+Next: this repression can be rescued by an overproduction of SLOBO...
+
+be=.0035
+s
+#
+.
+Thus, the repression of APT overproduction can be rescued by an 
+overproduction of SLOBO...  
+Next: APT is normal but SLOBO is missing....
+bd=.0001
+be=0
+s
+#
+Thus: if APT is normal but SLOBO is missing, the APT repression of 
+JAK/STAT is not counteracted and ATP suppresses JAK/STAT. 
+Next: once again the wild type situation....
+
+s129b
+#
+This is, once again the wild type situation: JAK/STAT is expressed in a step-
+like fashion. Conclusion: Mutual repression can lead an all-or-non activation.
+A corresponding model describes the observation in fine details
+[see Starz-Gaiano et al. (2008). Dev. Cell 14,726-738]S
+EOF-GT
+EOF-GT

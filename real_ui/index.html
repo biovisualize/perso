@@ -1,0 +1,257 @@
+<html>
+<head>
+  <script src="../lib/d3.js"></script>
+  <style>
+  body {
+    background-color: black;
+  }
+  .chart {
+    margin: 80px 0 0 56px;
+  }
+
+  .matcher-element {
+    stroke: skyblue;
+    stroke-width: 1px;
+    fill: none;
+    stroke-opacity: 0.6;
+  }
+  .matcher {
+    padding: 12px;
+  }
+  </style>
+</head>
+<body>
+<div class="chart"></div>
+<script>
+
+  /* TODO:
+  * animated intro
+  */
+
+const Matcher = function (_container) {
+  const cfg = {
+    w: 800,
+    h: 100,
+    data: null,
+    referenceData: null,
+    colorRange: ["yellow", "red"],
+    domain: null
+  }
+
+  let root = null,
+    referencePattern = null
+    targetPattern = null,
+    xScale = d3.scaleBand()
+
+  !(function init () {
+    root = _container
+      .html(`<svg>
+          <g class="target-pattern"></g>
+          <g class="reference-pattern"></g>
+          <g class="matcher"></g>
+        </svg>
+      `)
+      .select("svg")
+
+    targetPattern = ColorPattern(root.select('.target-pattern'))
+    referencePattern = ColorPattern(root.select('.reference-pattern'))
+
+    update()
+  })()
+
+  function update () {
+    root
+      .attr("width", cfg.w)
+      .attr("height", cfg.h)
+    
+    root
+      .select('.reference-pattern')
+      .attr("transform", `translate(${[0, cfg.h / 2]})`)
+
+    targetPattern
+      .config({
+        w: cfg.w,
+        h: cfg.h / 2,
+        colorRange: cfg.colorRange,
+        domain: cfg.domain
+      })
+
+    referencePattern
+      .config({
+        w: cfg.w,
+        h: cfg.h / 2,
+        colorRange: cfg.colorRange,
+        domain: cfg.domain
+      })
+  }
+
+  function renderMatcher () {
+    const matches = d3.range(~~(Math.random() * cfg.data.length / 2))
+      .map(d => ~~(Math.random() * cfg.data.length))
+
+    xScale
+      .domain(d3.range(cfg.data.length))
+      .range([0, cfg.w])
+
+    const element = root.select(".matcher")
+      .selectAll(".matcher-element")
+      .data(matches)
+    element.enter().append("rect")
+      .attr("class", "matcher-element")
+      .attr("y", 0)
+      .merge(element)
+      .attr("x", xScale)
+      .attr("width", xScale.bandwidth())
+      .attr("height", cfg.h)
+    element.exit().remove()
+  }
+
+  function render () {
+    update()
+    renderMatcher()
+
+    targetPattern
+      .config({data: cfg.data})
+      .render()
+
+    referencePattern
+      .config({data: cfg.referenceData})
+      .render()
+    return this
+  }
+
+  function config (_cfg) {
+    if (typeof _cfg === "undefined") {
+      return cfg
+    }
+    Object.assign(cfg, _cfg)
+    return this
+  }
+
+  return {
+    config,
+    render
+  }
+}
+
+const ColorPattern = function (_container) {
+  const cfg = {
+    w: 800,
+    h: 100,
+    colorRange: ["yellow", "red"],
+    data: null,
+    domain: null
+  }
+
+  let root = null,
+    xScale = d3.scaleBand(),
+    colorScale = d3.scaleLinear()
+
+  !(function init () {
+     root = _container
+  })()
+
+  function render () {
+    root
+      .attr("width", cfg.w)
+      .attr("height", cfg.h)
+
+    xScale
+      .domain(d3.range(cfg.data.length))
+      .range([0, cfg.w])
+    colorScale
+      .domain(cfg.domain)
+      .range(cfg.colorRange)
+
+    const element = root
+      .selectAll(".pattern-element")
+      .data(cfg.data)
+    element
+      .enter().append("rect")
+      .attr("class", "pattern-element")
+      .on("mouseover", function (d, i, a) {
+        console.log(d, i)
+        const that = this
+        d3.selectAll(a)
+          .attr("stroke", function () { return this === that ? "black" : "none" })
+      })
+      .on("mouseout", function (d, i, a) {
+        d3.selectAll(a)
+          .attr("stroke", "none")
+      })
+      .merge(element)
+      .attr("x", (d, i) => xScale(i))
+      .attr("y", 0)
+      .attr("width", xScale.bandwidth())
+      .attr("height", cfg.h)
+      .transition()
+      .style("fill", colorScale)
+    element.exit().remove()
+
+    return this
+  }
+
+  function config (_cfg) {
+    if (typeof _cfg === "undefined") {
+      return cfg
+    }
+    Object.assign(cfg, _cfg)
+    return this
+  }
+
+  return {
+    config,
+    render
+  }
+}
+
+
+const MatcherManager = function () {
+  const cfg = {
+    dataMax: 100,
+    dataCount: 100
+  }
+
+  let matcher = null
+  const container = d3.select(this)
+
+  !(function init () {
+    const referenceData = d3.range(cfg.dataCount).map(d => ~~(Math.random() * cfg.dataMax))
+    const data = d3.range(cfg.dataCount).map(d => ~~(Math.random() * cfg.dataMax / 2))
+    matcher = Matcher(container)
+      .config({
+        w: 800,
+        h: 30,
+        colorRange: ["transparent", "green"],
+        referenceData,
+        data,
+        domain: [0, cfg.dataMax]
+      })
+      .render()
+
+      setInterval(render, 500)
+  })()
+
+  function render () {
+    const data = d3.range(cfg.dataCount).map(d => ~~(Math.random() * cfg.dataMax / 2))
+    matcher.config({data})
+      .render()
+  }
+}
+
+const matcherCount = 2
+const matcherData = d3.range(matcherCount)
+
+const matchers = d3.select(".chart")
+  .selectAll("matcher")
+  .data(matcherData)
+matchers.enter().append("div")
+  .attr("class", "matcher")
+  .attr("id", d => `matcher-${d}`)
+  .each(MatcherManager)
+matchers.exit().remove()
+
+
+</script>
+</body>
+</html>

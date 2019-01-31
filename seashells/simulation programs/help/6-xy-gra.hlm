@@ -1,0 +1,27 @@
+Program XY: possible modes of graphic display (parameter: KD)
+           (see also GUIDED TOUR in program XY, GT1
+KD=3  3D-display, netlike profile with hidden lines
+KD=4  as 3; cells with zero-concentrations are not plotted, e.g.for rounded   
+            fields
+KD=5  3D-display, each cell as block
+KD=6  as 5; cells with zero-concentrations are not plotted
+KD=7  cylinder, ix = kx at the tip, ix=1 bottom, 1to ky => circumference
+            K1 = boundary condition, see below
+KD=8  density of the pixels proportional to concentration
+KD=9  as 8, but with different colours in Y-direction (not used here)
+KD=11 Random dots, concentration proportional to concentration, superimposed
+KD=12 Schematic plot ( .:°°±±²²Û) with maximum and field size (also via F4 and F5)
+KD=13 Random dots, concentration proportional to concentration, each substance 
+             gets the appropriate share of pixels
+KD=14 Special plot for net-like structures
+% ----------------------------------------------------------
+Boundary condtions:
+K3=1 or K3=0: normal boundary condition, impermeable
+K3=2 cylindrical boundary condition: cells iy = 1 and iy = KY are neighbors
+K3=3 cylindrical boundary condition, tip at one end (at ix=kx)   
+K3=4 cylindrical boundary condition, tip at both ends (at ix = 1 and ix=kx)
+% ----------------------------------------------------------
+Program XY: Rounding of borders, for circular or elliptical fields
+k2 = Number of corner cells that are excluded
+For rounding use special coding of equations,  e.g., ke=>801 for GM-AI
+       

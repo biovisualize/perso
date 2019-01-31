@@ -1,0 +1,55 @@
+Insertion of new maxima during growth - phyllotaxis
+fdelay
+.1
+igtdelay
+1
+#
+In classical models of phyllotaxis it was assumed that leaves inhibit each 
+other. First is is shown that new activator maxima appear during growth at
+the largest distance from existing maxima. If by growth a certain distance is
+surpassed, a new maximum is triggered.
+
+r132c
+i
+<1
+c
+kg=0
+kt
+10
+c
++
+#
+It is a property of an A-I system to generate a new activator maximum at
+the position of the lowest inhibitor concentration. After its trigger it
+becomes shaped by the surrounding self-produced cloud of inhibitor in
+a self-regulatory process.
+#
+The initiation of new leaves at regular distances can be explained in this 
+way (although the actual implementation via auxin is somewht different).
+Here the signals for leaf initiation in opposite (distichous) arrangement is
+shown. An existing signal inhibits other signals in its vicinity.
+r132a
+i
+<.5
+s
+<2
+d71
+dw
+a
+s
+<2
+#
+In this model, growth was assumed to take place exclusively in the upper row
+of cells. In reality, a primary central organizer, the Shoot Apical Meristem, 
+defines a surrounding leaf-forming zone.
+
+s132b
+<2
+s132b
+d71
+#
+For simulations that considers the depletion of auxin in the leaf-forming
+zone see in the program SP the tour GT133
+
+EOF-GT
+EOF-GT

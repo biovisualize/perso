@@ -1,0 +1,83 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css">
+<!-- <link rel="stylesheet" href="style/main.css"> -->
+<style>
+div {
+  border: 1px solid silver;
+}
+html, body, #app {
+  height:100%;
+}
+#app {
+  flex-direction: column;
+}
+#navigation-bar, #menu-bar {
+  height: 100px;
+}
+#main-content {
+  flex-grow: 1;
+}
+.full-width {
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 100%;
+}
+#main-logo {
+  width: 300px;
+}
+#nav-menu {
+  flex-grow: 1;
+}
+#user-menu {
+  width: 100px;
+}
+
+#editor-cancel, #editor-apply {
+  width: 100px;
+}
+#editor-chart-types {
+  flex-grow: 1;
+}
+
+#data-panel, #config-panel {
+  width: 300px;
+}
+#chart-panel {
+  flex-grow: 1;
+}
+
+</style>
+</head>
+<body>
+
+<div id="app" class="ui padded grid">
+  <div id="navigation-bar" class="row">
+    <div id="navigation-bar-container" class="full-width">
+      <div id="main-logo">Logo</div>
+      <div id="nav-menu">Navigation</div>
+      <div id="user-menu">User menu</div>
+    </div>
+  </div>
+  <div id="menu-bar" class="row">
+    <div id="menu-bar-container" class="full-width">
+      <div id="editor-cancel">Cancel</div>
+      <div id="editor-chart-types">Icons</div>
+      <div id="editor-apply">Apply</div>
+    </div>
+  </div>
+  <div id="main-content" class="row">
+    <div id="main-content-container" class="full-width">
+        <div id="data-panel">Data</div>
+        <div id="chart-panel">Chart</div>
+        <div id="config-panel">Config</div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

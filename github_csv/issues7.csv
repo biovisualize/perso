@@ -1,0 +1,723 @@
+title,html_url,id,number,milestone,created_at,updated_at,body,author,labels,comments,assignee
+Color By Dimension Need to Update CustomKey On Dimension Drag/Drop,https://github.com/mapd/mapd-immerse/issues/2040,197071533,2040,,2016-12-22T01:08:13Z,2018-02-02T00:37:09Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+
+## Issue Description
+
+When a chart is colored by dimensions. If you drag and drop dimensions into a different slot. The customKey is not updated, and the chart is colored incorrectly.
+
+## Steps To Reproduce
+
+- Create a pie chart that has 2 dimensions
+- Color by one of the dimension
+- Drag and drop so the 2 dimensions switch places
+- Notice that the color of the chart is not correct.
+
+## Link To Dashboard
+
+## Screenshots
+
+## Other Information
+",duhoang,bug,0,
+"Relative (""percentage"") view",https://github.com/mapd/mapd-immerse/issues/2035,197045319,2035,,2016-12-21T22:11:24Z,2018-01-30T22:51:34Z,"Request from NVIDIA-GFE and CMT
+
+Feature to reproduce what v.1 immerse offered with its view for ""percentage"" (which was a bit of a misnomer).
+
+example from v.1
+http://dashboard-v1-master.dev.frontend.builds.mapd.com/#mapd/3f0db5d7
+
+**without** percentage view applied, sql for row chart in this dashboard looks like this:
+```SELECT flights_123M.dest_city as key0,COUNT(*) AS val FROM flights_123M WHERE (flights_123M.origin_state = 'NY') GROUP BY key0 ORDER BY val DESC LIMIT 12;```
+
+**with** percentage view:
+```SELECT flights_123M.dest_city as key0, AVG(CASE WHEN (flights_123M.origin_state = 'NY') THEN 1 ELSE 0 END) AS val FROM flights_123M GROUP BY key0 ORDER BY val DESC LIMIT 12;```
+
+when percentage view was applied, dashboard looked like
+
+<img width=""1268"" alt=""screen shot 2016-12-21 at 5 11 31 pm"" src=""https://cloud.githubusercontent.com/assets/14082721/21408024/99f43938-c7a0-11e6-8feb-633f10ae3f5f.png"">
+",edmapd,"NVIDIA-GFE,customer,feature",0,
+Search Dashboards Box is quite sluggish with 300+ dashboards,https://github.com/mapd/mapd-immerse/issues/2026,196546006,2026,,2016-12-19T23:20:10Z,2017-12-01T17:34:54Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+
+## Issue Description
+
+There is quite a bit of lag when searching through the dashboards.
+
+Although this isn't a large problem right now,  I could imagine a situation where any client that had a large quantity of dashboards (500 - 1000+) will run into an exponentially slower experience.
+
+![image](https://cloud.githubusercontent.com/assets/2932405/21332632/9dbf0ab4-c5fe-11e6-9027-87f018a8bfc4.png)
+",MarcBalaban,lo-pri,1,
+Improper exception handling: `get_link_view`,https://github.com/mapd/mapd-immerse/issues/2024,196457967,2024,,2016-12-19T16:29:52Z,2017-12-01T17:34:34Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+
+## Issue Description
+The exception thrown by `get_link_view` when requesting an invalid saved link is not handled correctly. Backend throws an exception saying `Link abc1234 is not valid.` but Immerse ignores this and tries to parse the (empty) view_state, resulting in:
+
+    InvalidCharacterError: Failed to execute 'atob' on 'Window': The string to be decoded is not correctly encoded.
+
+## Steps To Reproduce
+1) Generate a link
+2) Change the ID in the link to something random/most likely not in the DB
+3) Attempt to load new link
+
+## Link To Dashboard
+http://dashboard-v2-release.dev.frontend.builds.mapd.com/#/link/mapd/abc1234",andrewseidl,"bug,lo-pri",1,
+"Server heartbeat check from frontend (""Server may be down"")",https://github.com/mapd/mapd-immerse/issues/2017,195962004,2017,,2016-12-16T01:45:22Z,2017-12-01T17:34:54Z,"Saw while Nvidia was testing their dashboard that server crashed, and they were waiting for a long time for query to come back to frontend, when server was already dead.",edmapd,enhancement,0,
+Drag functionality for columns in pointmap/scatter popup box,https://github.com/mapd/mapd-immerse/issues/2012,195913048,2012,,2016-12-15T20:52:37Z,2017-07-15T16:14:10Z,,edmapd,"component-raster,enhancement",0,
+"mapdcon: update `get_users`, `get_databases`",https://github.com/mapd/mapd-immerse/issues/1998,195351174,1998,,2016-12-13T19:52:55Z,2017-12-01T17:34:34Z,"Breaking change in the Thrift API, `get_users` and `get_databases` now require authentication. These methods do not appear to be used anywhere in Immerse, but there are tests which will break until they're updated.
+
+All that should be needed is to add the session id to those tests. I'll update Kali and Forge to use the new API once I have a PR ready.",andrewseidl,,0,andrewseidl
+Multi-line checkbox for data importer,https://github.com/mapd/mapd-immerse/issues/1978,194188367,1978,,2016-12-07T22:20:05Z,2017-12-01T17:34:49Z,"Having a checkbox here indicating whether data contains multi-line fields will let us parallelize import in case of no multi-lines.
+
+Add a checkbox for ""**Data contains multi-line fields**""
+
+
+
+<img width=""590"" alt=""screen shot 2016-12-07 at 2 18 06 pm"" src=""https://cloud.githubusercontent.com/assets/14082721/20989012/045484c8-bc88-11e6-9ad6-6b394af58b18.png"">
+",edmapd,enhancement,0,
+X-axis display + padding on right of widget are broken for negative numbers (row chart),https://github.com/mapd/mapd-immerse/issues/1976,193940124,1976,,2016-12-07T02:15:17Z,2017-07-15T16:15:48Z,"http://dashboard-v2-master.dev.frontend.builds.mapd.com/#/link/mapd/9ee3a475
+
+
+<img width=""1280"" alt=""screen shot 2016-12-06 at 6 13 48 pm"" src=""https://cloud.githubusercontent.com/assets/14082721/20952241/dfe4f8dc-bbdf-11e6-8eea-315b2ef6afc5.png"">
+",edmapd,"component-charting,lo-pri",0,
+Make Pointmap Transition Seamless From Editor to Dashboard ,https://github.com/mapd/mapd-immerse/issues/1971,193898877,1971,,2016-12-06T22:05:49Z,2017-07-15T16:16:20Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+
+## Issue Description
+
+When going from the editor to the dashboard, the pointmap is resized after the grid layout loads. This makes the transition seem ""janky"". If you look at the network tab, there also three render calls being made when there should ideally be only one (at most two).
+
+## Steps To Reproduce
+
+1. Create a pointmap in the editor.
+2. Click Apply.
+3. See that the map gets resized when the grid layout loads again.
+
+## Other Information
+
+See if the `map.resize()` in the `preRender` hook can be done before transitioning to the grid layout dashboard page.
+",mrblueblue,"component-raster,enhancement",0,
+Tweak Time Filter Behaviors,https://github.com/mapd/mapd-immerse/issues/1933,192447420,1933,,2016-11-30T01:05:31Z,2018-02-02T00:37:07Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+
+## Issue Description
+
+1) Clear highlighted range in calendar widget when selecting relative time.
+2) Show selected relative time when editing a relative time filter
+
+## Steps To Reproduce
+
+1.  Clear highlighted range in calendar widget
+
+- Add a time filter
+- Select a time range via inputs
+- Toggle to relative time
+- Select a relative time
+- Toggle back to custom range
+- Notice how the calendar is still highlighted 
+
+2. Show selected relative time when editing a relative time filter
+
+- Add a time filter
+- Select a relative time
+- Click outside of the popup to close it
+- Now click on the same filter pill
+- Notice how the list of relative filter is shown, instead of the currently selected relative filter
+
+## Link To Dashboard
+
+## Screenshots
+
+## Other Information
+",duhoang,enhancement,0,
+Browser Back Button Makes Dashboard Control Bar Disappear,https://github.com/mapd/mapd-immerse/issues/1890,190816232,1890,,2016-11-21T19:43:49Z,2017-12-01T17:34:54Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+
+## Issue Description
+
+The browser's back button can cause the dashboard control bar to disappear.
+
+## Steps To Reproduce
+
+- Create a new dashboard
+- Click ""Add Chart""
+- Click ""Cancel""
+- Click on the browser's back button
+
+## Link To Dashboard
+
+## Screenshots
+
+<img width=""1273"" alt=""screen shot 2016-11-21 at 11 41 07 am"" src=""https://cloud.githubusercontent.com/assets/645555/20497827/8b475f1a-afdf-11e6-9e0f-87eed4163fcb.png"">
+
+## Other Information
+",duhoang,bug,3,
+infra: e2e: add cpu-only dashboards for e2e tests,https://github.com/mapd/mapd-immerse/issues/1889,190801460,1889,,2016-11-21T18:40:27Z,2017-02-27T17:26:16Z,"Mainly needed for the `ALL_CHARTS` dashboard, at least until https://github.com/map-d/mapd2-frontend/issues/1866 is resolved.
+
+Please create them on the new e2e test server, http://forge.mapd.com:9092/v2/ . Once done I'll mirror to a cpu-only server and make available via new dashboard urls.",andrewseidl,tests,0,
+Add scale and precision settings to immerse data importer,https://github.com/mapd/mapd-immerse/issues/1888,190791043,1888,,2016-11-21T17:55:16Z,2017-12-01T17:34:34Z,,edmapd,feature,1,
+pointmap x/y sizing from edit to dashboard not being preserved,https://github.com/mapd/mapd-immerse/issues/1872,190404027,1872,,2016-11-18T19:39:51Z,2017-11-27T19:31:01Z,"# Requirements
+- [ ] user story
+- [x] designs: N/A
+- [ ] Verification/QA Criteria
+- consider using mapbox `fitToBounds`
+ 
+
+## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+
+## Issue Description
+When the user sets the size of the pointmap in the chart edit screen then presses apply, the point map zooms to a different x/y coordinates.  The x/y should be preserved from edit to the dashboard as this is filtering the dashboard unnecessarily.
+
+## Steps To Reproduce
+
+## Link To Dashboard
+![screen shot 2016-11-18 at 11 39 34 am](https://cloud.githubusercontent.com/assets/12519715/20443885/b5352d42-ad83-11e6-9b52-944cdc2f81fc.png)
+![screen shot 2016-11-18 at 11 39 15 am](https://cloud.githubusercontent.com/assets/12519715/20443886/b53644ca-ad83-11e6-8d0c-2e80342cff78.png)
+
+
+## Screenshots
+
+## Other Information
+",ekon15,"component-raster,enhancement",8,
+Gracefully handle pointmap on dashboard when no backend rendering,https://github.com/mapd/mapd-immerse/issues/1866,190394406,1866,,2016-11-18T18:54:20Z,2017-07-16T02:13:47Z,"## Issue Description
+If backend rendering is unavailable, loading a dashboard with a pointmap results in 'Failed to load dashboard' error message.
+
+## Steps To Reproduce
+http://kali.mapd.com:19092/v2 (cpu-only build)
+open any dashboard with a pointmap",andrewseidl,component-raster,1,
+"Toggle labelling on/off for Bubble chart (today's ""scatterplot"") (simulmedia)",https://github.com/mapd/mapd-immerse/issues/1860,190135115,1860,,2016-11-17T19:06:56Z,2018-02-02T00:37:05Z,,edmapd,"component-charting,customer,enhancement",1,
+Recreate flights demo in V2,https://github.com/mapd/mapd-immerse/issues/1840,188726651,1840,,2016-11-11T10:10:05Z,2017-07-21T20:11:56Z,"This will finish the move our Immerse demos to V2.
+
+I'd suggest we do this when range chart lands so we can have a nice time range chart.",tmostak,,0,
+"When smallest datapoint >0, line chart causes confusion by plotting point at bottom of chart",https://github.com/mapd/mapd-immerse/issues/1839,188688695,1839,,2016-11-11T05:36:46Z,2017-10-17T13:35:30Z,"http://www.mapd.com/demos/taxis
+
+when grouped in bins smaller than Year, we can see values are positive.  Then when you group by Year, the line chart appear to show zero, though mousing over that point shows >100m results.
+
+![timeline](https://cloud.githubusercontent.com/assets/14082721/20372588/49d54bbc-ac3a-11e6-975f-4ab112fd06f4.gif)
+",edmapd,"component-charting,dc,enhancement",4,
+Support tab for Immerse which populates server & browser configuration information,https://github.com/mapd/mapd-immerse/issues/1835,188392495,1835,,2016-11-10T00:53:32Z,2017-07-21T20:12:02Z,"Should be able to click a support link in Immerse which leads to a web form where a customer can file a case, and where information on their machine, version, and other useful details would be passed as part of their case.
+
+@mattlubrano as watcher",edmapd,enhancement,0,
+Refactor sortColumn State for Cap and Table Charts,https://github.com/mapd/mapd-immerse/issues/1834,188335997,1834,[object Object],2016-11-09T19:47:51Z,2017-09-27T19:32:29Z,"### column 'Col 0' not found in any table
+
+Contributions dataset
+
+Confirmed this bug exists both in  1.2.9 and 1.2.10 so may be longstanding.
+
+To repro:
+1) start at number chart and in Measures, type gibberish or some column which isn't shown.  Click out of the field.
+2) switch to Table chart.  Select a string or date column as Dimension (does not appear to be a problem for # columns, but please doublecheck).
+
+You get the error below.  Switching to table chart from charts other than number chart did not appear to reproduce the problem.
+
+![date](https://cloud.githubusercontent.com/assets/14082721/20152160/fe2c9cce-a671-11e6-9531-d0694072de45.gif)",edmapd,bug,7,
+importer - append data to an existing table,https://github.com/mapd/mapd-immerse/issues/1825,187463154,1825,,2016-11-05T00:06:56Z,2018-04-23T23:52:48Z,"## Issue Description (Updated April 23, 2018)
+
+Currently importer creates a table, but does allow for appending for new rows.  
+
+As a user, I would like to append additional records to an existing table via the importer.
+
+**Verizon** has been asking for this feature for the last year or so as per @dwayneberry, and we have numerous other customers that would like this functionality.
+
+The flow could be relatively simple:
+![image](https://user-images.githubusercontent.com/2932405/39157809-6e1d4aba-4711-11e8-91ec-65e6ac83f0b0.png)
+
+User clicks ""Add Rows"" and it takes them to this screen:
+![image](https://user-images.githubusercontent.com/2932405/39157923-0e98b5ba-4712-11e8-8853-44025755b4c1.png)
+
+from there -- the flow is almost the same.  The main difference is that `Row Append` will not provide is a `Table Preview` screen as it is likely not necessary.
+
+![image](https://user-images.githubusercontent.com/2932405/39158098-00200e92-4713-11e8-9b0e-00b96f5e9cbd.png)
+
+----------------------------------------------------
+
+**Some considerations to address:**
+
+- [ ] Shape files (shp/kml/geojson) do not allow for row append.
+- [ ] How will we handle the header of a `.csv/tsv`? do we need add an import option?
+![image](https://user-images.githubusercontent.com/2932405/39158495-44430e7e-4715-11e8-8365-b3e95f4b582c.png)
+- [ ] Is there a better way to handle the options instead of exposing them to the user? (As they will not have any way preview the data)",billmaimone,"customer,enhancement,feature",1,
+"Clicking OK to ack ""Expired Session"" error should force reload browser",https://github.com/mapd/mapd-immerse/issues/1817,187200193,1817,,2016-11-03T21:51:28Z,2017-12-01T17:34:54Z,,edmapd,enhancement,2,
+Design Frontend API (w/o implementation),https://github.com/mapd/mapd-immerse/issues/1802,186593244,1802,,2016-11-01T17:23:22Z,2017-02-27T20:33:58Z,"Design:
+- [x] gather requirements from live and planned PoCs.
+- [x] gather requirements for Immerse
+- [ ] write proposed for API.
+- [ ] discuss with frontend team, sales engineers.
+
+Implement (out of scope but relevant to this issue):
+- [ ] write endpoint documentation.
+- [ ] refactor code to match design.",edmapd,needs info,3,
+Accept numbers with thousands comma separator as filter entries,https://github.com/mapd/mapd-immerse/issues/1801,186579124,1801,,2016-11-01T16:27:06Z,2017-12-01T17:34:49Z,"<img width=""421"" alt=""screen shot 2016-11-01 at 9 25 44 am"" src=""https://cloud.githubusercontent.com/assets/14082721/19897445/4c3695e0-a015-11e6-9542-d29244b73fd4.png"">
+",edmapd,"enhancement,lo-pri",0,
+"Truncate w/ ellipsis + tooltip for long column names, Table Preview screen",https://github.com/mapd/mapd-immerse/issues/1780,185814918,1780,,2016-10-28T00:50:38Z,2017-12-01T17:34:54Z,"Note how Type column falls out of alignment with column header when there's a long Column name
+
+<img width=""1279"" alt=""screen shot 2016-10-27 at 5 49 20 pm"" src=""https://cloud.githubusercontent.com/assets/14082721/19790535/d42d4c9c-9c6d-11e6-92ba-ec25f7759d88.png"">
+",edmapd,"bug,lo-pri",1,
+Table importer filesize display problem,https://github.com/mapd/mapd-immerse/issues/1768,184937946,1768,,2016-10-24T19:53:04Z,2017-12-01T17:34:54Z,"Progress bar is overlaying the filesize
+
+<img width=""1280"" alt=""screen shot 2016-10-24 at 12 39 37 pm"" src=""https://cloud.githubusercontent.com/assets/14082721/19661207/a9b386d0-99e7-11e6-9c99-51de9908fb0c.png"">
+",edmapd,"bug,lo-pri",0,
+Global Filter Numerical Range,https://github.com/mapd/mapd-immerse/issues/1743,183501310,1743,,2016-10-17T19:11:47Z,2017-12-01T17:34:54Z,"As a user, I need to be able to filter the dashboard by a numerical column using a value range.
+
+**REQUIREMENTS**
+- [ ] Add a new operator ""BTW"" to the list of operators available for numerical filter
+- [ ] When ""BTW"" is selected, show 2 input fields (From, To) instead of one.
+- [ ] Filter by the range from the first input's value to the last input's value.
+
+**SCREENSHOTS**
+![numerical-range-filter-1](https://cloud.githubusercontent.com/assets/645555/19451583/a2e8c3f4-9462-11e6-9d4a-df38007cc437.png)
+![numerical-range-filter-2](https://cloud.githubusercontent.com/assets/645555/19451586/a5d0413c-9462-11e6-925b-bcc2f33833a4.png)
+",duhoang,"enhancement,feature",1,
+add copyright notice to all source files,https://github.com/mapd/mapd-immerse/issues/1738,183466266,1738,,2016-10-17T16:37:50Z,2016-10-17T17:24:47Z,"/**
+- @file    <file name>
+- @author  <primary author/owner>
+- @brief   <what's in this file>
+  *
+- Copyright (c) 2014 MapD Technologies, Inc.  All rights reserved.
+  **/
+",billmaimone,,1,
+Don't show login screen for www.mapd.com/demos/taxis,https://github.com/mapd/mapd-immerse/issues/1736,183222923,1736,,2016-10-15T17:49:26Z,2017-12-01T17:34:54Z,"For v1 demos we were able not to show login screen.  Need this for v.2 demos as well.
+
+@andrewseidl could you estimate time needed to do this?
+",edmapd,enhancement,3,MarcBalaban
+"Add arrow-down + return, to select searched table/dashboards results",https://github.com/mapd/mapd-immerse/issues/1729,183121906,1729,,2016-10-14T18:38:49Z,2017-12-01T17:34:54Z,"To be consistent with our behavior elsewhere in the app for filters, measures dropdowns (and for general convenience) hitting arrow key down should highlight search results for Dashboards and Tables searches, and hitting return should open the item.
+
+@mrblueblue could you put a time estimate on this issue?
+",edmapd,enhancement,0,
+Refactor SASS/CSS,https://github.com/mapd/mapd-immerse/issues/1702,181755459,1702,,2016-10-07T20:00:06Z,2018-02-02T00:37:03Z,"## Issue Description
+
+CSS file is getting big. There's a lot of styles that can be grouped together. And the Sass files can be better organized for re-useable styles.
+## Steps To Reproduce
+## Link To Dashboard
+## Screenshots
+## Other Information
+",duhoang,tech,2,
+Don't line wrap autosuggest items,https://github.com/mapd/mapd-immerse/issues/1695,181485114,1695,,2016-10-06T18:03:39Z,2017-12-01T17:34:49Z,"Give more horizontal space, then truncate with ellipsis.  Possibly have tooltip on mouseover to expose full text if necessary.
+
+example of problematic line wraps
+![inqtel-autocomplete](https://cloud.githubusercontent.com/assets/14082721/19164349/75c87916-8bb4-11e6-95ed-b71774c5fc8a.png)
+",edmapd,"enhancement,lo-pri",0,
+Run E2E Tests on Windows Edge,https://github.com/mapd/mapd-immerse/issues/1673,180706920,1673,,2016-10-03T18:08:26Z,2016-10-04T05:16:38Z,"Is hindered by this issue https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/5238133/, which prevents us from moving to or clicking some elements on the page even if they are visible
+
+Workaround might involve using JS to manipulate the page
+",mrblueblue,tech,0,
+Option to display # Records as percent,https://github.com/mapd/mapd-immerse/issues/1668,180437164,1668,,2016-10-01T04:23:16Z,2018-03-01T21:10:12Z,"For certain charts like Pie chart, Row chart, and possibly others, when you choose ""# Records"" as your size measure, it would often be useful to see a % of records value, instead of # records value.
+
+Perhaps we could have a toggle below (like we do for avg/min/max,etc.) which would have 2 settings, one for Count the other for Percentage.
+
+@tmostak 
+",edmapd,"component-charting,component-iml,enhancement",1,
+Only show clear filters icon when filters are applied,https://github.com/mapd/mapd-immerse/issues/1666,180432369,1666,,2016-10-01T02:07:35Z,2017-12-01T17:34:54Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+## Issue Description
+
+<img width=""158"" alt=""screen shot 2016-09-30 at 7 06 19 pm"" src=""https://cloud.githubusercontent.com/assets/14082721/19011083/10aace16-8741-11e6-97a9-4903931a21f9.png"">
+
+No point in showing the clear filters icon until filters are applied.
+",edmapd,"enhancement,lo-pri",0,
+Button to zoom to max lat/lon bounds,https://github.com/mapd/mapd-immerse/issues/1662,180428047,1662,,2016-10-01T00:39:51Z,2018-01-15T02:29:00Z,"Sometimes when you're working with a pointmap you get to a small area, and want to back out of it to the maximum dataset again.  We support this with a globe icon on tweetmap, for e.g.  Would be useful to add this feature to mapping charts.
+",edmapd,"component-raster,enhancement",1,
+"Form axes based on min/max of displayed query, not universal min/max",https://github.com/mapd/mapd-immerse/issues/1619,178964915,1619,,2016-09-23T20:19:15Z,2017-07-16T05:30:44Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+## Issue Description
+
+Have a look at the scatterplot below, where the dots represent NYC boroughs, and the x and y are average lon/lat.  The dots are forced together leading to a pretty useless chart, presumably because we're choosing lat and lon ranges for the axes based on universal min/max of lat/lon, rather than on the min/max lat/lon for the particular query being displayed by the chart (which is what we should do).
+## Link To Dashboard
+
+http://dashboard-v2-1618.dev.frontend.builds.mapd.com/#/link/mapd/c054d717
+## Screenshots
+
+![screen shot 2016-09-23 at 1 13 35 pm](https://cloud.githubusercontent.com/assets/14082721/18800009/90052434-818f-11e6-9261-9fb5c7ce3db9.png)
+",edmapd,"component-charting,enhancement",0,
+Allow multi select on global filters,https://github.com/mapd/mapd-immerse/issues/1617,178944555,1617,[object Object],2016-09-23T18:34:30Z,2018-02-02T00:37:02Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: master dev
+## Issue Description
+
+Allow multi select on global filters. Potentially by having check boxes inside the filter dropdown.
+",duhoang,enhancement,4,
+"filter on boolean should only true/false, also accepts arbitrary expression",https://github.com/mapd/mapd-immerse/issues/1558,177477417,1558,,2016-09-16T17:22:14Z,2017-12-01T17:34:34Z,"## General Info
+- **Platform**: All
+- **Browser Name**: All
+- **Browser Version**: All
+- **Application Version**: 1.12
+## Issue Description
+## Steps To Reproduce
+
+Create chart using boolean column.  Apply a filter, note you can enter any sort of expression, including arbitrary SQL statements.  Literal string true or false is accepted and works properly, as does selecting true or false from dropdown.  Entering a column name matches column.  Subquery works too, which seems potentially useful but inconsistent with other filter entry fields.
+## Screenshots
+
+![screen shot 2016-09-16 at 10 07 22 am](https://cloud.githubusercontent.com/assets/7409656/18594870/dd77eace-7bf6-11e6-9def-f4882a82edac.png)
+## Other Information
+",billmaimone,"bug,lo-pri",2,
+Add regex match to immerse Filter options,https://github.com/mapd/mapd-immerse/issues/1496,175624124,1496,,2016-09-07T22:41:16Z,2017-12-01T17:34:54Z,,edmapd,enhancement,0,
+On/off toggle for Global Filters,https://github.com/mapd/mapd-immerse/issues/1489,175549808,1489,,2016-09-07T16:34:37Z,2017-12-01T17:34:54Z,"Would be nice to have the ability to turn global filters (the filters at the top of the dashboard) on and off without having to X them out entirely and then recreate them.
+
+@tmostak as watcher
+",edmapd,"enhancement,lo-pri",1,
+"After ""name not resolved"" thrift swallows bad endpoints on MapdCon Connect",https://github.com/mapd/mapd-immerse/issues/1441,174086271,1441,,2016-08-30T18:07:14Z,2017-12-01T17:34:34Z,"To re-create:
+
+1) Go to login screen.
+2) edit advanced settings.
+3) under hostname type: `www.a09281n2oaefawefaswg3f13d71` or any other bad hostname.
+4) you can see it times out for 10 seconds and spits you back to the login screen.
+
+The solution we have in place right now works, but it is not exactly ideal.  We should be able to inform the user immediately.
+
+---
+
+It has to do with this block of code here:
+https://github.com/map-d/mapd2-frontend/blob/master/libraries/mapd-con/thrift/browser/thrift.js#L333
+
+---
+
+NOTE: Thrift 0.10 should solve this problem for us.  We are currently on 0.9.3.
+",MarcBalaban,"bug,lo-pri",3,
+"Store Size, Color, Axis Dimensions and Measures as Hash",https://github.com/mapd/mapd-immerse/issues/1434,173887706,1434,,2016-08-29T22:26:01Z,2017-07-21T20:12:08Z,"# Requirements
+- [ ] user story
+User can set a named selector and it will keep its meaning as user switches chart types.
+- [ ] designs
+
+- [ ] Verification/QA criteria 
+
+
+## Issue Description
+Individual measure positions in the measures array can change unexpectedly. This is unexpected, and can causes problems when a measure was acceptable (by type, continuous/categorical, etc) in one position but not another.
+
+My recommendation is that we take this opportunity to fix how we store measures; rather than as a list, we should be storing them according to their function ('x axis', 'color', 'size', etc). This will simplify logic that's scattered around that looks like `measures.filter(m => m.name === ""color"")` to `measures.color`. It will also reduce fragility (including this bug) caused by assuming measures in certain positions have certain meanings (eg [measure0, measure1] assuming measure1 means size). Finally, when we do actually want to iterate through the list of measures, we can do that easily with `Ramda.values(measures)`, and it will help separate the data from its view presentation.
+## Steps To Reproduce
+1.  [create pointmap](http://dashboard-v2-master.dev.frontend.builds.mapd.com/#/link/mapd/4c2c3aff) w lat, lon, and color (no size)
+2. switch to heatmap (note that color measure was #4 measure is now #3)
+3. switch back to pointmap (note that color measure #4 is now size measure #3) 
+",mLuby,"enhancement,needs info",17,
+"Inconsistent Color-By experience btw pointmap, heatmap",https://github.com/mapd/mapd-immerse/issues/1417,173621301,1417,,2016-08-27T23:51:07Z,2017-07-16T06:07:55Z,"@edmapd commented on [Sat Aug 27 2016](https://github.com/map-d/mapd2/issues/373)
+
+On heatmap, color by a non-continuous measure is interpreted as ""Count Unique [measure]""
+On pointmap, it's interpreted as color by top n distinct values
+
+![heatmap pointmap](https://cloud.githubusercontent.com/assets/14082721/18030751/367fb05e-6c78-11e6-96ca-f605e9713474.gif)
+
+Given the work going on on https://github.com/map-d/mapd2/issues/353 we should have a good opportunity to unify this.  Would seem to me to make sense to have both be color by top n distinct values.
+
+Parenthetical:
+There are some fairly deep implications we'll have to think about here when we move to groupable pointmap.  Namely, that color-by-something will be able to bounce between: 1) color by continuous measure 2) color by non-continuous measure when not grouped 3) color by non-continuous dimension when grouped.  Avoiding user confusion across these will be require careful thinking (as we're already facing a confusing UX in color by dimension in pie chart for e.g.).  
+
+@mLuby @vastcharade as watcher
+",edmapd,"component-charting,component-raster",1,
+Back button shouldn't kill file import without confirmation,https://github.com/mapd/mapd-immerse/issues/1416,173619230,1416,,2016-08-27T22:45:46Z,2017-12-01T17:34:54Z,"Quick/easy solution: we should use a confirm dialog ""Cancel Data Import?"" to prevent the user from accidentally hitting back button or swiping on his trackpad and wiping out his data import.  Could be particularly annoying if it was a big import.
+
+Since our dialog box for this would be OK / Cancel, maybe message with a different verb like ""Abandon Data Import?"" instead of ""Cancel Data Import?"" would avoid confusion.
+
+Longer term solution: perhaps it would be possible to have back and forward buttons work with each step of the import wizard rather than dropping you all the way back out to New Dashboard screen from deep in the wizard.  Ideally forward button would allow you to return into the columns/data type screen even if you had backed out of it.  Being able to do this and maintain state going back & forward would obviate the need for an OK / cancel confirmation.
+
+![back button kill](https://cloud.githubusercontent.com/assets/14082721/18030524/4a73694e-6c6d-11e6-9bed-c829f67e5b4b.gif)
+",edmapd,enhancement,0,
+"Have hitting Return on ""OK"" modals close modal",https://github.com/mapd/mapd-immerse/issues/1414,173616396,1414,,2016-08-27T21:28:19Z,2017-12-01T17:34:54Z,"Low pri - 
+For modals where only ""OK"" is displayed, would be nice to have hitting Return close the modal.
+
+For modals with Cancel / OK, we could decide what should be the default action.  Tabbing should alternate between Cancel / OK, and we could possibly use the browser's standard field highlighting to allow it to be seen which button had been selected (or do something custom).
+",edmapd,"enhancement,lo-pri",0,
+Hover info box should display info for all measures,https://github.com/mapd/mapd-immerse/issues/1413,173615478,1413,,2016-08-27T21:05:52Z,2017-07-16T06:08:40Z,"<img width=""1280"" alt=""screen shot 2016-08-27 at 9 31 50 am"" src=""https://cloud.githubusercontent.com/assets/14082721/18028637/2c21e59e-6c39-11e6-97eb-b79f4bba3d71.png"">
+
+Would make sense to have infobox display info for all measure slots, similar to how we do on scatterplot.
+",edmapd,"component-charting,enhancement",0,
+Line chart date bins hidden on small screens,https://github.com/mapd/mapd-immerse/issues/1371,172366931,1371,,2016-08-22T04:18:24Z,2017-07-16T06:10:51Z,"![hidden date buckets](https://cloud.githubusercontent.com/assets/14082721/17843600/b93ba504-67e4-11e6-87d9-c40c5d2fb95d.gif)
+",edmapd,"bug,component-charting,lo-pri",0,
+[v2] master on servers.json is not working as intended,https://github.com/mapd/mapd-immerse/issues/1359,172233280,1359,,2016-08-19T22:37:10Z,2017-08-07T18:25:05Z,"Currently if a user has: 
+
+```
+master: true
+```
+
+on servers.json, it will simply select that server as the one to connect to.
+
+---
+
+What we need is master to represent the server that will hold:
+1) ALL saved dashboards.
+2) ALL linked dashboards.
+
+---
+
+All servers will hold their own databases and tables separately 
+",MarcBalaban,bug,2,
+be able to change `null` color on point map,https://github.com/mapd/mapd-immerse/issues/1352,172204056,1352,,2016-08-19T19:32:40Z,2017-07-16T06:11:28Z,"Very low pri, but would nice as on certain scales, null gets blended in with the scale.
+
+![image](https://cloud.githubusercontent.com/assets/2932405/17821592/4270a2a0-6607-11e6-936a-e4a0ae28f3ba.png)
+",MarcBalaban,"component-raster,feature,lo-pri",0,
+Have dashboard <title> include dashboard name,https://github.com/mapd/mapd-immerse/issues/1343,171987516,1343,,2016-08-18T20:00:31Z,2017-12-01T17:34:54Z,"Low priority longer term ask-- would be nice to update the Title element to include the dashboard name, when viewing a dashboard
+
+@tmostak as watcher
+",edmapd,"enhancement,lo-pri",1,
+Custom measure not adding `[measure] IS NOT NULL` which can cause null results to be returned by backend.,https://github.com/mapd/mapd-immerse/issues/1337,171797923,1337,,2016-08-18T01:29:36Z,2017-12-01T17:34:34Z,"![image](https://cloud.githubusercontent.com/assets/2932405/17758966/741e260c-64a8-11e6-85c3-4ab729292bbe.png)
+
+http://dashboard-v2-master.dev.frontend.builds.mapd.com/#/link/mapd/f57afc14
+
+see also: https://github.com/map-d/mapd2-frontend/issues/709
+",MarcBalaban,bug,14,
+Clicking X for the text field on a filter should immediately open auto-suggest dropdown,https://github.com/mapd/mapd-immerse/issues/1318,171281383,1318,,2016-08-15T22:59:35Z,2017-12-01T17:34:49Z,"![test](https://cloud.githubusercontent.com/assets/2932405/17682547/2780e076-6301-11e6-9971-8207d3ef6c3b.gif)
+",MarcBalaban,"enhancement,lo-pri",1,
+"If no auto-complete is available on filter (cardinality > 2,000,000), need to warn user so they don't think something is broken.",https://github.com/mapd/mapd-immerse/issues/1317,171279521,1317,,2016-08-15T22:45:22Z,2017-12-01T17:34:49Z,"![image](https://cloud.githubusercontent.com/assets/2932405/17682233/0cb86a86-62ff-11e6-8e89-27cabf8ee156.png)
+**User:** ""Oh great, look at all those suggestions""
+
+![image](https://cloud.githubusercontent.com/assets/2932405/17682243/1b9651da-62ff-11e6-8b50-9dad3f3c7270.png)
+**User**: ""Where the heck are all my suggestions, maybe if I keep clicking, the suggestions will show up...""
+",MarcBalaban,,2,
+"On Untitled Dashboard Title Focus, Display Helpful Placeholder",https://github.com/mapd/mapd-immerse/issues/1267,170520464,1267,,2016-08-10T21:14:09Z,2017-12-01T17:34:54Z,,edmapd,enhancement,6,
+fail gracefully for out-of-date saved data,https://github.com/mapd/mapd-immerse/issues/1217,169267856,1217,,2016-08-04T00:55:37Z,2017-12-01T17:34:54Z,"- fail gracefully
+- backwards compatibility
+
+For example see dash **`all charts`** which was created before ``measures` have a `minMax` property. This causes setting a pointmap size scale domain to fail when it looks for a minMax and it's undefined.
+
+Some options:
+1. migrate saved dashboards. This is standard for  user data ""schema changes"", which is essentially what we're discussing.
+2. provide sensible defaults to guard against obsolete saved dashboards. I am concerned about difficulty of ensuring completeness.
+",mLuby,,1,
+"unless legend locked, color minMax should be based on points on screen",https://github.com/mapd/mapd-immerse/issues/1213,169206526,1213,,2016-08-03T18:56:10Z,2017-12-01T17:34:49Z,"unless legend locked, 
+- [ ] `color.minMax` should be based on points on screen
+- [ ] and `size.minMax` too❓
+- [ ] legend squares should to update with new values on each redraw.
+",mLuby,enhancement,0,
+[v2] create Editable Input Box Module,https://github.com/mapd/mapd-immerse/issues/1199,168721089,1199,,2016-08-01T19:21:16Z,2016-08-01T19:21:16Z,"Both:
+`dashboard-top-panel-title.js` and `editable-column-header.js` can be combined into one module.
+",MarcBalaban,,0,
+"Have the default # bins match chart type ""default cap""",https://github.com/mapd/mapd-immerse/issues/1160,167140313,1160,,2016-07-22T21:57:30Z,2017-07-16T06:16:43Z,"default # of bins should not always be 12, but instead should match the [default cap](https://github.com/map-d/mapd2-frontend/pull/1111) of charts, to avoid confusion
+
+@MarcBalaban @mrblueblue 
+",edmapd,"component-charting,enhancement,lo-pri",1,
+Map Exceptions to User Friendly Messages,https://github.com/mapd/mapd-immerse/issues/1149,166874879,1149,,2016-07-21T17:31:00Z,2017-12-01T17:34:34Z,,mrblueblue,"enhancement,feature",0,
+Importer -- Visual Display of Data being Imported (Progress Bar),https://github.com/mapd/mapd-immerse/issues/1118,165634315,1118,,2016-07-14T19:02:33Z,2017-12-01T17:34:54Z,,MarcBalaban,"enhancement,lo-pri",4,
+Zoom to bounding box for pointmap on instantiation,https://github.com/mapd/mapd-immerse/issues/1096,165383023,1096,,2016-07-13T17:58:10Z,2017-09-27T19:24:23Z,"Exclude lat lon 0,0 from the SQL for pointmap, then zoom map to bounding box of points
+",edmapd,"P3,bug,enhancement",5,
+Ability to use choropleth w/o basemap,https://github.com/mapd/mapd-immerse/issues/1063,164894376,1063,,2016-07-11T17:46:00Z,2017-08-03T01:10:51Z,,edmapd,"component-raster,dc,design,feature,lo-pri,needs info",0,
+Multiple exceptions not handled during import,https://github.com/mapd/mapd-immerse/issues/964,162042748,964,,2016-06-23T23:03:59Z,2017-12-01T17:34:34Z,"~~Probably a `WONTFIX` as it's currently only in V1.~~ Importer is now also in V2.
+
+`Import New Table` doesn't handle any exceptions thrown by `create_table`, `import_table`, `import_table_status`.
+
+To reproduce:
+- ~~grab any old CSV~~
+- use [duplication_csv.csv.zip](https://github.com/map-d/mapd2-frontend/files/460595/duplication_csv.csv.zip)
+- `Import New Table`
+- give two columns the same name
+
+You get a message saying `Successfully imported NaN rows.`
+- [ ] An initial exception is thrown by `create_table` due to the duplicate column names.
+- [ ] `import_table` throws an exception because the named table does not exist
+- [ ] `import_table_status` also throws an exception because the requested import cannot occur
+",andrewseidl,bug,5,
+[V2] Use Validation Endpoint to Pre-Check Custom Filter Expressions,https://github.com/mapd/mapd-immerse/issues/943,161568587,943,,2016-06-22T00:18:02Z,2017-12-01T17:34:34Z,"@tmostak 
+",mrblueblue,enhancement,0,
+Filter: hit enter twice to select an item and close the form,https://github.com/mapd/mapd-immerse/issues/941,161567084,941,,2016-06-22T00:03:54Z,2018-02-02T00:36:57Z,"1) you're typing in the equals or contains field and items are being suggested below
+2) you hit down arrow twice to select second item
+3) you hit return which selects that item and populates it into the filter filed
+4) hitting enter again commits the filter item and closes the filter box.
+",edmapd,"enhancement,lo-pri",0,
+Indicate the global filters which are applied when on the Chart creation screen,https://github.com/mapd/mapd-immerse/issues/940,161566355,940,,2016-06-21T23:57:27Z,2017-12-01T17:34:54Z,,edmapd,"enhancement,lo-pri",0,
+"Add help link to v.2 dashboard, to reference documentation",https://github.com/mapd/mapd-immerse/issues/934,161562317,934,,2016-06-21T23:23:52Z,2017-12-01T17:34:54Z,,edmapd,feature,0,
+Throw error for old browsers notifying of no support,https://github.com/mapd/mapd-immerse/issues/784,159233336,784,,2016-06-08T18:02:01Z,2017-12-01T17:34:54Z,,edmapd,"feature,lo-pri",0,
+Ability to export / copy dashboard metadata from the Immerse UI (two sigma),https://github.com/mapd/mapd-immerse/issues/761,158477790,761,,2016-06-04T00:35:44Z,2018-02-28T21:27:04Z,"@edmapd commented on [Fri Jun 03 2016](https://github.com/map-d/mapd2/issues/252)
+- [ ] ability to copy dashboard from one mapd instance to another
+- [ ] provide easy way to change table names in serialized dashboard
+
+@tmostak @ekon15 @andrewseidl  @ThePhen could you please add to the task list above if further detail is needed on what this feature would include
+
+---
+
+@dwayneberry commented on [Fri Jun 03 2016](https://github.com/map-d/mapd2/issues/252#issuecomment-223723797)
+
+@ed I think ability to copy/export dashboard is a frontend feature
+",edmapd,enhancement,5,
+[dashboard v1] Renaming column breaks table aliases,https://github.com/mapd/mapd-immerse/issues/735,158064552,735,,2016-06-02T05:51:13Z,2018-04-22T15:57:38Z,"It seems like there is no check to verify that the `aliases` object is in sync with the available columns, and there is no fallback if a column name isn't in the object. This causes renamed columns to show up as `undefined` in column selectors and the renamed columns do not show up in the table aliases modal.
+
+To reproduce:
+- add some aliases, save dashboard
+- rename a column, eg `ALTER TABLE flights RENAME COLUMN year TO flight_year;`
+- (reload page)
+- load saved dashboard
+
+Table aliases modal does not show `new` column. Column selectors show `undefined` where the new column should be.
+
+To get around this, I had to manually modify `aliases` to get the desired results on our public flights demo.
+
+Note: due to map-d/mapd2#189 (similar bug in the backend), you'll need to test against a non-calcite server or restart the calcite-enabled one after every `alter table`.
+",andrewseidl,,1,
+[V2] Quick Edit Mode For Filter Inputs,https://github.com/mapd/mapd-immerse/issues/720,157317746,720,,2016-05-28T03:18:30Z,2017-12-01T17:34:54Z,"Currently there is no way to quickly edit non-custom filters.
+
+For instance, if you create a `dest NOT CONTAINS 'ATL'` filter, you have to click the filter and then click the value to edit it. 
+
+The ""quick edit"" feature would allow the user to edit and change non-custom filters on the fly, without having to clicking into the dropdowns. 
+",mrblueblue,feature,0,
+Instrument DB login timeout screen w/ google analytics,https://github.com/mapd/mapd-immerse/issues/717,157316733,717,,2016-05-28T02:44:35Z,2016-12-22T00:08:34Z,"We should fire a pageview or event tracker when the DB login screen is shown on mapd.com/demos/*
+This will allow us to track how big of a timeouts problem we have.
+
+@tmostak was watcher
+",edmapd,tech,1,
+Ability to specify date format in data importer,https://github.com/mapd/mapd-immerse/issues/676,156379257,676,,2016-05-23T22:17:52Z,2016-09-15T21:15:34Z,"Requested by Kyle at simulmedia
+
+Depends on https://github.com/map-d/mapd2/issues/231
+
+![screen shot 2016-05-23 at 2 24 53 pm](https://cloud.githubusercontent.com/assets/14082721/15486297/72eb1d14-20f9-11e6-8907-7ec63492081e.png)
+",edmapd,"customer,enhancement",7,
+Type separator for Measure Picker,https://github.com/mapd/mapd-immerse/issues/668,156066592,668,,2016-05-20T23:06:46Z,2017-12-01T17:34:49Z,"![image](https://cloud.githubusercontent.com/assets/2932405/15444345/6b27a360-1ea4-11e6-8b63-230b4b65e45e.png)
+
+It might might make sense to start separating by groups:
+- Numerical
+- String
+- Date/Time
+- Boolean
+",MarcBalaban,enhancement,3,
+"Support mixed content: http web server, https backend",https://github.com/mapd/mapd-immerse/issues/624,155055403,624,,2016-05-16T15:34:21Z,2018-05-29T13:38:46Z,"Hopefully the final issue blocking #136 
+
+Now that `servers.json` has a way to provide the protocol (http / https), pass this info to mapdcon so it can be used when connecting to the server.
+
+Can test by pointing your `servers.json` to https://kali.mapd.com:10043/ and serving the frontend over http.
+",andrewseidl,"enhancement,tech",18,jrajav
+Frontend Cached Performance Observation,https://github.com/mapd/mapd-immerse/issues/582,154126741,582,,2016-05-10T23:11:16Z,2017-07-16T06:24:18Z,"Not sure how to categorize this but wanted to record behaviour somewhere
+
+Customer Verizon is having some slow performance due to backend query timings.
+
+The customer was saying some queries occur fast and some occur slow.  Looking in the log all queries are repeatedly slow.
+
+When using the dashboard it is clear that some 'refreshes' to the dashboard do appear to occur extremely quickly.
+
+Talking to frontend dev it seems we have some code that caches calls to the DB and does NOT actually issue a new call to the backend for identical queries.
+
+This explained the fast and ""normal"" speed queries
+
+I have a slight concern around cached results in the frontend.  It means if I just sit repeatedly running same query I am not actually ever looking at new data in the actual database.  This could be very confusing and incorrect.
+",dwayneberry,"customer,tech",2,
+[UI] text on certain colors is difficult to read,https://github.com/mapd/mapd-immerse/issues/554,153513485,554,,2016-05-06T18:42:43Z,2017-07-16T06:24:27Z,"![image](https://cloud.githubusercontent.com/assets/2932405/15082979/971e9314-137f-11e6-92f4-2f5e21bf48de.png)
+",MarcBalaban,"component-charting,enhancement,lo-pri",1,
+[Dashboard v2] Proof of Concept - Using Flow for Type Checking,https://github.com/mapd/mapd-immerse/issues/475,151430312,475,,2016-04-27T16:30:57Z,2017-06-22T16:45:08Z,"A good first-step to see if Flow is something we would like to use would be to use it on one component, a util method, and a reducer. Perhaps this integration can ride with a pending or upcoming PR. 
+#### Rationale
+
+As our code base gets larger and more complex, some form of type-checking would be great to make the code base more manageable and bug free. 
+
+Type checking would additionally give us some sort of documentation and testing at no extra cost.
+
+We currently do a partial amount of type checking at the component level using `PropTypes`, but these checks only occur at runtime.
+
+Flow type checking would catch type errors at compile time and can be used on utility functions, reducers, actions, etc.
+",mrblueblue,tech,0,
+`master` server handling is broken for demo mode,https://github.com/mapd/mapd-immerse/issues/462,150765053,462,,2016-04-25T06:44:00Z,2016-08-01T20:52:53Z,"If no `master` server is set or the server that gets marked as master is unavailable, the `loadDashboard` option in `servers.json` breaks the frontend: the empty `Error!` message pops up, clicking on a recent dashboard causes everything to get stuck at the `Connecting` screen. Untested, but this may also affect the `share` link functionality.
+
+Desired behavior: at a minimum, display useful error message explaining that the source of truth for the dashboards is not available.
+
+Demo mode is a special case: you can assume that the saved dashboards have been manually replicated to all servers, so you can attempt to load the requested dashboard from any server.
+
+Additionally, share links are deterministic with an acceptable collision probability, so you can safely blast `create_link` calls to all available servers (maybe prefer master first). When restoring from a shared link you can again attempt to restore from any server, not just the master.
+
+(The backend issues this is working around will be resolved later this year once we have replication/HA.)
+
+---
+
+To reproduce and test: grab a [prebuilt backend](https://github.com/map-d/wiki/wiki/Download-URLs#backend) and run two instances of `mapd_web_server` on separate ports:
+
+```
+bin/mapd_web_server --backend-url ""http://kali.mapd.com:9092"" --port 10000
+bin/mapd_web_server --backend-url ""http://kali.mapd.com:9092"" --port 11000
+```
+
+You can then access the frontend at http://localhost:10000 and http://localhost:11000 . For a custom frontend start with the flag `--frontend /path/to/dashboard-v1/public`.
+
+Place the following `servers.json` in the `frontend` dir:
+
+```
+[
+    {
+        ""username"": ""mapd"",
+        ""password"": ""HyperInteractive"",
+        ""port"": 10000,
+        ""host"": ""localhost"",
+        ""database"": ""mapd"",
+        ""master"": true,
+        ""loadDashboard"": ""worldplanes""
+    },
+    {
+        ""username"": ""mapd"",
+        ""password"": ""HyperInteractive"",
+        ""port"": 11000,
+        ""host"": ""localhost"",
+        ""database"": ""mapd"",
+        ""master"": true,
+        ""loadDashboard"": ""worldplanes""
+    }
+]
+```
+
+Play around with removing the `master` line and killing either of the servers. (Note: the last server listed as `master` is the one used for `masterCon`.)
+",andrewseidl,bug,1,
+Poor error handling if WebGL unavailable,https://github.com/mapd/mapd-immerse/issues/461,150732013,461,,2016-04-25T02:55:53Z,2017-12-01T17:34:54Z,"If WebGL is disabled or otherwise unavailable, v1 will only draw the boxes for each chart and then pop open an `Error!` message with no description about what happened. Console says `Failed to initialize WebGL`, but nothing useful is directly shown to the user. Since all charts fail to draw, the frontend appears broken.
+
+What should happen: only the chart which requires WebGL should fail to draw (and display a friendly message explaining the situation). Missing WebGL should not break everything.
+
+To test: recent versions of Chrome require an extension to disable; Firefox has a flag in `about:config`.
+",andrewseidl,bug,8,
+Add option to use specified server(s) from servers.json,https://github.com/mapd/mapd-immerse/issues/460,150598966,460,,2016-04-23T21:39:38Z,2017-03-28T17:17:07Z,"Mirrored from map-d/mapd2-tweetmap#41
+
+Examples:
+- `http://www.mapd.com/demos/tweetmap/?servers=0` would only use the first server in `servers.json`.
+- `http://www.mapd.com/demos/tweetmap/?servers=4,5,6,7` would only use the 5th-8th servers in `servers.json`.
+
+This is so that we can investigate specific backend(s) that might be having issues. Also useful for priming the GPUs after a restart.
+
+This functionality should be duplicated in the regular frontend, but tweetmap is more urgent.
+",andrewseidl,enhancement,3,
+[Immerse] Document Components,https://github.com/mapd/mapd-immerse/issues/418,149251968,418,,2016-04-18T19:42:53Z,2017-10-17T17:12:26Z,"It would be nice to map out our component hierarchy and auto-generate documentation for our components.
+
+Right now its hard to know how they all fit together.
+",mrblueblue,"component-charting,enhancement,tech",5,
+Import new table needs to allow user overrides,https://github.com/mapd/mapd-immerse/issues/325,136454242,325,,2016-02-25T17:25:16Z,2017-12-01T17:34:34Z,"Scenario:  I have a bunch of files I need to load.  rather than creating one huge file and loading via ui I want to use the ui to help me create schema and then use the COPY command to actualy do the load of the rest of the file.
+
+Currently it appears if the import utility identified that a column is unique it does not seem to allow you to override that and specify that the column should be dictionary encoded.
+
+We should allow all fields to be over riden by the user
+",dwayneberry,,2,
+Add HTTPS support,https://github.com/mapd/mapd-immerse/issues/136,111485040,136,,2015-10-14T20:26:18Z,2018-06-05T01:16:59Z,"Backend HTTPS support is ready, but needs frontend support before being merged.
+
+`mapd.js` and `mapdcon.js` are currently hard-coded to use HTTP (see eg [mapd.js:1203](https://github.com/map-d/mapd2-frontend/blob/da8b2c3af8761f4ab5288989f8ba2d4a88921f73/main/source/js/mapd.js#L1203)).
+
+The quick fix would be to use protocol-relative links (see below), however this will fail if the frontend is not served under the same protocol as the backend. (ignoring cross-protocol warnings)
+
+Current: `url: ""http://"" + server.host + "":"" + server.port,`
+Protocol-less: `url: ""//"" + server.host + "":"" + server.port,`
+
+Permanent fix would be to include the protocol in `servers.json`. To make life simpler, create an `endpoint` var/getter fn and use this everywhere instead of manually building it up each time. e.g. `con.getEndpoint()` vs `""http://"" + con.getHost() + "":"" + con.getPort()`
+",andrewseidl,,7,andrewseidl
+Allow for scale to be set by quantile instead of min max for color scales,https://github.com/mapd/mapd-immerse/issues/44,66381667,44,,2015-04-05T00:01:22Z,2018-02-02T00:36:53Z,"Particularly important for choropleth
+",tmostak,"component-charting,component-raster,dc,enhancement",0,MarcBalaban
+Typeahead on custom aggregates,https://github.com/mapd/mapd-immerse/issues/41,65972316,41,,2015-04-02T17:25:23Z,2017-12-01T17:34:49Z,,tmostak,feature,0,tmostak
+Magic wand that allows brushing of two distinct filters and z-tests for significant differences,https://github.com/mapd/mapd-immerse/issues/23,65951070,23,,2015-04-02T15:25:27Z,2017-07-16T06:31:17Z,,tmostak,"component-raster,feature",1,tmostak
+Flip any chart to show raw data,https://github.com/mapd/mapd-immerse/issues/14,65949393,14,,2015-04-02T15:19:54Z,2017-12-01T17:34:54Z,"relates to https://github.com/map-d/mapd2-frontend/issues/15
+",tmostak,feature,1,tmostak
+Preview filter on hover,https://github.com/mapd/mapd-immerse/issues/5,65947624,5,,2015-04-02T15:11:58Z,2017-12-01T17:34:54Z,,tmostak,feature,0,

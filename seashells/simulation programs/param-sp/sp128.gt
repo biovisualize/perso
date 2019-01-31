@@ -1,0 +1,105 @@
+Space-dependent gene activation
+fdelay
+.1
+#
+In the first simulation, the activity of a single gene will be shown
+that has an autoregulatory feedback on its own. This saturates at high
+concentrations of the gene product. Under the influence of morphogen with 
+a graded distribution, all cells above a threshold will become activated.
+r128
+ Bistable system under the influence of a morphogen
+i
+<1
+c
+#
+Regions with a high and with a low gene activity results. The border is
+sharp. After a gene is once activated, the signal is no longer required
+for the maintenance of the gene activity. The signal will now be switched off.
+Only the tendency to flip over into the "higher" state will disappear.
+d
+<1
+kt=10
+ba
+0
+d
+<1
+c
+#
+Once fully activated, the gene activity is maintained independent of the
+signal
+
+#
+The next simulations demonstrate the behavior of a systems with several
+alternative genes. Fife genes are assumed with gene products that have a
+positive autoregulatory feedback on their own gene and that compete with each
+other. The red bar in the background is a measure for the mutual competition.
+r128a
+ In one cell, only one gene can remain active
+i
+<1
+c
++
+#
+ In one cell, only one gene can remain active
+   In the next simulation a small external signal (top) for another gene  is
+assumed. In this case, the corresponding gene is moderately active, but the
+signal is insufficient to accomplish  a complete switch...
+ba
+.15
+c
+#
+... However, with a somewhat stronger signal a complete switch occurs,
+the originally activated gene becomes repressed...
+
+ba
+.25
+c
+#
+.
+.
+.
+... again, the gene activity remains stable even without the signal...
+ba
+
+ Again, the gene activity remains stable even without the signal.
+c
+#
+Conclusion: By a feedback of a gene product on the activity of its own
+gene, a stable gene activation is achieved that is maintained independent
+of the evoking signal. By competition it can be arranged that only one of
+several alternatively possible genes can remain active in one cell.
+#
+In the following simulation the space-dependent activation of several
+genes under the control of a morphogen gradient will be shown. Starting
+with the default activation of the "blue" gene, sequentially higher genes
+become activated and lower once again deactivated.
+r129
+ba=.0009
+i
+<1
+kt=100
+c
+#
+.
+...  thus, several genes become activated in a space-dependent manner
+A later increase of the morphogen causes a shift of the regions in which
+particular genes are active
+ba
+.0012
+n
++
+#
+In contrast, gene activation remains unchanged after a lowering or after
+a switching off of the signal...
+
+ba=0
+kt=30
+<1
+n
+#
+Conclusion: If under the influence of the morphogen a change from one
+gene to the next occurs in a concentration-dependent manner, particular
+genes remain active at particular positions. Although the signal is
+shallow, the resulting borders are sharp.
++
+EOF-GT

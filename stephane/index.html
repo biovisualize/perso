@@ -1,0 +1,267 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+  <style>
+    section {
+      display: flex;
+      flex-direction: column;
+    }
+    .section-title {
+      padding: 24px 0;
+    }
+    section.description h1 {
+      max-width:  420px;
+      margin: 0 auto;
+      color: #a2a3a6;
+    }
+    section.services .button {
+      margin: 42px 0;
+    }
+    section.rendez-vous {
+      background: #85909B;
+      color: white;
+      padding: 48px;
+    }
+    section.location {
+      height: 600px;
+      background-image: url("img/location-bureau.jpg")
+    }
+    section.location .description {
+      background: white;
+      opacity: 0.9;
+      margin-top: 42px;
+      padding: 36px;
+    }
+    nav.ui.grid {
+      height: 160px;
+      padding-top: 30px;
+    }
+    footer {
+      padding: 36px;
+    }
+    footer a {
+      color: black;
+      padding: 0 16px;
+    }
+    h1 {
+      font-size: 36px;
+      padding: 36px 0;
+    }
+    h2 {
+      text-transform: uppercase;
+      margin: 0 auto;
+      display: table;
+      padding: 10px 0px;
+      position: relative;
+      line-height: 1.3em;
+      border-bottom: 1px solid #222;
+      margin-top: 0;
+      color: #a2a3a6;
+      border-color: #a2a3a6;
+    }
+    h2:before, h2:after {
+      content: '';
+      display: block;
+      height: 0;
+      width: 0;
+      left: 50%;
+      position: absolute;
+      bottom: -14px;
+      border: 8px solid transparent;
+      border-top-color: #000/* imitate line border color*/;
+      margin-left: -5px;
+      margin-bottom: -2px;
+      border-top-color: #a2a3a6;
+    }
+    h2:after {
+      border-top-color: rgba(233, 233, 233, 0.31) !important;
+    }
+    .professionnels .image {
+      height: 260px;
+    }
+    .services img {
+      height: 180px;
+    }
+    .light.gray.background {
+      background: #F8F8F8;
+    }
+    /* semantic-ui overrides */
+    .ui.secondary.pointing.menu {
+      border: 0;
+    }
+    .ui.basic.button.white {
+      background: white!important;
+    }
+  </style>
+</head>
+<body>
+<nav class="ui grid">
+  <div class="two wide column"><img src="img/logo-clinique-equation-sante-h.png" /></div>
+  <div class="fourteen wide column">
+    <div class="ui secondary pointing menu">
+      <div class="right menu">
+        <a class="item active">Accueil</a>
+        <a class="item">Services</a>
+        <a class="item">Professionnels</a>
+        <a class="item">Espace de travail</a>
+        <a class="item">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<header>
+  <img class="ui fluid image" src="img/accueil-eq.jpg" />
+</header>
+<main>
+  <section class="description">
+        <h1>SERVICES DE SANTÉ ET DE RÉADAPTATION POUR LA POPULATION DES LAURENTIDES</h1>
+  </section>
+  <section class="light gray background services">
+    <div class="section-title"><h2>Nos services</h2></div>
+    <div class="ui center aligned grid">
+      <div class="doubling four column row">
+        <div class="column">
+          <img src="img/icone-orthophonie-150x150.png"/><br />
+          <div class="caption">ORTHOPHONIE</div>
+        </div>
+        <div class="column">
+          <img src="img/icone-psychotherapie-150x150.png"/><br />
+          <div class="caption">PSYCHOTHÉRAPIE ET PSYCHOLOGIE</div>
+        </div>
+        <div class="column">
+          <img src="img/icone-sexologie-150x150.png"/><br />
+          <div class="caption">SEXOLOGIE</div>
+        </div>
+        <div class="column">
+          <img src="img/icone-travail-social-150x150.png"/><br />
+          <div class="caption">TRAVAIL SOCIAL</div>
+        </div>
+      </div>
+      <div class="row"><button class="ui white basic button">En savoir plus</button></div>
+    </div>
+  </section>
+  <section class="professionnels">
+    <div class="section-title"><h2>Nos Professionnels</h2></div>
+    <div class="ui padded grid">
+      <div class="column">
+        <div class="ui link cards">
+
+          <div class="card">
+            <a class="image" href="#">
+              <img src="">
+            </a>
+            <div class="content">
+              <div class="header">Stéphane Lalonde</div>
+                <div class="meta">Orthophoniste</div>
+              <div class="description"><button class="ui white basic button">Consulter</button></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <a class="image" href="#">
+              <img src="">
+            </a>
+            <div class="content">
+              <div class="header">Jade Dussault</div>
+                <div class="meta">Orthophoniste</a></div>
+              <div class="description"><button class="ui white basic button">Consulter</button></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <a class="image" href="#">
+              <img src="">
+            </a>
+            <div class="content">
+              <div class="header">Ginette Germain</div>
+                <div class="meta">Orthophoniste</a></div>
+              <div class="description"><button class="ui white basic button">Consulter</button></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <a class="image" href="#">
+              <img src="">
+            </a>
+            <div class="content">
+              <div class="header">Pascale Therreault</div>
+                <div class="meta">Travailleuse sociale</a></div>
+              <div class="description"><button class="ui white basic button">Consulter</button></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <a class="image" href="#">
+              <img src="">
+            </a>
+            <div class="content">
+              <div class="header">Laëtitia Gourdon</div>
+                <div class="meta">Travailleuse sociale • Psychothérapeute</a></div>
+              <div class="description"><button class="ui white basic button">Consulter</button></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <a class="image" href="#">
+              <img src="">
+            </a>
+            <div class="content">
+              <div class="header">Nathalie Houde M.A.</div>
+                <div class="meta">Sexologue • Psychothérapeute du lien</a></div>
+              <div class="description"><button class="ui white basic button">Consulter</button></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <a class="image" href="#">
+              <img src="">
+            </a>
+            <div class="content">
+              <div class="header">Hélène Lamoureux, Ph.D.</div>
+                <div class="meta">Psychologue clinicienne</a></div>
+              <div class="description"><button class="ui white basic button">Consulter</button></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="rendez-vous">
+    <div class="ui equal width middle aligned grid">
+      <div class="right aligned column"><img src="img/icon-rendez-vous-ces.png" /></div>
+      <div class="center aligned column">PRENDRE RENDEZ-VOUS AVEC UN PROFESSIONNEL</div>
+      <div class="column"><button class="ui white basic button">Choisir un professionnel</button></div>
+    </div>
+  </section>
+  <section class="location">
+      <div class="ui text container description">
+        <div class="ui padded grid">
+          <div class="four wide column"><img src="img/icon-location-bureau.jpg" /></div>
+          <div class="twelve wide column">
+            <h3>LOCATION D'ESPACE DE TRAVAIL</h3>
+            <p>La clinique Équation santé se donne pour mandat de permettre la pratique privée pour les professionnels de la santé. Nous offrons la location d’espaces de travail se prêtent aux pratiques suivantes : orthophonie, psychothérapie, ergothérapie, nutrition, travail social, psychoéducation, etc.</p>
+            <button class="ui black button">En savoir plus</button>
+          </div>
+        </div>
+      </div>
+  </section>
+</main>
+<footer>
+  <div class="ui two columns grid">
+    <div class="column">
+      <a href="https://fr-fr.facebook.com/Clinique-%C3%89quation-sant%C3%A9-586707538198396/">
+        <i class="facebook f icon"></i><span>Facebook</span>
+      </a>
+      <a href="https://plus.google.com/106186828549565736858">
+        <i class="google plus g icon"></i><span>Google+</span>
+      </a>
+    </div>
+    <div class="right aligned column">
+      © Clinique Équation Santé 2017
+    </div>
+  </div>
+</footer>
+</body>
+</html>

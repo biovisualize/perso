@@ -1,0 +1,69 @@
+Waves in feather patterning
+igtdelay
+10
+#
+Downy feathers are formed in a proliferating ring of cells. Signals 
+generated in this ring leads to a separation into patches. During 
+proliferation the non-activated regions form the barbs in the course
+of time (downy feather don't have a rachis). 
+fdelay
+.1
+r138a
+i
+<1
+c
+fdelay
+0
+#
+  ...in the course of time this leads to the long filaments. Note that the
+barbs are formed by the white regions; the green region cause the 
+separation between the barbs...
+ 
+r138
+dw
+a
+sc=0
+sf=0
+sd=0
+vga
+n
++
+#
+Next: in flight feathers, the barbs are oblique. These correspond to the 
+oblique lines on shell pattern and are the result of traveling waves. In the 
+following, a long-lasting inhibitor enforces the onset of waves (as in shells).
+These would not be ver organized...
+r138c
+i
+<1
+c
+#
+.....and could annihilate each other upon a collision.... 
+
+#
+Next: a cut-open site (brown) and a rachis-site (pink) is added. At the cut-
+open site, wave-splitting can take place, leading to a permanent line of 
+separation from which permanently new waves spread. At the rachis-site the
+traveling waves (signals for barb separation) disappear: a space-time plot
+r138
+s
+<2
+n
+<1
+n
+#
+Keep in mind that this is a cut-open cylinder. The signal that separates the
+barbs move in a wave-like fashion around the cylinder, alternatively clockwise
+or counterclockwise. These signals emerge in a splitting zone (brown, cut-open
+of the feather). The waves disappear at the rachis-site (pink).
+#
+  ... now the same as a movie...
+
+r138b
+n
++
+#
+Conclusion: the static-appearing feather is the result of a 
+highly dynamic process.
+
+EOF-GT

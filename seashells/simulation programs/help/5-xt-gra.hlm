@@ -1,0 +1,34 @@
+Program SP: types of XT-plots that can be selected by KD
+KD=1   three-dimensional XT-Plot, past in the foreground
+KD=2   three-dimensional XT-Plot, past in the background
+KD=3   single curves [line width via IWI, colours via ICOL]
+KD=4   schematic plot with symbols °°±±²²Û and absolute concentrations
+KD=5   as 4
+KD=6   false color (use only with plot of a single array, e.g., DW = a
+             or at shifted positions (different x- coordinates);
+             a lower threshold can be selected by krot>1 (keep it < 5)
+KD=7   plot with a single threshold, (local concentr. * factor >1)
+KD=8   pixel as KD= 9  + plot of stable prepattern [array a(8,ix)]
+KD=9   pixels proportional to concentration (standard for shells)
+KD=10  -13 as 6-9, allows finer resolution in FreeBasic at higher resolutions
+              use in FreeBasic command SCR to chose the resolution (5-7)
+KD=10  (FreeBasic) different brownish colors
+KD=11  (FreeBasic) plot line by line with a single threshold
+KD=12  (FreeBasic) pixel as KD= 13  + plot of stable prepattern [array a(8,ix)]
+KD=13  pixels proportional to concentration (standard for shells)
+KD=14  as 9, but time axis bottom-up, for phyllotaxis
+KD=15  circular plot ("Nautilus")
+KD=16  Plot around a circular arrangement of cells, local concentr.= radial 
+KD=17  Curves over a circular arrangement of cells, local concentr.= vertical  
+KD=18  as 19, but refresh only with the first picture
+KD=19  or 18: filled curves, otherwise similar to KD=3 type
+          ICOL+20 = blocks; ICOL+40=non-filled curves; ICOL+60=non-filled steps
+          parameter IST makes a gap between blocks, e.g. IST = 3
+KD=20  time plot of concentrations in a single (or in the left-most cell
+              as function of time (use with KY=1, see GT32)
+KD=21  for display of gene activities in a single cell
+KD=23  Two plots of KD=3 type side by side, to display regeneration; 
+              calculation runs form kx (usually=1) to k4-1 and from k4+1 to ky
+KD=25  Colored random dots in a band, IST= width, IH = downward shift
+KD=27  plot as shrinking circles, for phyllotaxis
+KD=28  plot on a transparent cylinder, for phyllotaxis

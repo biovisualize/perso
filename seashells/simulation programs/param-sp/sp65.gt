@@ -1,0 +1,57 @@
+Oliva porphyria: Role of initial condition and random fluctuations
+#
+In this sequence it will be shown that the system that patterns 
+Oliva porphyria is chaotic in its nature: small differences in the initial
+conditions or random fluctuations leads to different patterns. This 
+is illustrated by two superimposed patterns
+r65
+kt=395
+s
+  First simulation
+#
+.
+A second simulation, with other random fluctuation, in  a different colors
+will be superimposed...
+
+cs
+12
+#
+Whether a branch is successfully formed depends on fluctuations. Such a 
+decision has a strong influence on the probability that other branches are 
+formed. Thus, although the overall character of the pattern is maintained, the 
+patterns greatly differ in details. In agreement: no two shells are identical.
+#
+.
+In the next simulation, no random fluctuations are assumed to occur, but
+the subsequent simulation is made with slightly different initial conditions
+....  the first simulation....
+kr
+0
+igtdelay
+3
+icol
+
+s
+ki
+4
+  Second simulation
+cs
+10
+22
+55
+75
+120
+180
+194
+
+12
+igtdelay
+10
+#
+Conclusion: After a certain time, either random fluctuations or small
+differences in the initial conditions lead to completely different patterns.
+Such a behavior is characteristic for chaotic systems. There is now chance to
+find two shells with identical patterns
+EOF-GT
+EOF-GT
+

@@ -1,0 +1,45 @@
+The use of Screen-resolutions (command SCR) - only for the Windows/UNIX-Versions
+#
+In this GUIDED TOUR the effect of different screen resolutions are illustrated
+The standard resolution is 800*600. This is a simulation using this standard
+
+r96
+kt
+300
+s
+#
+.
+.
+With SCR=3, a resolution of 1024 * 768 will be used. The scaling of the screen
+remains the same (VGA-resolution 640*480, as used also by the DOS versions
+SCR
+3
+s
+#
+SCR=4 will use a resolution 1280*1024 if available on the computer, 
+SCR = 1 uses VGA resolution; (convenient for NETBOOKS with smaller screens).
+SCR=5 to SCR = 7 uses higher screen resolutions, with a scaling as given
+by the screen resolution. This allows finer-grained plots....
+scr
+6
+kt
+900
+kd
+13
+s
+#
+These finer-grained plots are reasonable to be used with the graphic modes 
+KD = 6 to 14 in the program SP and KD = 11 and 13 in the program XY
+SCR =5:  800*600;      SCR=6: 1024*768;     SCR=7:  1280*1024
+For Netbooks with small screens, it may reasonable to use SCR= 1 (=VGA)
+scr
+1
+s
+<2
+#
+.
+.
+.
+This resolution can be set also by typing '1' and the RETURN key
+EOF-GT
+

@@ -1,0 +1,14 @@
+.vega-actions {
+	display: none;
+}
+
+#immerse {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.chart1, .chart2 {
+	float: left;
+	background: white;
+    margin: 40px;
+}

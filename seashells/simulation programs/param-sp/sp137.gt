@@ -1,0 +1,63 @@
+Pole-to-pole oscillation in E.coli
+igtdelay
+10
+#
+To illustrate how the Min system works, the elements are introduced first
+without mutual interaction. MinE (red) and FtsZ (blue) are pattern-forming 
+systems, MinD (green) cannot make a pattern on its own.
+
+r137
+kt
+100
+cc
+0
+ce
+0
+s
++
+#
+Stable peaks of MinE (red) and Ftsz (blue) are formed. Next: MinE removes
+MinD (green) from the membrane. MinE, however, depends on MinD.
+Thus, the MinE peak will start moving to regions of high MinD level. A
+never-ending running behind will start....
+cc
+.0004
+kt
+300
+c
+#
+In the next simulation, MinD obtains its inhibitory influence on FtsZ (blue).
+The constriction-initiating molecule moves to the center since there is on
+average the MinD level the lowest...
+
+ce
+.2
+c
+#
+FtsZ should now be localized in the center.
+The next simulation shows the complete system in a space-time plot.
+Growth is assumed to occur by adding space only at the right side.
+The center-signal finds, nevertheless, the correct position.
+s137a
+#
+Next: after further growth, the system can no longer follow, a split occurs.
+
+n
+#
+.
+.
+.
+In large fields out-of phase oscillation occurs...
+s137c
++
+#
+.
+.
+.
+and the same as movie...
+s137d
+#
+Conclusion: The formation of traveling waves and out of phase oscillation
+is not only realized in the patterning of sea shells...
+
+EOF-GT

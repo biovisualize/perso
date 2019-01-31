@@ -1,0 +1,116 @@
+Formation of net-like structures
+igtdelay
+10
+#
+The idea for the generation of a net-like structures such as vein of leaves 
+or blood vessels was that local signals are generated that elongate an 
+incipient filament towards a region that needs better supply by veins etc.
+
+r134
+kt
+50
+s
+#
+.
+The next simulations shows step by step how this could work. 
+First an activator signal is formed (green, top) that leads to an irreversible
+differentiation of the exposed cell (blue, bottom):
+r134a
+dw
+abd
+ki
+3
+aa
+1
+ga
+.001
+ad
+0
+cc
+
+kt=15
+kp=20
+i
++
+s
+<2
+#
+In order to form a filament of differentiated cells, the signal has be shifted
+into an adjacent cell. Assumption: differentiated cells remove a substrate
+ (brown) that is required for the autocatalysis. Thus, differentiation of a 
+cell leads to a destabilization of the the maximum and its shift.
+d
+cc
+.06
+dw
+abcd
+c
++ ... activation shifted into a neighbouring cell....
+n
++ The neighbouring cell has differentiated too, signal shifts again.....
+kt
+60
+c
++
+#
+At this stage usually a branch has been formed. In the next simulation a
+longer sequence will be shown. Again the activation along a "vein" is
+visible: the initiation of a branch.
+
+r134a
+i
+<2
+c
++ Usually a branch is formed at this stage...
+n
+#
+.
+.
+.
+  ...and now the same process in a top view: trophic substance in green
+s134
++
+#
+.
+. 
+If part of the filaments are damaged, new filaments will grow in the region
+since the concentration of the trophic substance increases
+m0
+16
+
+16
+
+d
+<2
+c
+#
+.
+If the trophic substance is locally produced, the source region becomes
+the target region that acts filaments. Branch formation occurs 
+preferentially in the target region...
+s135b
+<2
+s135b
+#
+An increase of the production rate of the trophic substance (VEGF) leads
+to an increased vessel density (assumed in the upper part of the following
+simulation). In the shaded region an elevated inhibitor production is assumed,
+that suppresses the invasion of vessels..
+s135a
+#
+.
+.
+Conclusion: relatively simple mechanisms are able to generate complex
+patterns that have indeed similarities with their natural counterparts
+#
+This mechanism leads to elongation of filaments into regions that are not yet
+supplied by filaments. This mechanism has, therefore, no tendencies to make
+closed loops. A possibility is to use  a spot-forming system (blue) that
+represses a stripe system (red). These form closed loops
+s134c
+#
+This was an example for closed loops
+
++
+EOF-GT
+

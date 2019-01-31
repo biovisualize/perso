@@ -1,0 +1,40 @@
+Program SP and XY: Variables used for the graphic display
+DX      Unit length of a cell in pixels
+PER     Perspective in 3D-display mode (KD=1,2), 0=lateral, 1 = 45ø view
+KROT    angle in the display mode (KD=1, 2), 1... is reasonable
+KROT    in false color-mode KD=6-8: threshold; 1...5 is reasonable
+BCOL    Background and foreground color, 0=black, 15 white
+DW      DisplayWhat => e.g. ab causes display of substances A and B
+EGA     Switches to EGA in the DOS programsmodus, reasonable for display with 
+             frequent refresh  (in Window it slows down the simulation; 
+             a flag is set if the parameter set is saved)
+VGA     Switches to VGA modus (if available)
+FDELAY  Delay between display refresh in EGA modus, default = .5
+        (used to the movie-like simulations slower)
+%-----------------------------------------------------------------------
+        For the following parameters you can input a value for each
+        substance that is displayed according DW (DisplayWhat) (sab...).
+        The input can be terminated by <q>, input of <ESC> leads a
+        particular parameter unchanged, a preceding <G> allows global
+        definition, e.g. <g50> puts all X-values to 50, <RETURN> sets to zero
+%-----------------------------------------------------------------------
+X      X - position of the plots (in pixel-units)
+Y      Y - position of the plots (in pixel-units)
+F      factors of the plot
+ICOL   color of the plot
+IWI    line width (for KD=3)
+%
+%---------    Screen scaling and resolution  -------------
+%
+1 = VGA screen, helpful for Net-Books with 1000*600 resolution 
+SCR=1 :  VGA=640*480;          scaling 640*480  (Screen coordinates
+SCR=2 :  800*600 (default)     scaling 640*480   are the same in all
+SCR=3 : 1024*768               scaling 640*480   resolutions)
+SCR=4 : 1280*1024              scaling 640*480
+SCR 5 to 7:  scaling as resolution 
+SCR =5:  800*600;      SCR=6: 1024*768;     SCR=7:  1280*1024
+1 ... 9, 12 Screen type can be chanced by input these numbers directly
+%
+  Only for DOS:
+EGA     Switches to EGA modus, reasonable for display with frequent refresh
+VGA     Switches to VGA modus (if available)

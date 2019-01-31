@@ -1,0 +1,162 @@
+Pattern formation and pattern regulation in Hydra
+#
+In this GUIDED TOUR a model for pattern formation in Hydra is given. Assumed
+are three pattern-forming systems, for the head (green), tentacles (brown) and
+foot (pink). They are coupled with each other by the source density (blue).
+The three signaling systems emerge spontaneously at the correct place.
+r125
+kt=25
+ Initial conditions
+i
+<1
+ Head (green), foot (pink), source density (blue); later: tentacles (brown)
+c
+#
+.
+.
+.
+    ... then the animal grows, but not very much happens (as in reality)
+c
+#
+The signal for head (green), tentacle (brown) and foot formation (pink).
+appear at the correct position. These three activator-inhibitor systems
+are coupled with each other by the source density (blue). The head
+increases, the foot reduces the source density.
+#
+The next simulation shows a regeneration. Head and foot are removed.
+In a near-head piece first the tentacles regenerate at the tip. When the
+head system (green) triggers, the tentacle signal becomes shifted to the
+correct place, as shown in an experiment of Bode et al.
+ Near head system: tentacles regenerating first
+d
+kg
+0
+ms
+mc
+20
+25
+kp
+50
+kt
+100
+<1
+c
+#
+In a near-head piece, first the tentacles regenerate at the tip. When the
+head system (green) triggers, the tentacle signal becomes shifted to the
+correct place, as shown in an experiment of Bode et al., 1988
+Next: once again. Note the first appearance of the "red" tentacle signal:
+  once again. Note the shift of the "red" tentacle signal
+mr
+<1
+mc
+20
+25
+<1
+c
++
+#
+In a piece closer to the foot the source density is too low to trigger
+the tentacle system directly. First the head activator has to regenerate.
+This leads to an increase of the source density. If sufficiently high,
+the tentacle system triggers at the correct position.
+mr
+<1
+mc
+7
+12
+c
+#
+Thus, a more basal piece (or in a bud) the tentacle signal appear
+directly at the correct position since first the head signal has to
+elevate the source density
+
+ A piece distant to the head: head signal first, tentacle signal comes later
+#
+This result corresponds to the observation of Technau and Holstein, 1995.
+.
+If a Hydra grows further, bud formation occurs. According to the model,
+this corresponds to a new activation in a region of low source density.
+mr
+ Budding
+kg
+4
+kp
+500
+kt
+10
+c
+kt
+16
+c
+#
+Next: after head removal, premature bud formation is possible. According to
+the model, after head removal the inhibitor concentration declines and
+a secondary maximum can trigger. First the head-less animal is produced .....
+
+mr
+kg
+0
+d
+<1
+#
+ .....  removal of the head.....
+
+mc
+1
+25
+<1
+kp=100
+kt=34
+ ... bud formation in a small but head-less animal
+c
+#
+Next: if a near-head piece is transplanted into the gastric column, isolated
+tentacles or a second head may be formed. Model: the high source density
+in the transplant may trigger either only the tentacle system (if the
+original head is close and thus the head inhibition is high) or ....
+ .. first: only the tentacle system triggers
+mr
+mt
+1
+6
+22
+25
+13
+
+d
+#
+  ..  distributions after the operation...
+
+c
++
+#
+ ... only tentacles appeared. 
+.
+Next:  a full head will appear after implantation at a more
+distant position....
+ .. or a full head
+mt
+1
+7
+22
+25
+8
+
+kp=500
+d
+#
+  ..  distributions after the operation...
+
++
+c
++
+#
+Result: Head or bud formation
+.
+Conclusion in general: the relative simple model accounts for 
+many basic observations with Hydra
+EOF-GT
+EOF-GT
+
+

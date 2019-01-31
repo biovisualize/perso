@@ -1,0 +1,167 @@
+Examples for the Graphic displays
+% Comment lines start with a %-character
+#
+In this GUIDED TOUR, one example for each possible display
+should illustrated the graphic capabilities of the program for 
+space-time plots. The parameter is KD
+
+S1
+#
+.
+.
+KT=1 generates space-time plots with hidden lines; time runs from
+front to back. With KT=2 the time runs from back to front
+S23a
+#
+.
+.
+This was KD=2; next: KD = 3 generates individual curves....
+
+S1a
+#
+.
+This was KD=3; next: KD = 4  shows distribution schematically as pixels
+and symbols, with maximum concentrations and field sizes. It can be reached
+anytime by pressing F4, convenient if something unexpeced happend
+r23a
+kd
+4
+s
+#
+.
+This was KD = 4 (OR 5). The next display modes (6-13) are special to show the
+shell patterns. KD = 6 produced false colors. After conversion into a grey
+pattern, this provides a good half tone display.
+R61
+kd
+6
+dw
+a
+s
+#
+.
+.
+This was KD = 6. In KD = 7 painting occurs only if the activator concentration
+is above a certain threshold (concentration  * factor > 1)
+S63
+<.5
+#
+.
+This was KD = 7. In KD = 8 the concentrations are shown as a density of pixels.
+In addition a stable modifying pattern is shown at the top
+(stored in the array axt(8, i) and substance h).
+S42
+#
+.
+This was KD = 8. In KD = 9, as in KD = 8, the concentration are shown as a
+density of pixels but without stable pattern, parameter DW determines 
+the sequence (e.g. DW = abc or DW = cba)
+S61
+#
+.
+.
+This was KD = 9. In KD = 10, concentrations are shown as different
+brownish colors
+s98
+#
+.
+.
+This was KD = 10. In KD = 11, 12 and 13 are as KD 7,8,9 but allow in FreeBasic
+ a higher screen resolution, exemplified here by KD = 13
+s88
+#
+.
+This was KD = 13. In KD = 14 the plot proceeds bottom-up, good for
+phyllotaxis. The following simulations shows the generation of a helical 
+arrangement of signals (cup-open cylinder, left and right cells are neigbours) 
+s133a
+#
+.
+.
+This was KD = 14. KD = 15 shows concentration on concentric
+rings, appropriate to display the pattern of nautilus
+s48c
+#
+.
+.
+This was KD = 15. KD = 16 allows to plot the concentrations of a circular
+array of elements. Used especially to simulate chemotactic orientation.
+s136
+#
+.
+.
+This was KD = 16. KD = 17 shows concentration also on a ring, but with 
+vertical orientation, illustrated here by the emergence of travelling waves
+s51n
+#
+.
+This was KD = 17. In KD = 18 or 19 concentration are shown as solid areas.
+Here a simulation for hydra, generating a head (green) and a foot signal
+(pink) at opposite position:
+s125
+#
+.
+The sequence of display is given by the sequence of  letters in the command DW.
+With a change of DW = acdf to DW = dfca, the tentacles d (brown) are plotted in
+front of the source density c (blue) and this in front of the activator a (green)
+DW
+dfca
+D
+#
+.
+.
+This was KD = 18. In KD = 20 the concentration of a single or of the left most
+cell is plotted as function of time
+r32
+fdelay
+.01
+s
+#
+.
+.
+This was KD = 20. KD = 21 is used to illustrate the activation of genes
+in a single cell (see GT 128); in the following one of fife genes wins.
+s128a
+#
+.
+.
+This was KD = 21. KD = 23 is used to show regeneration after separation into two parts
+the concentration
+s29a
+kg=0
+kt=40
+c
+kd=23
+ke=211
+kp=10
+kt=250
+d
+<1
+c
+<1
+#
+.
+This was KD 23, usued to illustrate regeneration after fragmentation. KD = 25
+shows concentration as separate bands of different pixel densities, illustrated
+here by the space-dependent gene activation under morphogen control (see GT128)
+S129a
+<1
+#
+.
+This was KD 25; the last two plots are used to illustrate phyllotaxis. 
+In KD = 27 plots are made on concentric rings from outside to inside
+as frequently shown in botanical textbooks: near center are the youngest:
+S133c2
+#
+.
+.
+This was KD 27; in KD = 28 high concentrations are plotted as rings on a
+growing transparent cylinder:
+s133a3
+<1
+#
+.
+.
+The list of these KD-commands is available via F1
+.
+EOF-GT

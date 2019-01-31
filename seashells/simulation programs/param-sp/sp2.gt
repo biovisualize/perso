@@ -1,0 +1,192 @@
+Parameters for the graphic display
+#
+This is a GUIDED TOUR to illustrate the graphic capabilities of the
+program and its handling. Press <RETURN> for each next step. The TOUR
+can be interrupted by pressing q (Quit); the simulations can be
+terminated by <ESC>
+#
+.
+The TOUR is initiated by reading the parameter file sp1.prm by the command
+R1 and the simulation is started by the command S (the commands are given
+there in capital letters but the case does not play a role)
+r1
+s
+#
+A change of the unit length is possible via DX
+
+dx
+10
+s
+#
+A change of the position of the graphs can be performed via the command X
+and Y. A new value for each substance to be plotted must be introduced. After
+the following change both plots are formed side by side instead on top of
+each other.
+x
+10
+300
+y
+270
+270
+s
+#
+The different modes of displays can be selected by the parameter KD.
+The present mode results from KD=1. A reversal of the time axis occurs
+with KD=2. This has the advantage that the result of the computation
+appears in the foreground.
+KD
+2
+s
+#
+The perspective of the 3-D plots can be changed via PER, 0 is horizontal,
+1 is a 45 degree view. Within certain limits, the lateral viewing angle
+can be changed via KROT, 1 is a 45 degree view, higher numbers are more
+frontal (but require more time and memory) a maximum value of 6 is fine
+per
+.1
+krot
+1
+s
+#
+This a more lateral view with a low perspective, note the different
+appearance in the next simulation
+
+per
+.4
+krot
+5
+s
+#
+The normalization factors of the plots are changed via F. For each array
+to be plotted a new value has to be introduced. The existing value can
+be kept by typing <ESC>. In the following, the height of the
+inhibitor plot is increased by a factor three.
+f
+x
+1.5
+s
+#
+Which distribution is plotted can be controlled via DW (DisplayWhat).
+Input a string with the letters of the arrays to be plotted, presently
+AB was in use, typing A instead leads to a plot of the activator
+concentration only.
+dw
+a
+s
+#
+For the shell patterns it is desirable to use a pixel plot with colored dots
+on white background. Plots can be made on top of each other or side by side,
+depending on the x coordinates. First a pattern on top of each other due 
+to identical x values with KD = 9
+r61
+ky
+100
+s
+#
+.
+.
+.
+Next they appear side by side:
+x
+10
+320
+320
+s
+#
+.
+Next: increase of KP (Plots)leads to more iteration between the plotted lines,
+i.e., to a compression along the time axis. The total duration is changed by
+KT, (Total number of plotted pixel lines), which shortened in the following:
+kp
+7
+kt
+200
+s
+#
+.
+.
+.
+With kd = 3, separate curves will be plotted... 
+s23c
+#
+.
+.
+.
+The line width of this plot can be changed via the command iwi
+iwi
+6
+1
+S
+#
+.
+.
+.
+.... the colors by icol
+icol
+1
+6
+d
+<1
+#
+.
+.
+A somewhat related display (kd=19) provides the concentrations as
+solid areas, the command D makes a new plot without re-calculations
+kd
+19
+icol
+2
+12
+D
+<2
+#
+The sequence of letters given by the command DW determines the priority
+of plotting. In the example above, "ab" leads to the plot of the activator (a)
+on top of the inhibitor (b). Setting DW to "ba"
+reverses that order
+DW
+ba
+D
+#
+.
+.
+again simple curves can be displayed in order that other distributions
+are not covered (change icol  to icol + 40, in this case 12 + 40 = 52:
+icol
+2
+52
+iwi2
+5
+D
+#
+A simplified display can be called anytime either by F4 or the command
+M4. This is helpful, for instance, in the case that extreme concentrations
+occurred. It provides the concentrations in percent as long as space is
+available
+DW
+ab
+m4
+#
+.
+.
+.
+Pressing the <RETURN> key once cause a displays the actual parameters
+
+<3
+#
+.
+.
+Pressing <RETURN> or <ESC> twice brings the initiation screen
+with the most important commands back
+
+
+<3
+#
+.
+.
+That it the end of this GUIDED TOUR. Now you get again full control
+over the program
+s
+EOF-GT
+
+

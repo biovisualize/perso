@@ -1,0 +1,226 @@
+Basic pattern and types of displays in the  XY-Program
+igtdelay
+80
+#
+Demonstration of the possible modes of graphic displays in the XY-program:
+first a two-dimensional pattern is generated. It will be used later
+on to illustrate other possibilities....
+
+r1
+Kt=75
+ A regular pattern results after a local perturbation
+s
+#
+The view can be changed with the command PER.
+First more a view from above (per = .4)
+
+per
+.4
+d
++
+#
+Now a view from more from the front (per = .1)
+
+per
+.1
+d
++
+per
+.2
+#
+This was KD = 4; with KD = 1 only lines in X-direction will be drawn;
+      (sometimes helpful if many cells are displayed)
+
+kd
+1
+d
+#
+This was  kd=1. With KD = 5, the concentrations of the cells are shown
+as blocks:
+
+kd
+5
+d
++
+#
+This display is helpful when cells become activated in an all-or-nothing
+manner. This happens if the diffusion of the activator is zero (DA = 0)
+
+DA
+0
+c
++
+#
+Without diffusion, the concentrations become rather high. With the
+command f (factor for display) this can be changed
+
+f
+.1
+.1
+d
++
+#
+This was kd=5. With KD = 6 only those cells are shown whose concentrations
+are above a threshold:
+
+kd
+6
+d
++
+#
+the line with can be chaged by the command iwi, now setting to 1
+
+iwi
+1
+1
+d
+#
+With KD = 8 the concentration of cells is shown as a density of pixels.
+The displays can be superimposed
+
+kd
+8
+f
+g.3
+x
+g100
+y
+g100
+dx
+24
+d
++
+#
+This was kd = 8. A similar display is possible with KD=13. Density of random
+dots is proportional to the (relative) concentration. This is used to
+show contratrations similar as gene expression and staining experiments.
+
+kd
+13
+f
+g.5
+d
++
+#
+With KD = 11 the concentration of cells is also shown as a density of pixels.
+However, each plot of a substance overwrites the previous (transparent)
+plot, sequence according to the parameter DW, With the original parameter and
+DW = ab display would be as follows:
+r1
+iwi
+g1
+kd
+11
+y
+g100
+kt
+12
+kp
+120
+s
++
+#
+If the simulation goes too fast, it can be slowed down by the command
+fdelay (also possible by using F12)
+.1 is a reasonable value, next 0.4 is used
+
+fdelay
+.4
+s
+fdelay
+0.04
++
+#
+In this case, the sequence of plots is given by the sequence in the
+parameter DW (DisplayWhat). Changing DW = ab to DW = ba leads to the
+covering of the activator distribution by the inhibitor distribution
+
+dw
+ba
+d
++
+#
+.
+.
+with different X-parameters, one can also plott the distribution
+side by side
+x
+10
+320
+dx
+18
+d
+<1
+#
+.
+.
+.
+With setting DW to a, only the activator is plotted:
+dw
+a
+d
++
+#
+With kd = 12 the distributions will be shown in a schematic way. If the array
+is not too large, relative concentrations are given too. The distributions can
+be displayed in this way anytime by F4 or F5; the latter asks for a RETURN 
+after each distribution (to inspect large arrays individually)
+kd
+12
+d
++
+#
+With KD = 7 one can plot the distributions around a cylinder. The
+distance of a maximum to the surface of the cylinder is a measure for
+the concentration; used for the simulation of leaf initiation at a
+growing shoot.
+r132b
+i
+kt
+25
+c
+<2
+#
+.
+.
+.
+With the command D71 one can rotate the cylinder
+D71
+<2
++
+#
+.
+.
+The display KD=14 is used to show the formation of net-like
+structures:
+r134
+kx=24
+ky=24
+kt=50
+s
++
+#
+Sometimes it can be helpful to combine several modes of displays:
+In the following, the differentiation of cells is shown with KD=6
+(blocks), while the activator-, inhibitor and substrate distributions
+are drawn as 3-D nets (KD=3):
+r134a
+kt
+30
+S
++
+#
+This is accomplished by KD=0 and an individual control by the command ITYP.
+To draw e.g. the distribution of the substance d (the fourth distribution)
+with the display mode 8, type the following command: ityp4 <RETURN> 8 <RETURN>
+Substance d will be plotted in the pixel mode above the other distributions
+ityp4
+8
+n
+c
++
+#
+A list of these display modes can be found also under F1 ->
+Program XY: possible modes of graphic display (parameter: KD)
+
+EOF-GT

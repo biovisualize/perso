@@ -1,0 +1,61 @@
+Formation of the Spemann Organizer
+#
+Many observations indicate that the formation of the Spemann Organizer is a 
+genuine pattern forming process. Crucial therein in a mutual repression of 
+Chordin and BMP. The factor ADMP restricts the Chordin domain. This suggest
+that pattern formation is based on an inhibition of an inhibition (Fig. 2.8).
+r127
+i
+<1
+c
+#
+In this simulation, Chordin (green) suppresses BMP (blue) and vice versa. ADMP 
+(red) is under the same control as Chordin and suppresses the inhibiting influence
+of Chordin on BMP. Although only inhibitions are involved, this resembles a 
+pattern-forming reaction. 
+#
+.
+.
+.
+.....In larger fields - the amphibian egg is huge - there are problems...
+ky
+36
+i
+<1
+c
+#
+... a tendency exists to form multiple organizers. This can be suppressed by 
+maternally supplied determinants. Then, the competence (pink)is not uniform. 
+Regions that are more efficient to produce, e.g., Chordin will form the single 
+organizing region. In amphibians, the competence is even more asymmetric...
+dy
+.2
+k2
+33
+i
+<2
+s
+#
+With this asymmetry by maternal determinants, the future location of the 
+organizer becomes predictable. 
+Since the system is a genuine pattern-forming system, the organizer 
+regenerates after removal....
+ms
+mc
+2
+27
+d
+#
+.
+.
+.
+...the organizer is removed ....
+kp
+50
+c
+#
+.
+.
+.
+.... and regenerates, as observed
+EOF-GT

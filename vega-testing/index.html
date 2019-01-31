@@ -1,0 +1,14 @@
+<html>
+<head>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://vega.github.io/vega/vega-core.min.js"></script>
+</head>
+<body>
+<script></script>
+	var view = new vega.View(vega.parse(vegaJSONSpec))
+  .renderer('canvas')  // set renderer (canvas or svg)
+  .initialize('#view') // initialize view within parent DOM container
+  .hover()             // enable hover encode set processing
+  .run();
+</body>
+</html>

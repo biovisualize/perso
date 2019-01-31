@@ -1,0 +1,707 @@
+"Summary","LEGACY GH issue ID","Fix Version/s","LEGACY GH created","LEGACY GH updated","Description","Reporter","Labels","Assignee"
+"Properly update colors when switching charts",4747,,"2018-06-14T14:08:40Z","2018-06-14T14:42:08Z","### 💬  Description
+
+Preserves the ability to save a chosen color scale while also picking the appropriate color scale for a new chart (either as a new raster layer in a multilayer chart or an entirely new chart).
+
+### 📄 Github Issue
+
+Fixes #4741
+Fixes #4702
+
+### :camera_flash: Screenshot","alexbaden",,
+"Only redraw raster charts when clearing chart filters (#4742)",4746,,"2018-06-14T05:54:33Z","2018-06-14T13:21:55Z","When clearing all filters we dispatch redrawAllAsync from handleClearAllFilters in global-filter-sagas.js. Dispatching redrawAllAsync twice can result in some charts not being properly re-drawn.
+
+### 💬  Description
+ 
+### 📄 Github Issue
+Closes #4742 
+
+### :camera_flash: Screenshot","alexbaden",,
+"IE all charts titles are aligned to the right ",4744,,"2018-06-14T01:21:51Z","2018-06-14T13:41:27Z","### :speech_balloon: Description
+
+IE all chart titles are aligned to the right.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+
+- Create text widget in IE
+ 
+
+- **Actual result:**
+
+Title aligned to the right.
+
+- **Expected result:**
+
+title should be centered
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![Screen Shot 2018-06-13 at 6.16.26 PM.png](https://images.zenhubusercontent.com/59a47c158f62dc7798c4571a/58b5a8b0-837c-426b-a621-916b73900517)
+### :memo: Other Info","menaczar","P4,bug,regression",
+"[Combo] Editing axis titles causes incorrect format for color legend & custom color key",4743,,"2018-06-14T01:05:39Z","2018-06-14T13:40:00Z","### :speech_balloon: Description
+Currently, if user has a combo chart with multiple measures, editing the x-axis and y-axis title labels would improper format for color legend & custom legend key.
+
+### :computer: Environment
+- **Browser Name, Version**:  Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1.  Create a Combo chart with the following:
+Data Source: flight
+Dimension X-axis: arr_timstamp (Binning auto)
+Measure Y-axis 1: arrdelay (avg)
+Measure Y-axis 2: carrierdelay (avg)
+Measure Y-axis 3: depdelay (avg)
+
+2.  Add extra word to x-axis and y-axis title (i.e. title)
+3. Click apply to pin chart to dashboard
+
+- **Actual result:**
+The first row in the Color Legend and Custom Color Key no longer has correct format
+
+- **Expected result:**
+First row in the Color Legend and Custom Color Key should maintain proper format
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![combo_title_edit_bug](https://user-images.githubusercontent.com/35040876/41386040-32d15758-6f34-11e8-9288-e787715dc86e.gif)
+
+<img width=""1338"" alt=""screen shot 2018-06-13 at 6 04 31 pm"" src=""https://user-images.githubusercontent.com/35040876/41386057-559984f4-6f34-11e8-9c36-b274308da179.png"">
+
+
+### :memo: Other Info","ericli5454","P2,bug,combo-chart,found during 4.0",
+"Clear all filters regression.",4742,,"2018-06-14T00:25:10Z","2018-06-14T01:01:37Z","### :speech_balloon: Description
+Clear all filters regression.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a line chart and bar chart
+- Flights depdelay vs arrdelay
+- create any filter 
+- click clear all filter and it will work fine
+- Create a choropleth
+- Paris_Mena mapd_geo
+- Create a filter on non geo charts
+-create filter on geo choropleth
+-click cleat all filters
+
+- **Actual result:**
+Clear all works for choropleth only
+
+- **Expected result:**
+clear all should clear all filters 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![jun-13-2018 17-24-08](https://user-images.githubusercontent.com/16374964/41385156-bfef1ac2-6f2e-11e8-80a2-dd1e5696db16.gif)
+
+
+### :memo: Other Info","menaczar","P1,bug,regression,release blocker by rule",
+"Unable to create a multilayer Pointmap",4741,,"2018-06-13T23:57:55Z","2018-06-14T13:24:40Z","### :speech_balloon: Description
+
+### :computer: Environment
+- **Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: 4.0 RC4 
+
+### :page_with_curl: Steps To Reproduce
+- Create Pointmap (Source: flights | Measure Lon: dest_lon | Measure Lat: dest_lat)
+- Add a layer to the Pointmap (Source: flights | Measure Lon: origin_lon | Measure Lat: origin_lat )
+- **Actual result:**
+Exception error message is generated after which immerse hangs and the map is not rendered.  
+- **Expected result:**
+Layered Pointmap should render without an error message combining the chosen measures.
+
+### :dash: Smoke Test
+
+
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![multilayer pointmap](https://user-images.githubusercontent.com/39566471/41384455-b8ff10cc-6f2a-11e8-8846-271c3926e370.gif)
+<img width=""1209"" alt=""screen shot 2018-06-13 at 4 46 53 pm"" src=""https://user-images.githubusercontent.com/39566471/41384459-c29ce8de-6f2a-11e8-9857-d27fae7d3e9b.png"">
+
+### :memo: Other Info
+Can be replicated using a dataset containing geo column as well (Metro_Stations_in_DC/Metro_Stations_Regional)","AlexHarutyunyan","P1,bug,regression,release blocker by rule","alexbaden"
+"Combo Chart focus and range brushes out of sync",4739,,"2018-06-13T22:38:08Z","2018-06-13T22:38:08Z","### :speech_balloon: Description
+When creating a combo line-chart with a numerical dimension and the range chart enabled, brushing on the range chart appears to be out of sync with what is displayed in the combo chart.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- create a combo chart with flights
+- airtime as dimenstion
+- carrier_name as measure
+- enable range chart
+- brush on range chart
+
+- **Actual result:**
+Graph shown in focus chart appears to have different values then the brushed portion of the range chart
+
+- **Expected result:**
+Graph shown in focus chart should show the same values in brushed portion of the focus chart
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+<img width=""780"" alt=""screen shot 2018-06-13 at 3 32 35 pm"" src=""https://user-images.githubusercontent.com/161748/41382081-6837720c-6f1f-11e8-83d7-d15525449bd5.png"">
+
+### :memo: Other Info","clhenrick","combo-chart",
+"ensure geojoin does not get copied to a new layer in multi-layer choropleth",4735,,"2018-06-13T20:20:53Z","2018-06-13T20:20:53Z","### :speech_balloon: Description
+
+When adding a layer, the geojoin from an existing multilayer choropleth will get copied to the new multilayer choropleth. Preferably the geojoin could be left blank, instead. 
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info","alexbaden","bug",
+"Properly cancel hit testing on raster chart destroy (charting)",4733,,"2018-06-13T19:33:29Z","2018-06-13T19:35:02Z","
+### :speech_balloon: Description
+
+Copying this issue here for greater visibility: https://github.com/mapd/mapd-charting/issues/234
+
+![41318977-17f04cd6-6e4f-11e8-9fab-c57d7753dc8c](https://user-images.githubusercontent.com/5845842/41373764-1da1e02e-6f06-11e8-91bd-ce34cf12b9dc.gif)
+
+Basically, if a hit test is active when you save a choropleth chart, you get strange rendering behavior until you reload the dashboard. 
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info","alexbaden","bug",
+"Chore/add typescript",4732,"[object Object]","2018-06-13T19:19:41Z","2018-06-14T14:55:24Z","### 💬  Description
+Adds `TypeScript` to our build, allowing new code to be written in typescript.
+
+* Converts all `@flow` to `.ts`/`.tsx` files
+* Adds support to `typescript` test files
+* Adds `tslint` 
+* Adds types for most common libraries (React, Redux, react-redux, react-router, chai, redux-saga, mocha)
+
+
+
+### 📄 Github Issue
+Closes #4713
+
+Points of Discusssion
+* What `tslint` rules do we want to apply?
+* Perf benchmarks (how much slower is the compiler)
+* Practices and standards for interop between old `js` files with new `ts` files (I'm planning on identifying the potential pain points 
+* Using relative paths for everything (I had issues with custom resolutions for modules and had to change some of the paths in `.ts` files to be relative since they could not resolve).
+
+Future Goals:
+* Migrate our other `js` libraries (`connector`, `charting`) to typescript to support interfaces between libraries","jmenestr","tech",
+"[Geo-Choropleth] Dropdown behavior of selected Geo Measure inconsistent between choropleth w/ Geo-join and choropleth w/o  ",4731,,"2018-06-13T19:03:07Z","2018-06-13T19:14:23Z","### :speech_balloon: Description
+After user creates a Geo-Choropleth chart with Geo-Join (i.e. join flight table with mapd_state via state col.)and user selects the Geo Measure field; it would generate an empty dropdown. This behavior is inconsistent with Geo-Choropleth without Join where selecting the Geo Measure field would generate a dropdown with [mapd_geo <pt. icon>]. 
+
+### :computer: Environment
+- **Browser Name, Version**:  Chrome, Firefox, Safari
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1. Create a Geo-Choropleth with the following:
+**Data Source:** flight
+**Dimension:** dest_state
+**Measure - Geo:** mapd_geo (note need to create join table before selecting geo measure)
+**Measure -Color:** airtime (avg)
+Join Table:
+**Data Source:** Mapd_states
+**Table Column:** abbr
+
+2. Click on Geo Measure
+
+- **Actual result:**
+empty drop down which is inconsistent with Geo-Choropleth without Join
+
+- **Expected result:**
+Consistent dropdown behavior across Geo-choropleth charts
+
+
+
+**Geo-Choropleth with Join**
+<img width=""1353"" alt=""screen shot 2018-06-13 at 11 14 15 am"" src=""https://user-images.githubusercontent.com/35040876/41372349-e4806b16-6f01-11e8-8486-511849d79bf0.png"">
+
+
+**Geo-Choropleth without Join**
+<img width=""1184"" alt=""screen shot 2018-06-13 at 11 30 45 am"" src=""https://user-images.githubusercontent.com/35040876/41372331-d857f3e0-6f01-11e8-87b9-b3b139fdeded.png"">
+
+
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info","ericli5454","P3,bug,found during 4.0",
+"Document a timeline of the 4.0 release",4730,,"2018-06-13T18:28:17Z","2018-06-13T18:51:23Z","### :speech_balloon: Description
+For helping with 4.0 release post-mortem, let's document the series of events so we can identify the part of the workflow that could be improved for more predictability.
+
+### Acceptance criteria
+Deliver a short list of milestones taken from Slack and from Github","biovisualize",,
+"[UI Components] Make components required for new formatting UI",4728,,"2018-06-13T13:08:10Z","2018-06-13T13:08:24Z","### Description
+
+Create initial versions of the input components that will be necessary to make the upcoming new measure formatting UI, using the new component sandbox and design system.
+","jrajav","Design System,components",
+"[UI Components] Prototype a component sandbox solution (""living component library"")",4727,"[object Object]","2018-06-13T13:03:39Z","2018-06-13T17:44:33Z","### Description
+Investigate and prototype different solutions for developing components collaboratively with design, integrated with the actual logic, styling, and tests for the components.
+
+Examples:
+https://github.com/storybooks/storybook
+https://github.com/styleguidist/react-styleguidist
+
+### Goals
+A minimal example of a component implemented in one or more prospective solutions, ready to plug in a MapD component and some test cases / different inputs.","jrajav","Design System,components,design","jmenestr"
+"Unable to apply number formatting to aggregate measures on the Number chart ",4726,,"2018-06-13T02:25:14Z","2018-06-13T02:25:51Z","### :speech_balloon: Description
+Number formatting is applied to AVG measure upon initial load, but once a switch is made to another aggregate (min, max, sum, unique, stddev) the number will no longer respond to the formatting on the right side. 
+
+### :computer: Environment
+- **Browser: All **: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Number chart (Source: flights | Measure: airtime)
+- Switch the aggregate from AVG to MIN
+- Change the formatting on the right side 
+
+- **Actual result:**
+Formatting can only be applied to AVG on first load and measures without aggregates like # Records
+- **Expected result:**
+User should be able to apply formatting to all aggregates on the number chart. 
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![numberformatting](https://user-images.githubusercontent.com/39566471/41326740-521f06e2-6e75-11e8-86d2-c1234e5ac364.gif)
+### :memo: Other Info","AlexHarutyunyan","P4,bug,found during 4.0",
+"[Combo] X-axis mis-aligned when X-axis Dimension is Numeric datatype",4723,,"2018-06-12T23:25:22Z","2018-06-12T23:25:22Z","### :speech_balloon: Description
+Currently, when we create a combo chart with a numeric X-axis dimension, the x-axis would be mis-aligned to the right.
+
+### :computer: Environment
+- **Browser Name, Version**:  Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1. Create a chart with the following:
+**Data Source:** tweet_2017_may
+**x-axis dimension:** tweet_count (auto)
+**y-axis measure:** record
+
+- **Actual result:**
+ x-axis not aligned
+
+- **Expected result:**
+x-axis aligned
+
+<img width=""1669"" alt=""screen shot 2018-06-12 at 4 18 54 pm"" src=""https://user-images.githubusercontent.com/35040876/41322307-2692a2ee-6e5d-11e8-8187-0678d9daa64b.png"">
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info","ericli5454","P3,bug","biovisualize"
+"Create design assets to match the Design System Component Library ",4722,,"2018-06-12T22:16:04Z","2018-06-13T12:53:13Z","### :speech_balloon:
+
+As our new design system component library evolves so will our design resources. 
+Example sticker sheets, shared library objects and styles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+","Christian-Baptiste","Design System,design","Christian-Baptiste"
+"Accessibility styling",4721,,"2018-06-12T22:11:27Z","2018-06-13T00:21:58Z","### :speech_balloon: 
+
+To make our apps both visually appealing and accessible we will need to update our apps with some new styling. These styles will need to include acceptable contrast levels, font sizing, and tool tips (for screen readers).
+
+
+- First stab at this will be to change all of our primary button styling.
+- Next we will start testing different text contrast.
+- Next we will start to do an inventory to determine where include and are missing tool tips.
+
+","Christian-Baptiste","Design System,design","Christian-Baptiste"
+"[UI Components] Start a widget design system",4717,,"2018-06-12T21:39:52Z","2018-06-13T13:11:14Z","### Description
+Taking a simple widget and a simple task as a pretext, we could start figuring out how a UI design system could work. For example:
+* Task: accessible button (color, tooltip)
+* Widget: buttons
+* Design system: decoupled button component, specific css file of theme, vector button to use in sketch, test page in a component sandbox to try out different button states and events
+
+Related to https://github.com/mapd/mapd-immerse/issues/4727
+
+### Acceptance criteria
+An improved widget in the UI that also shows a complete design workflow","biovisualize","Design System,components,design",
+"[UI Components] Make inventory of current components",4716,,"2018-06-12T21:35:48Z","2018-06-13T12:58:27Z","### Description
+List all widgets we have so we can start figure out how to transition to a proper component library.
+
+### Acceptance criteria
+A list of widgets coming from Immerse, preferably with screenshots, stored someplace accessible and easy to modify (such as the wiki at https://mapdgpu.atlassian.net/wiki/spaces/FE/overview).
+
+### Start of a list
+* Error modal
+* tooltips
+* Dropdown
+* Form widgets (checkbox/togle)","biovisualize","components,design",
+"[UI Components] Components library",4715,,"2018-06-12T21:09:00Z","2018-06-13T13:08:42Z","### Description
+Move to a documented UI library or at least patterns.
+
+### User story
+
+### Acceptance criteria
+
+### Goals
+* Document the design patterns
+* Hand-off design to implementation
+* Force to decouple the code into modular components with clear interfaces and sane relation with the UI part of it
+
+### Steps
+* Make an inventory of the widgets we have and the constraints attached to them
+* List the UI goals (accessibility)
+* Identify how to get started
+
+### Find a project as a pretext to get started:
+* Formatting UI
+* Admin UI
+* Error modals
+* Notifications
+* Low-hanging fruits like button colors and components that are already stock, like some autocomplete dropdowns, tooltips
+* Responsiveness is a project that is too big, but maybe doing it for a view, like Dataset or SQL Editor
+
+### Constraints from the tech side
+* We don't often have new views or components to introduce, so we need to be proactive in reworking our existing components for any project
+* We have a lot of custom components, sometimes it's just a normal component with deep coupling in the rest of the code, but sometimes it's because the widgets are very complicated, contextual or just plain weird.","biovisualize","Design System,Epic,components","Christian-Baptiste"
+"Convert current flow files into typescript files",4714,,"2018-06-12T20:24:24Z","2018-06-12T20:24:24Z","Remove existing flow files and convert to typescript
+
+### Acceptance Criteria
+1) __MUST__ convert all files with `flow` directive over to typescript
+2) __MUST__ remove all flow packages from `package.json`","jmenestr","tech",
+"Add typescript compiler into existing  build system",4713,,"2018-06-12T20:22:07Z","2018-06-12T20:22:07Z","Add typescript complication into our current build system.
+
+## Acceptance Criteria
+1) __MUST__ allow for a mix of existing `.js` files and new `.ts` files
+2) __MUST__ not change the public API of how assess are built
+","jmenestr","tech","jmenestr"
+"Adding Typescript to Immersere",4712,,"2018-06-12T20:18:59Z","2018-06-13T20:20:14Z","Context: 
+As the immerse codebase grows, and we strive towards reliability and predictability, we need better tools for scaling the code. Introducing new static analysis will do a few things to help us reach these goals
+
+1) Allows developers to focus on exposed APIs, and use tooling to consume those APIs (no need to know the code base by memory)
+* Types exists for libraries we depend greatly on ([crossfilter.js](https://www.npmjs.com/package/@types/crossfilter), [dc.js](https://www.npmjs.com/package/@types/dc)), which we can consume in our `connector` and `charting` libraries for cleaner, more maintainable interfaces with immerse
+2) Time saved fixing bugs is time gained writing features
+* `Typescript` tooling is fantastic. It will help prevent interface bugs before production, and since tooling can read and understand `typescript` interfaces, more time is spent just writing new code rather than always having to look up types and data contracts
+
+By integration all our libraries together with `typescript`, we gain faster developer speed (more features) and better documentation that remains in sync with the code. 
+
+Goal:
+Incrementally add typescript to the `immerse` platform in such a way that
+1) New `.ts(x)` files can live with existing `.js(x)` files
+2) existing type systems (`flow`) are removed and migrated over to typescript
+
+Related epics:
+
+https://github.com/mapd/mapd-immerse/issues/4328
+","jmenestr","Epic,tech",
+"Investigate chart color spec shapes",4709,,"2018-06-12T16:16:33Z","2018-06-12T16:16:46Z","Look into the possible shapes of `chartSpec.colors` to better understand it for future work around organizing, sharing, and decoupling the chart state.
+
+Supports https://github.com/mapd/mapd-immerse/issues/4328 and https://github.com/mapd/mapd-immerse/issues/4327
+
+Goal: There appear to be three types of colorShapes, `nullColorShape`, `regularColorShape`, and `customColorShape`. Find out relevant info about them and record snapshots of them in real state for a few different chart types and configurations.","jrajav","tech","jmenestr"
+"[WIP] fix chart animation offset in editor",4708,,"2018-06-12T15:57:36Z","2018-06-14T14:57:48Z","### 💬  Description
+ 
+### 📄 Github Issue
+Closes #4676
+
+### :camera_flash: Screenshot","biovisualize",,
+"Clean up raster chart functionality",4706,,"2018-06-12T13:51:04Z","2018-06-12T13:53:46Z","Master issue to investigate raster chart (pointmap, geoheat, choropleth) functionality as relating to selectors (dimensions, measures), automatic logic around geo columns, and anything else that can be consolidated, shared, or made more robust.
+
+* Ensure that x, y (lon, lat) columns are treated specially in a robustly stored or referenced way - in many parts of the code now, they are just assumed to be index 0 and 1 in the measures.
+
+Other notes from Slack:
+* Cleaning up the dimension shenanigans
+* Removing all references to “geoheat” that don’t reference a heatmap
+* Unifying raster chart actions and using thunk
+* Or sagas or some such to dispatch appropriate functions?","jrajav","tech",
+"[Geo - Pointmap] Ensure that popup columns on pointmap are properly set to static aggregate columns, even if some popup columns have been set before setting the dimension",4705,,"2018-06-12T13:35:30Z","2018-06-12T13:37:58Z","### :speech_balloon: Description
+
+When selecting a dimension on pointmap, the popup columns are set to the static set of columns defined in the aggregate and the popup column configuration is hidden. However, if one selects some custom popup columns before selecting the dimension, only that set is shown. Need to clear the popup columns back to the default before setting the static set.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info","jrajav","bug",
+"issue with null domain after switching between raster charts",4702,,"2018-06-12T04:14:10Z","2018-06-12T04:14:10Z","### :speech_balloon: Description
+
+Sometimes the raster chart domain will appear as ""null"" when switching between raster charts before saving. Am having a difficult time reproing, but suspect it might have something to do with handling autoscaling properly on a raster chart switch.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info","alexbaden","bug",
+"better dimension handling in choropleth",4701,,"2018-06-12T03:31:40Z","2018-06-13T00:00:38Z","### :speech_balloon: Description
+
+If the user selects a dimension but not a join, the color measure will default to group by. This is problematic if no join is used, since the group. Not sure what the right approach is, but some combination of better design and helpful error messages will likely be needed.
+
+https://user-images.githubusercontent.com/39566471/41261961-221e4dc8-6d93-11e8-9ecc-c310cf590361.png
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info","alexbaden","BE-Choropleth",
+"Null values remain excluded from charts after a filter is cleared from Scatter chart ",4699,,"2018-06-12T02:27:07Z","2018-06-12T15:59:23Z","### :speech_balloon: Description
+When you apply a filter on the scatter chart it will remove NULL from all charts. Even after the filter is removed the values will not be displayed until the Scatter chart is deleted. 
+
+### :computer: Environment
+- **Browser Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Table chart (Source: flights | Dimension: airtime)
+- Create a Scatter chart ( Source: flights | Dimension X Axis: airtime | Dimension Y Axis: distance)
+- Apply a filter on the Scatter chart by zooming in/out or selecting an area with the tooltip
+- Clear the filter from the Scatter chart or clear all filters
+- Delete the Scatter chart 
+
+- **Actual result:**
+The Scatter chart automatically excludes NULL from all charts when a filter is applied to it and does not return the NULL values after the filter is cleared. 
+- **Expected result:**
+NULL should not be removed from other charts when a filter is applied to Scatter chart. If NULL values are filtered out according to the filter on the Scatter chart, they should return when the filter is removed. 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![nullscatter](https://user-images.githubusercontent.com/39566471/41266761-44fa6074-6dad-11e8-9089-0e2b1f5dee1e.gif)
+
+### :memo: Other Info","AlexHarutyunyan",,
+"Heat chart unable to render certain strings in a particular dataset",4698,,"2018-06-12T01:21:34Z","2018-06-12T01:23:52Z","### :speech_balloon: Description
+Encountered an issue during regression with a particular dataset and Heat chart (all string values). The culprit seems to be the 'network_location' column. 
+
+### :computer: Environment
+- **Browser Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Heat chart using dataset 'ga_sourcemedium' located on kali. 
+Dimension X Axis: browser_size
+Dimension Y Axis: network_location
+Measure Color: browser_size 
+
+- **Actual result:**
+The chart doesn't render, but no error message is generated and errors don't appear in the console. After some time the fields no longer respond to clear. 
+- **Expected result:**
+An error should be generated if an invalid column is used and gets highlighted in red in the field it was selected in, or the Heatchart renders if there are no issues with the data. 
+
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![screen shot 2018-06-11 at 6 06 49 pm](https://user-images.githubusercontent.com/39566471/41264849-e255572a-6da3-11e8-844f-e2c68a5009eb.png)
+
+![screen shot 2018-06-11 at 6 19 18 pm](https://user-images.githubusercontent.com/39566471/41264874-f9848498-6da3-11e8-8e08-37c16265e305.png)
+
+### :memo: Other Info","AlexHarutyunyan","P4,bug,found during 4.0",

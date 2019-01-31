@@ -1,0 +1,12 @@
+Running the programs under Linux without compilation:
+=====================================================
+
+If you don't want to install the FreeBasic compiler for Linux but you like to run programs: 
+this directory contains Linux-compiled versions.
+
+The programs oliva, pattern and e-coli can be started directly since they do not 
+need parameters (the source files are in the directory demo). 
+
+sp and xy have first to be copied into the next-lower directory 
+(where also the Windows-.exe files are located).
+This is in order that the program finds the paramter files. 

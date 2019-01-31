@@ -1,0 +1,95 @@
+Changing parameters
+% Comment lines start with a %-character
+#
+In this GUIDED TOUR, some examples for parameter changes are illustrated. 
+The inputs normally made from the key board are read from a file. Only pressing
+the <RETURN> key is required. This is indicated by the [ok] sign at bottom 
+right corner of the screen. Please use the keyboard, not the mouse.
+#
+The command S starts a simulation, S and the name of a parameter file starts
+a particular simulation. The corresponding command are given in the figure
+captions. For instance, inputting of <S23a> leads to the start of the
+simulation shown in Fig. 2.3a (upper or lower case does not matter).
+s23a
+<2
+#
+In this simulation, pattern formation in a one-dimensional chain of cells
+is plotted as function of time. Initial condition: no pattern except some
+small random fluctuation. The result is a pattern with several peaks that are
+more or less regularly spaced. They are stable in time.
+#
+At such a stage, you can repeat the last simulation by pressing the s-key
+(case does not matter). You will get the same simulation once again
+but the peaks are somewhat differently spaced since the patterning was
+started wit random fluctuations: please type [s] followed by a [RETURN]
+#
+A simulation can be continued by pressing [n]
+          (please type [n][RETURN]
+
+#
+As can be seen, the pattern is stable; nothing changes any more.
+The simulation also can be continued by pressing [c]. As you will see, 
+that leads to a continuation of the actual plot
+          please type [c][RETURN]
+#
+A smaller field size and longer time constants can lead to a single high
+concentration at a marginal position, i.e. the distributions of the
+substances will become polar. To change the parameter, one has to type the
+name of the parameter, followed by the new value.
+#
+.
+Changing of the field size (=> number of the right cell) is accomplished by
+changing KY (or ky). Here the computer types ky for you, gives back the
+present value and set it to the new value 11
+ky
+11
+#
+.
+.
+similarly, the decay rate of the activator and inhibitor can be changed
+via ra and rb
+ra
+.008
+rb
+.012
+#
+.
+.
+.
+The diffusion of the activator is changed via da, it is increased here
+da
+.015
+#
+.
+Since the time required for pattern formation increases when longer
+time constants are involved, more iterations are calculated between
+the individual displays by increasing the parameter kp
+kp
+120
+#
+.
+.
+.
+The complete list of parameters appears after pressing the <RETURN> key
+
++
+s
+#
+a simulation with the new constants should lead to a monotonic gradient
+
+#
+The original set of parameter can be read again by the command RR
+
+rr
+
++
+ That are the original parameters
+s
+#
+That was the first example of a GUIDED TOUR, you obtain now full control
+control of the computer, typing S (Start), for instance, will repeat the
+last simulation, typing N causes, after a refresh of the screen, a
+continuation that shows that the pattern is stable. Try also GT2 and GT3.
+EOF-GT
+
+

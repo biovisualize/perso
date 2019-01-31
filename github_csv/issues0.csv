@@ -1,0 +1,2465 @@
+title,html_url,id,number,milestone,created_at,updated_at,body,author,labels,comments,assignee
+Properly update colors when switching charts,https://github.com/mapd/mapd-immerse/pull/4747,332419615,4747,,2018-06-14T14:08:40Z,2018-06-14T14:42:08Z,"### 💬  Description
+
+Preserves the ability to save a chosen color scale while also picking the appropriate color scale for a new chart (either as a new raster layer in a multilayer chart or an entirely new chart).
+
+### 📄 Github Issue
+
+Fixes #4741
+Fixes #4702
+
+### :camera_flash: Screenshot",alexbaden,,3,
+Only redraw raster charts when clearing chart filters (#4742),https://github.com/mapd/mapd-immerse/pull/4746,332260679,4746,,2018-06-14T05:54:33Z,2018-06-14T13:21:55Z,"When clearing all filters we dispatch redrawAllAsync from handleClearAllFilters in global-filter-sagas.js. Dispatching redrawAllAsync twice can result in some charts not being properly re-drawn.
+
+### 💬  Description
+ 
+### 📄 Github Issue
+Closes #4742 
+
+### :camera_flash: Screenshot",alexbaden,,2,
+IE all charts titles are aligned to the right ,https://github.com/mapd/mapd-immerse/issues/4744,332218614,4744,,2018-06-14T01:21:51Z,2018-06-14T13:41:27Z,"### :speech_balloon: Description
+
+IE all chart titles are aligned to the right.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+
+- Create text widget in IE
+ 
+
+- **Actual result:**
+
+Title aligned to the right.
+
+- **Expected result:**
+
+title should be centered
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![Screen Shot 2018-06-13 at 6.16.26 PM.png](https://images.zenhubusercontent.com/59a47c158f62dc7798c4571a/58b5a8b0-837c-426b-a621-916b73900517)
+### :memo: Other Info",menaczar,"P4,bug,regression",2,
+[Combo] Editing axis titles causes incorrect format for color legend & custom color key,https://github.com/mapd/mapd-immerse/issues/4743,332216168,4743,,2018-06-14T01:05:39Z,2018-06-14T13:40:00Z,"### :speech_balloon: Description
+Currently, if user has a combo chart with multiple measures, editing the x-axis and y-axis title labels would improper format for color legend & custom legend key.
+
+### :computer: Environment
+- **Browser Name, Version**:  Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1.  Create a Combo chart with the following:
+Data Source: flight
+Dimension X-axis: arr_timstamp (Binning auto)
+Measure Y-axis 1: arrdelay (avg)
+Measure Y-axis 2: carrierdelay (avg)
+Measure Y-axis 3: depdelay (avg)
+
+2.  Add extra word to x-axis and y-axis title (i.e. title)
+3. Click apply to pin chart to dashboard
+
+- **Actual result:**
+The first row in the Color Legend and Custom Color Key no longer has correct format
+
+- **Expected result:**
+First row in the Color Legend and Custom Color Key should maintain proper format
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![combo_title_edit_bug](https://user-images.githubusercontent.com/35040876/41386040-32d15758-6f34-11e8-9288-e787715dc86e.gif)
+
+<img width=""1338"" alt=""screen shot 2018-06-13 at 6 04 31 pm"" src=""https://user-images.githubusercontent.com/35040876/41386057-559984f4-6f34-11e8-9c36-b274308da179.png"">
+
+
+### :memo: Other Info",ericli5454,"P2,bug,combo-chart,found during 4.0",1,
+Clear all filters regression.,https://github.com/mapd/mapd-immerse/issues/4742,332209968,4742,,2018-06-14T00:25:10Z,2018-06-14T01:01:37Z,"### :speech_balloon: Description
+Clear all filters regression.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a line chart and bar chart
+- Flights depdelay vs arrdelay
+- create any filter 
+- click clear all filter and it will work fine
+- Create a choropleth
+- Paris_Mena mapd_geo
+- Create a filter on non geo charts
+-create filter on geo choropleth
+-click cleat all filters
+
+- **Actual result:**
+Clear all works for choropleth only
+
+- **Expected result:**
+clear all should clear all filters 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![jun-13-2018 17-24-08](https://user-images.githubusercontent.com/16374964/41385156-bfef1ac2-6f2e-11e8-80a2-dd1e5696db16.gif)
+
+
+### :memo: Other Info",menaczar,"P1,bug,regression,release blocker by rule",0,
+Unable to create a multilayer Pointmap,https://github.com/mapd/mapd-immerse/issues/4741,332205580,4741,,2018-06-13T23:57:55Z,2018-06-14T13:24:40Z,"### :speech_balloon: Description
+
+### :computer: Environment
+- **Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: 4.0 RC4 
+
+### :page_with_curl: Steps To Reproduce
+- Create Pointmap (Source: flights | Measure Lon: dest_lon | Measure Lat: dest_lat)
+- Add a layer to the Pointmap (Source: flights | Measure Lon: origin_lon | Measure Lat: origin_lat )
+- **Actual result:**
+Exception error message is generated after which immerse hangs and the map is not rendered.  
+- **Expected result:**
+Layered Pointmap should render without an error message combining the chosen measures.
+
+### :dash: Smoke Test
+
+
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![multilayer pointmap](https://user-images.githubusercontent.com/39566471/41384455-b8ff10cc-6f2a-11e8-8846-271c3926e370.gif)
+<img width=""1209"" alt=""screen shot 2018-06-13 at 4 46 53 pm"" src=""https://user-images.githubusercontent.com/39566471/41384459-c29ce8de-6f2a-11e8-9857-d27fae7d3e9b.png"">
+
+### :memo: Other Info
+Can be replicated using a dataset containing geo column as well (Metro_Stations_in_DC/Metro_Stations_Regional)",AlexHarutyunyan,"P1,bug,regression,release blocker by rule",5,alexbaden
+Combo Chart focus and range brushes out of sync,https://github.com/mapd/mapd-immerse/issues/4739,332189891,4739,,2018-06-13T22:38:08Z,2018-06-13T22:38:08Z,"### :speech_balloon: Description
+When creating a combo line-chart with a numerical dimension and the range chart enabled, brushing on the range chart appears to be out of sync with what is displayed in the combo chart.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- create a combo chart with flights
+- airtime as dimenstion
+- carrier_name as measure
+- enable range chart
+- brush on range chart
+
+- **Actual result:**
+Graph shown in focus chart appears to have different values then the brushed portion of the range chart
+
+- **Expected result:**
+Graph shown in focus chart should show the same values in brushed portion of the focus chart
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+<img width=""780"" alt=""screen shot 2018-06-13 at 3 32 35 pm"" src=""https://user-images.githubusercontent.com/161748/41382081-6837720c-6f1f-11e8-83d7-d15525449bd5.png"">
+
+### :memo: Other Info",clhenrick,combo-chart,0,
+ensure geojoin does not get copied to a new layer in multi-layer choropleth,https://github.com/mapd/mapd-immerse/issues/4735,332148934,4735,,2018-06-13T20:20:53Z,2018-06-13T20:20:53Z,"### :speech_balloon: Description
+
+When adding a layer, the geojoin from an existing multilayer choropleth will get copied to the new multilayer choropleth. Preferably the geojoin could be left blank, instead. 
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",alexbaden,bug,0,
+Properly cancel hit testing on raster chart destroy (charting),https://github.com/mapd/mapd-immerse/issues/4733,332133200,4733,,2018-06-13T19:33:29Z,2018-06-13T19:35:02Z,"
+### :speech_balloon: Description
+
+Copying this issue here for greater visibility: https://github.com/mapd/mapd-charting/issues/234
+
+![41318977-17f04cd6-6e4f-11e8-9fab-c57d7753dc8c](https://user-images.githubusercontent.com/5845842/41373764-1da1e02e-6f06-11e8-91bd-ce34cf12b9dc.gif)
+
+Basically, if a hit test is active when you save a choropleth chart, you get strange rendering behavior until you reload the dashboard. 
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",alexbaden,bug,0,
+Chore/add typescript,https://github.com/mapd/mapd-immerse/pull/4732,332128820,4732,[object Object],2018-06-13T19:19:41Z,2018-06-14T14:55:24Z,"### 💬  Description
+Adds `TypeScript` to our build, allowing new code to be written in typescript.
+
+* Converts all `@flow` to `.ts`/`.tsx` files
+* Adds support to `typescript` test files
+* Adds `tslint` 
+* Adds types for most common libraries (React, Redux, react-redux, react-router, chai, redux-saga, mocha)
+
+
+
+### 📄 Github Issue
+Closes #4713
+
+Points of Discusssion
+* What `tslint` rules do we want to apply?
+* Perf benchmarks (how much slower is the compiler)
+* Practices and standards for interop between old `js` files with new `ts` files (I'm planning on identifying the potential pain points 
+* Using relative paths for everything (I had issues with custom resolutions for modules and had to change some of the paths in `.ts` files to be relative since they could not resolve).
+
+Future Goals:
+* Migrate our other `js` libraries (`connector`, `charting`) to typescript to support interfaces between libraries",jmenestr,tech,8,
+[Geo-Choropleth] Dropdown behavior of selected Geo Measure inconsistent between choropleth w/ Geo-join and choropleth w/o  ,https://github.com/mapd/mapd-immerse/issues/4731,332123566,4731,,2018-06-13T19:03:07Z,2018-06-13T19:14:23Z,"### :speech_balloon: Description
+After user creates a Geo-Choropleth chart with Geo-Join (i.e. join flight table with mapd_state via state col.)and user selects the Geo Measure field; it would generate an empty dropdown. This behavior is inconsistent with Geo-Choropleth without Join where selecting the Geo Measure field would generate a dropdown with [mapd_geo <pt. icon>]. 
+
+### :computer: Environment
+- **Browser Name, Version**:  Chrome, Firefox, Safari
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1. Create a Geo-Choropleth with the following:
+**Data Source:** flight
+**Dimension:** dest_state
+**Measure - Geo:** mapd_geo (note need to create join table before selecting geo measure)
+**Measure -Color:** airtime (avg)
+Join Table:
+**Data Source:** Mapd_states
+**Table Column:** abbr
+
+2. Click on Geo Measure
+
+- **Actual result:**
+empty drop down which is inconsistent with Geo-Choropleth without Join
+
+- **Expected result:**
+Consistent dropdown behavior across Geo-choropleth charts
+
+
+
+**Geo-Choropleth with Join**
+<img width=""1353"" alt=""screen shot 2018-06-13 at 11 14 15 am"" src=""https://user-images.githubusercontent.com/35040876/41372349-e4806b16-6f01-11e8-8486-511849d79bf0.png"">
+
+
+**Geo-Choropleth without Join**
+<img width=""1184"" alt=""screen shot 2018-06-13 at 11 30 45 am"" src=""https://user-images.githubusercontent.com/35040876/41372331-d857f3e0-6f01-11e8-87b9-b3b139fdeded.png"">
+
+
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",ericli5454,"P3,bug,found during 4.0",1,
+Document a timeline of the 4.0 release,https://github.com/mapd/mapd-immerse/issues/4730,332111336,4730,,2018-06-13T18:28:17Z,2018-06-13T18:51:23Z,"### :speech_balloon: Description
+For helping with 4.0 release post-mortem, let's document the series of events so we can identify the part of the workflow that could be improved for more predictability.
+
+### Acceptance criteria
+Deliver a short list of milestones taken from Slack and from Github",biovisualize,,1,
+[UI Components] Make components required for new formatting UI,https://github.com/mapd/mapd-immerse/issues/4728,331986975,4728,,2018-06-13T13:08:10Z,2018-06-13T13:08:24Z,"### Description
+
+Create initial versions of the input components that will be necessary to make the upcoming new measure formatting UI, using the new component sandbox and design system.
+",jrajav,"Design System,components",0,
+"[UI Components] Prototype a component sandbox solution (""living component library"")",https://github.com/mapd/mapd-immerse/issues/4727,331985289,4727,[object Object],2018-06-13T13:03:39Z,2018-06-13T17:44:33Z,"### Description
+Investigate and prototype different solutions for developing components collaboratively with design, integrated with the actual logic, styling, and tests for the components.
+
+Examples:
+https://github.com/storybooks/storybook
+https://github.com/styleguidist/react-styleguidist
+
+### Goals
+A minimal example of a component implemented in one or more prospective solutions, ready to plug in a MapD component and some test cases / different inputs.",jrajav,"Design System,components,design",0,jmenestr
+Unable to apply number formatting to aggregate measures on the Number chart ,https://github.com/mapd/mapd-immerse/issues/4726,331818373,4726,,2018-06-13T02:25:14Z,2018-06-13T02:25:51Z,"### :speech_balloon: Description
+Number formatting is applied to AVG measure upon initial load, but once a switch is made to another aggregate (min, max, sum, unique, stddev) the number will no longer respond to the formatting on the right side. 
+
+### :computer: Environment
+- **Browser: All **: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Number chart (Source: flights | Measure: airtime)
+- Switch the aggregate from AVG to MIN
+- Change the formatting on the right side 
+
+- **Actual result:**
+Formatting can only be applied to AVG on first load and measures without aggregates like # Records
+- **Expected result:**
+User should be able to apply formatting to all aggregates on the number chart. 
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![numberformatting](https://user-images.githubusercontent.com/39566471/41326740-521f06e2-6e75-11e8-86d2-c1234e5ac364.gif)
+### :memo: Other Info",AlexHarutyunyan,"P4,bug,found during 4.0",0,
+[Combo] X-axis mis-aligned when X-axis Dimension is Numeric datatype,https://github.com/mapd/mapd-immerse/issues/4723,331788444,4723,,2018-06-12T23:25:22Z,2018-06-12T23:25:22Z,"### :speech_balloon: Description
+Currently, when we create a combo chart with a numeric X-axis dimension, the x-axis would be mis-aligned to the right.
+
+### :computer: Environment
+- **Browser Name, Version**:  Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1. Create a chart with the following:
+**Data Source:** tweet_2017_may
+**x-axis dimension:** tweet_count (auto)
+**y-axis measure:** record
+
+- **Actual result:**
+ x-axis not aligned
+
+- **Expected result:**
+x-axis aligned
+
+<img width=""1669"" alt=""screen shot 2018-06-12 at 4 18 54 pm"" src=""https://user-images.githubusercontent.com/35040876/41322307-2692a2ee-6e5d-11e8-8187-0678d9daa64b.png"">
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",ericli5454,"P3,bug",0,biovisualize
+Create design assets to match the Design System Component Library ,https://github.com/mapd/mapd-immerse/issues/4722,331773678,4722,,2018-06-12T22:16:04Z,2018-06-13T12:53:13Z,"### :speech_balloon:
+
+As our new design system component library evolves so will our design resources. 
+Example sticker sheets, shared library objects and styles.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+",Christian-Baptiste,"Design System,design",1,Christian-Baptiste
+Accessibility styling,https://github.com/mapd/mapd-immerse/issues/4721,331772554,4721,,2018-06-12T22:11:27Z,2018-06-13T00:21:58Z,"### :speech_balloon: 
+
+To make our apps both visually appealing and accessible we will need to update our apps with some new styling. These styles will need to include acceptable contrast levels, font sizing, and tool tips (for screen readers).
+
+
+- First stab at this will be to change all of our primary button styling.
+- Next we will start testing different text contrast.
+- Next we will start to do an inventory to determine where include and are missing tool tips.
+
+",Christian-Baptiste,"Design System,design",0,Christian-Baptiste
+[UI Components] Start a widget design system,https://github.com/mapd/mapd-immerse/issues/4717,331763906,4717,,2018-06-12T21:39:52Z,2018-06-13T13:11:14Z,"### Description
+Taking a simple widget and a simple task as a pretext, we could start figuring out how a UI design system could work. For example:
+* Task: accessible button (color, tooltip)
+* Widget: buttons
+* Design system: decoupled button component, specific css file of theme, vector button to use in sketch, test page in a component sandbox to try out different button states and events
+
+Related to https://github.com/mapd/mapd-immerse/issues/4727
+
+### Acceptance criteria
+An improved widget in the UI that also shows a complete design workflow",biovisualize,"Design System,components,design",0,
+[UI Components] Make inventory of current components,https://github.com/mapd/mapd-immerse/issues/4716,331762759,4716,,2018-06-12T21:35:48Z,2018-06-13T12:58:27Z,"### Description
+List all widgets we have so we can start figure out how to transition to a proper component library.
+
+### Acceptance criteria
+A list of widgets coming from Immerse, preferably with screenshots, stored someplace accessible and easy to modify (such as the wiki at https://mapdgpu.atlassian.net/wiki/spaces/FE/overview).
+
+### Start of a list
+* Error modal
+* tooltips
+* Dropdown
+* Form widgets (checkbox/togle)",biovisualize,"components,design",0,
+[UI Components] Components library,https://github.com/mapd/mapd-immerse/issues/4715,331754538,4715,,2018-06-12T21:09:00Z,2018-06-13T13:08:42Z,"### Description
+Move to a documented UI library or at least patterns.
+
+### User story
+
+### Acceptance criteria
+
+### Goals
+* Document the design patterns
+* Hand-off design to implementation
+* Force to decouple the code into modular components with clear interfaces and sane relation with the UI part of it
+
+### Steps
+* Make an inventory of the widgets we have and the constraints attached to them
+* List the UI goals (accessibility)
+* Identify how to get started
+
+### Find a project as a pretext to get started:
+* Formatting UI
+* Admin UI
+* Error modals
+* Notifications
+* Low-hanging fruits like button colors and components that are already stock, like some autocomplete dropdowns, tooltips
+* Responsiveness is a project that is too big, but maybe doing it for a view, like Dataset or SQL Editor
+
+### Constraints from the tech side
+* We don't often have new views or components to introduce, so we need to be proactive in reworking our existing components for any project
+* We have a lot of custom components, sometimes it's just a normal component with deep coupling in the rest of the code, but sometimes it's because the widgets are very complicated, contextual or just plain weird.",biovisualize,"Design System,Epic,components",1,Christian-Baptiste
+Convert current flow files into typescript files,https://github.com/mapd/mapd-immerse/issues/4714,331740006,4714,,2018-06-12T20:24:24Z,2018-06-12T20:24:24Z,"Remove existing flow files and convert to typescript
+
+### Acceptance Criteria
+1) __MUST__ convert all files with `flow` directive over to typescript
+2) __MUST__ remove all flow packages from `package.json`",jmenestr,tech,0,
+Add typescript compiler into existing  build system,https://github.com/mapd/mapd-immerse/issues/4713,331739260,4713,,2018-06-12T20:22:07Z,2018-06-12T20:22:07Z,"Add typescript complication into our current build system.
+
+## Acceptance Criteria
+1) __MUST__ allow for a mix of existing `.js` files and new `.ts` files
+2) __MUST__ not change the public API of how assess are built
+",jmenestr,tech,0,jmenestr
+Adding Typescript to Immersere,https://github.com/mapd/mapd-immerse/issues/4712,331738201,4712,,2018-06-12T20:18:59Z,2018-06-13T20:20:14Z,"Context: 
+As the immerse codebase grows, and we strive towards reliability and predictability, we need better tools for scaling the code. Introducing new static analysis will do a few things to help us reach these goals
+
+1) Allows developers to focus on exposed APIs, and use tooling to consume those APIs (no need to know the code base by memory)
+* Types exists for libraries we depend greatly on ([crossfilter.js](https://www.npmjs.com/package/@types/crossfilter), [dc.js](https://www.npmjs.com/package/@types/dc)), which we can consume in our `connector` and `charting` libraries for cleaner, more maintainable interfaces with immerse
+2) Time saved fixing bugs is time gained writing features
+* `Typescript` tooling is fantastic. It will help prevent interface bugs before production, and since tooling can read and understand `typescript` interfaces, more time is spent just writing new code rather than always having to look up types and data contracts
+
+By integration all our libraries together with `typescript`, we gain faster developer speed (more features) and better documentation that remains in sync with the code. 
+
+Goal:
+Incrementally add typescript to the `immerse` platform in such a way that
+1) New `.ts(x)` files can live with existing `.js(x)` files
+2) existing type systems (`flow`) are removed and migrated over to typescript
+
+Related epics:
+
+https://github.com/mapd/mapd-immerse/issues/4328
+",jmenestr,"Epic,tech",6,
+Investigate chart color spec shapes,https://github.com/mapd/mapd-immerse/issues/4709,331658717,4709,,2018-06-12T16:16:33Z,2018-06-12T16:16:46Z,"Look into the possible shapes of `chartSpec.colors` to better understand it for future work around organizing, sharing, and decoupling the chart state.
+
+Supports https://github.com/mapd/mapd-immerse/issues/4328 and https://github.com/mapd/mapd-immerse/issues/4327
+
+Goal: There appear to be three types of colorShapes, `nullColorShape`, `regularColorShape`, and `customColorShape`. Find out relevant info about them and record snapshots of them in real state for a few different chart types and configurations.",jrajav,tech,0,jmenestr
+[WIP] fix chart animation offset in editor,https://github.com/mapd/mapd-immerse/pull/4708,331651619,4708,,2018-06-12T15:57:36Z,2018-06-14T14:57:48Z,"### 💬  Description
+ 
+### 📄 Github Issue
+Closes #4676
+
+### :camera_flash: Screenshot",biovisualize,,4,
+Clean up raster chart functionality,https://github.com/mapd/mapd-immerse/issues/4706,331596948,4706,,2018-06-12T13:51:04Z,2018-06-12T13:53:46Z,"Master issue to investigate raster chart (pointmap, geoheat, choropleth) functionality as relating to selectors (dimensions, measures), automatic logic around geo columns, and anything else that can be consolidated, shared, or made more robust.
+
+* Ensure that x, y (lon, lat) columns are treated specially in a robustly stored or referenced way - in many parts of the code now, they are just assumed to be index 0 and 1 in the measures.
+
+Other notes from Slack:
+* Cleaning up the dimension shenanigans
+* Removing all references to “geoheat” that don’t reference a heatmap
+* Unifying raster chart actions and using thunk
+* Or sagas or some such to dispatch appropriate functions?",jrajav,tech,0,
+"[Geo - Pointmap] Ensure that popup columns on pointmap are properly set to static aggregate columns, even if some popup columns have been set before setting the dimension",https://github.com/mapd/mapd-immerse/issues/4705,331590531,4705,,2018-06-12T13:35:30Z,2018-06-12T13:37:58Z,"### :speech_balloon: Description
+
+When selecting a dimension on pointmap, the popup columns are set to the static set of columns defined in the aggregate and the popup column configuration is hidden. However, if one selects some custom popup columns before selecting the dimension, only that set is shown. Need to clear the popup columns back to the default before setting the static set.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,bug,0,
+issue with null domain after switching between raster charts,https://github.com/mapd/mapd-immerse/issues/4702,331431180,4702,,2018-06-12T04:14:10Z,2018-06-12T04:14:10Z,"### :speech_balloon: Description
+
+Sometimes the raster chart domain will appear as ""null"" when switching between raster charts before saving. Am having a difficult time reproing, but suspect it might have something to do with handling autoscaling properly on a raster chart switch.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",alexbaden,bug,0,
+better dimension handling in choropleth,https://github.com/mapd/mapd-immerse/issues/4701,331424826,4701,,2018-06-12T03:31:40Z,2018-06-13T00:00:38Z,"### :speech_balloon: Description
+
+If the user selects a dimension but not a join, the color measure will default to group by. This is problematic if no join is used, since the group. Not sure what the right approach is, but some combination of better design and helpful error messages will likely be needed.
+
+https://user-images.githubusercontent.com/39566471/41261961-221e4dc8-6d93-11e8-9ecc-c310cf590361.png
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",alexbaden,BE-Choropleth,1,
+Null values remain excluded from charts after a filter is cleared from Scatter chart ,https://github.com/mapd/mapd-immerse/issues/4699,331414551,4699,,2018-06-12T02:27:07Z,2018-06-12T15:59:23Z,"### :speech_balloon: Description
+When you apply a filter on the scatter chart it will remove NULL from all charts. Even after the filter is removed the values will not be displayed until the Scatter chart is deleted. 
+
+### :computer: Environment
+- **Browser Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Table chart (Source: flights | Dimension: airtime)
+- Create a Scatter chart ( Source: flights | Dimension X Axis: airtime | Dimension Y Axis: distance)
+- Apply a filter on the Scatter chart by zooming in/out or selecting an area with the tooltip
+- Clear the filter from the Scatter chart or clear all filters
+- Delete the Scatter chart 
+
+- **Actual result:**
+The Scatter chart automatically excludes NULL from all charts when a filter is applied to it and does not return the NULL values after the filter is cleared. 
+- **Expected result:**
+NULL should not be removed from other charts when a filter is applied to Scatter chart. If NULL values are filtered out according to the filter on the Scatter chart, they should return when the filter is removed. 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![nullscatter](https://user-images.githubusercontent.com/39566471/41266761-44fa6074-6dad-11e8-9089-0e2b1f5dee1e.gif)
+
+### :memo: Other Info",AlexHarutyunyan,,0,
+Heat chart unable to render certain strings in a particular dataset,https://github.com/mapd/mapd-immerse/issues/4698,331403978,4698,,2018-06-12T01:21:34Z,2018-06-12T01:23:52Z,"### :speech_balloon: Description
+Encountered an issue during regression with a particular dataset and Heat chart (all string values). The culprit seems to be the 'network_location' column. 
+
+### :computer: Environment
+- **Browser Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Heat chart using dataset 'ga_sourcemedium' located on kali. 
+Dimension X Axis: browser_size
+Dimension Y Axis: network_location
+Measure Color: browser_size 
+
+- **Actual result:**
+The chart doesn't render, but no error message is generated and errors don't appear in the console. After some time the fields no longer respond to clear. 
+- **Expected result:**
+An error should be generated if an invalid column is used and gets highlighted in red in the field it was selected in, or the Heatchart renders if there are no issues with the data. 
+
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![screen shot 2018-06-11 at 6 06 49 pm](https://user-images.githubusercontent.com/39566471/41264849-e255572a-6da3-11e8-844f-e2c68a5009eb.png)
+
+![screen shot 2018-06-11 at 6 19 18 pm](https://user-images.githubusercontent.com/39566471/41264874-f9848498-6da3-11e8-8e08-37c16265e305.png)
+
+### :memo: Other Info",AlexHarutyunyan,"P4,bug,found during 4.0",0,
+Investigate inconsistencies in column type labels,https://github.com/mapd/mapd-immerse/issues/4692,331290636,4692,,2018-06-11T18:00:58Z,2018-06-11T18:03:40Z,"### :speech_balloon: Description
+
+e.g.  ""STR [dict. encoded]"" and not ""TEXT ENCODING DICT(32)"" in table preview (latter is the strict DDL syntax), and different labels again in the chart column selectors
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,,1,
+Imported geo columns do not show column name in selectors,https://github.com/mapd/mapd-immerse/issues/4689,331208921,4689,,2018-06-11T14:18:01Z,2018-06-11T16:02:44Z,"### :speech_balloon: Description
+
+Unsure if this is meant to be supported yet or not, but mapd_geo columns that have a name upon import do not retain that column name in the data source (or at least, the chart selectors).
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+<img width=""1528"" alt=""mapd_geo field names 1"" src=""https://user-images.githubusercontent.com/2074135/41237063-3d675196-6d58-11e8-8726-5511cf87f0b2.png"">
+<img width=""1528"" alt=""mapd_geo field names 2"" src=""https://user-images.githubusercontent.com/2074135/41237067-3f854596-6d58-11e8-9681-3e12c9d7306b.png"">
+
+### :memo: Other Info
+
+Dataset in screens above is trips.csv:
+
+`COPY trips_geo FROM ‘/freenas-home/home/annette/inrix/trips’ with (lonlat=‘false’);`",jrajav,"Needs PM Review,geospatial,import",1,
+"Column header names revert to `column_1`, `column_2` etc. upon import after changing a CSV import setting",https://github.com/mapd/mapd-immerse/issues/4687,330909600,4687,,2018-06-09T18:32:05Z,2018-06-09T18:32:25Z,"### :speech_balloon: Description
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,"bug,import",0,jrajav
+"[Geo - Choropleth] Reduce join types in dimensions or geo join column, if other is already selected",https://github.com/mapd/mapd-immerse/issues/4685,330898502,4685,,2018-06-09T16:00:08Z,2018-06-09T16:00:19Z,"### :speech_balloon: Description
+
+If possible, restrict the list of selector values in dimensions selector or geo join column selector to the valid join types, if the opposite one is already filled.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,"BE-Choropleth,Needs PM Review,geospatial",0,
+Color By Dimension is not compatible with Timestamps/Numbers and can cause an error loop if used,https://github.com/mapd/mapd-immerse/issues/4684,330842342,4684,,2018-06-09T01:38:40Z,2018-06-09T01:38:40Z,"### :speech_balloon: Description
+The Color By Dimension option in the palette is not compatible with Timestamps or Numbers. All values will be appear as Other even when a full palette is added. As soon as color by dimension is selected an error loop is triggered when the user navigates to another chart. 
+
+### :computer: Environment
+- **Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a bar chart (Source: flights | Dimension: arr_timestamp | Measure: # Records)
+- Select Color By Dimension in the Color Palette 
+- Add a color 
+- Navigate to another chart (Histogram for example)
+
+- **Actual result:**
+The palette options don't seem to reflect the data being displayed. 
+- **Expected result:**
+The Color by Dimension feature should reflect the data being displayed similar to the default palettes. 
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![colorpalettetimestamp](https://user-images.githubusercontent.com/39566471/41186387-7caa41b6-6b4a-11e8-9bb5-3825086baccf.gif)
+![screen shot 2018-06-08 at 5 50 35 pm](https://user-images.githubusercontent.com/39566471/41186389-8547e562-6b4a-11e8-8130-31c2455dea0f.png)
+
+### :memo: Other Info",AlexHarutyunyan,"P2,bug,found during 4.0",0,
+Connot switch to different chart type from geo heat map,https://github.com/mapd/mapd-immerse/issues/4682,330826689,4682,,2018-06-08T23:06:37Z,2018-06-08T23:07:12Z,"### :speech_balloon: Description
+
+Connot switch to different chart type from geo heat map
+
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Go to kali
+- Create heat map 
+-  Select source: Metro_station_Regional
+- On long/ lat select mapd_geo
+- Select records as color
+- try to switch to a different chart
+
+
+- **Actual result:**
+Cannot switch to a different chart 
+Heat map is not rendered anymore 
+
+- **Expected result:**
+Should be able to switch to a different chart 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![jun-08-2018 16-04-06](https://user-images.githubusercontent.com/16374964/41184553-f5e1f4e4-6b35-11e8-9f11-d7d432a4b1bb.gif)
+
+### :memo: Other Info",menaczar,"P2,bug,found during 4.0,geospatial",0,
+Unable to clear Measure Number Formatting after clearing Dimension Date Formatting,https://github.com/mapd/mapd-immerse/issues/4681,330824611,4681,,2018-06-08T22:53:14Z,2018-06-12T01:30:17Z,"### :speech_balloon: Description
+Number formatting doesn't clear if it is performed right after clearing timestamp formatting on charts that contain both formatting options. 
+
+
+
+### :computer: Environment
+- **Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create Bar chart using (Source: flights | Dimension: arr_timestamp | Measure: # Records)
+- Apply Some different combinations of formatting to arr_timestamp and # Records 
+- Clear the formatting from Dimension arr_timestamp using the x button
+- Clear the formatting from Measure # Records using the x button 
+
+- **Actual result:**
+Unable to clear the formatting from the Measure Number Formatting
+- **Expected result:**
+Clear button should always clear the formatting
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![formattingclear](https://user-images.githubusercontent.com/39566471/41184257-06adb17a-6b34-11e8-9aa2-e78f34b07594.gif)
+### :memo: Other Info
+The more dimensions and measures that support formatting are added the easier it is to replicate. ",AlexHarutyunyan,"P3,bug,found during 4.0",0,
+Formatting selections change the Sort By selection for number datatypes (Bar/Pie chart),https://github.com/mapd/mapd-immerse/issues/4680,330822629,4680,,2018-06-08T22:40:48Z,2018-06-08T22:41:24Z,"### :speech_balloon: Description
+Changing the measure formatting on Pie chart and Bar chart applies the dimension Sort By selection
+
+### :computer: Environment
+- **Chrome, 67.0.3396.79**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Bar chart (Source: Flights | Dimension: arr_timestamp | Measure: # Records)
+- Changing the Sort By to arr_timestamp
+- Change the Measure Number Formatting and observe 
+
+- **Actual result:**
+When the formatting is changed so is the Sort By selection (# Records)
+- **Expected result:**
+Formatting should only effect the way measures are displayed. 
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![formatting sort](https://user-images.githubusercontent.com/39566471/41183952-242749ac-6b32-11e8-8acd-cb914d51ec49.gif)
+
+### :memo: Other Info",AlexHarutyunyan,"P4,bug,found during 4.0",0,
+Choropleth with 2 geo measure should distinguish between source and geo join,https://github.com/mapd/mapd-immerse/issues/4677,330807610,4677,,2018-06-08T21:25:40Z,2018-06-11T20:19:42Z,"### :speech_balloon: Description
+You can get into a state where you have 2 geo measures with the same name. One comes from a column in the source and one form the geojson to join with. It might be useful to add a label to distinguish them.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",biovisualize,geospatial,2,
+Charts are out of position when editting after adding another chart to dashboard,https://github.com/mapd/mapd-immerse/issues/4676,330784518,4676,,2018-06-08T19:57:21Z,2018-06-12T17:27:36Z,"### :speech_balloon: Description
+Text chart jumps to the top of the browser when you edit after adding another chart. 
+
+### :computer: Environment
+- **Browser Chrome, 67.0.3396.79 Safari, 11.1 (13605.1.33.1.4)**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a text chart and add to dashboard
+- Create another chart and add to dashboard
+- Go back and edit the text chart 
+- **Actual result:**
+The text chart jumps to the top of the browser and overlaps with the chart selection dock. 
+- **Expected result:**
+Text chart should remain in the intended position. 
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![text number](https://user-images.githubusercontent.com/39566471/41178142-3aa384dc-6b1b-11e8-9ec4-47779f15ec8c.gif)
+
+### :memo: Other Info
+Unable to reproduce in the demo. ",AlexHarutyunyan,"P4,bug,found during 4.0,regression",4,biovisualize
+support ordinal scale in backend choropleth chart,https://github.com/mapd/mapd-immerse/issues/4674,330764467,4674,,2018-06-08T18:46:13Z,2018-06-11T19:41:26Z,"### :speech_balloon: Description
+
+Required to support text type color measures. 
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",alexbaden,"BE-Choropleth,enhancement,geospatial",1,alexbaden
+Immerse doesn't support TinyInt,https://github.com/mapd/mapd-immerse/issues/4673,330729387,4673,,2018-06-08T16:47:07Z,2018-06-08T16:47:07Z,"### :speech_balloon: Description
+Immerse doesn't support TinyInt
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- run this query on Kali: select * from Paris_Mena;
+- compare results from mapdql vs SQL Editor
+
+- **Actual result:**
+SQL editor doen't handle tiny int.
+
+- **Expected result:**
+Should see exactly same results.
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![Screen Shot 2018-06-07 at 2.16.03 PM.png](https://images.zenhubusercontent.com/59a47c158f62dc7798c4571a/88df4c5c-38a0-4a74-b2ee-c95300c57862)
+
+![Screen Shot 2018-06-07 at 2.16.16 PM.png](https://images.zenhubusercontent.com/59a47c158f62dc7798c4571a/ca50c70d-3206-49ee-a002-c736323598e0)
+### :memo: Other Info",menaczar,"P2,bug,found during 4.0",0,
+Add auto-zoom to geo-heatmap,https://github.com/mapd/mapd-immerse/issues/4672,330718570,4672,,2018-06-08T16:10:06Z,2018-06-12T22:36:18Z,"### :speech_balloon: Description
+Add an auto-zoom feature to geo-heatmap on initial load to focus on the area where data is found, similar to pointmap/choropleth
+
+### :computer: Environment
+- **Browser Name, Version**: all
+- **mapd-immerse Version or Branch**: master. 4.0 if it turns out to be easy to do
+
+### :page_with_curl: Steps To Reproduce
+N/A
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",vastcharade,enhancement,3,vastcharade
+Combo chart legend uses square instead of lines on multi-measure,https://github.com/mapd/mapd-immerse/issues/4671,330625735,4671,,2018-06-08T11:42:43Z,2018-06-08T11:42:59Z,"### :speech_balloon: Description
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- any combo chart with multi-measure
+- **Actual result:** all chart legend items has a square instead of line
+- **Expected result:** should all be lines (when the mark is a line) as when the color dimension is used
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+<img width=""1693"" alt=""screen shot 2018-06-07 at 10 57 43 pm"" src=""https://user-images.githubusercontent.com/824534/41156348-81f74ab6-6aef-11e8-8a94-be5163007256.png"">
+
+### :memo: Other Info",biovisualize,"bug,combo-chart",0,
+[do not merge] dummy commit,https://github.com/mapd/mapd-immerse/pull/4665,330517399,4665,,2018-06-08T04:41:25Z,2018-06-12T15:42:15Z,Just for testing if the error we see on https://github.com/mapd/mapd-immerse/pull/4607 was also there before the work on the PR,biovisualize,,5,
+remove select join data source machinery ,https://github.com/mapd/mapd-immerse/issues/4664,330512328,4664,,2018-06-08T04:05:17Z,2018-06-08T04:05:17Z,"### :speech_balloon: Description
+
+Was originally added to autopopulate the geojoin with a ""self join"" for backend choropleth. Now that self joins are no longer necessary to just render the geo data, the actions and reducers are not being used. Leaving the code in place for now since we might want to use it later if we add joins across the product. Worth discussing after 4.0. 
+
+Relevant action is `SELECT_GEO_JOIN_DATA_SOURCE_REQUEST`
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",alexbaden,enhancement,0,alexbaden
+Binned/Extracted Timestamp formatting and selected formatting display different values for timestamps ending in 00:00:00,https://github.com/mapd/mapd-immerse/issues/4663,330491368,4663,,2018-06-08T01:46:10Z,2018-06-08T01:58:36Z,"### :speech_balloon: Description
+There is a difference in how certain Timestamps are displayed Binned, Extracted vs. with Formatting applied (and also in the SQL Editor)
+A timestamp like: `2011-01-01 00:00:00`
+will appear as Dec 31, 2010 with formatting applied and in the SQL Editor, but will display Jan 1, 2011 while binned or extracted.
+Extracted/Binned with no formatting tends to 'round up' while the SQL Editor and The formatting dropdown menu tend to 'round down'. 
+
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a Table chart (Source: 'family_3' on mahakali | Dimension: BIN 'birth_timestamp' | Dimension EXT birth_timestamp)
+- Change the Date Formatting of the Auto Bin column to year only (%y)
+- **Actual result:**
+The same data may appear differently depending on the selection. 
+- **Expected result:**  
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+<img width=""650"" alt=""screen shot 2018-06-07 at 6 43 56 pm"" src=""https://user-images.githubusercontent.com/39566471/41134726-c58e16c8-6a82-11e8-863d-af1d94510c68.png"">
+
+![screen shot 2018-06-07 at 6 24 31 pm](https://user-images.githubusercontent.com/39566471/41134707-ae0fa804-6a82-11e8-9d0e-cf7d43ea4a20.png)
+
+![screen shot 2018-06-07 at 6 21 26 pm](https://user-images.githubusercontent.com/39566471/41134717-b67e23d0-6a82-11e8-90e5-8ca66e3cee5d.png)
+
+
+
+
+### :memo: Other Info
+Not quite sure what the expected result should be, since this seems like a timezone issue. Since the original data is listed as Jan 1, I think it should 'round up' regardless of the timezone. 
+
+",AlexHarutyunyan,"P4,bug,found during 4.0",0,
+[GeoHeat] Legend min/max revert to default after locking legend,https://github.com/mapd/mapd-immerse/issues/4658,330474310,4658,,2018-06-07T23:54:05Z,2018-06-14T02:11:55Z,"### :speech_balloon: Description
+The geo heat  max/min would revert back to its default values after user has changed the map theme or any visual attribute settings
+
+### :computer: Environment
+- **Browser Name, Version**:  Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1. Create a Geo heat map with the following:
+Data Source: flights
+Dimension Lon: dest_lon
+Dimension Lat: dest_lat
+Measure Color: airtime(avg)
+2. Change min/max values in color legend
+3. Lock legend
+
+- **Actual result:**
+min/max values revert to default
+
+- **Expected result:**
+should not revert to default
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![min_max_geoheat](https://user-images.githubusercontent.com/35040876/41132014-596986c6-6a73-11e8-8321-f9df07e2f977.gif)
+
+
+### :memo: Other Info",ericli5454,"P2,bug,found during 4.0",2,
+[Choropleth] [Geoheat] Switching between layers of multi-layer choropleth/geoheat creates duplicate color legend,https://github.com/mapd/mapd-immerse/issues/4657,330467491,4657,,2018-06-07T23:14:47Z,2018-06-14T05:12:25Z,"### :speech_balloon: Description
+Currently, if user switches between layers of multi-layer choropleth/geoheat chart, it would generate a duplicate color legend in chart editor
+
+### :computer: Environment
+- **Browser Name, Version**: Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1. Create multi-layer choropleth/geoheat chart such that each layer has different data table
+2. Go to the chart editor and switch between laters
+3.  Then click apply 
+
+- **Actual result:**
+Generates duplicate color legend in editor
+Generates duplicate color legend in chart after clicking apply
+
+- **Expected result:**
+Does not generate duplicate color legend in  editor
+Should not generate duplicate color legend in chart after clicking apply
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![choropleth after apply](https://user-images.githubusercontent.com/35040876/41132321-4a6fd7ae-6a75-11e8-8f00-034d4eb4404d.gif)
+
+![geo_heat_switch](https://user-images.githubusercontent.com/35040876/41387663-f783f56c-6f3c-11e8-95f1-d7b08995a2d7.gif)
+
+
+### :memo: Other Info",ericli5454,"P1,bug,found during 4.0",4,alexbaden
+Add link in Immerse charts to show underlying SQL queries,https://github.com/mapd/mapd-immerse/issues/4654,330419551,4654,,2018-06-07T20:14:30Z,2018-06-07T20:19:08Z,"### :speech_balloon: Description
+Currently if you want to view the underlying SQL query of a charts in Immerse, it is necessary to inspect the underlying Thrift calls. This is problematic if the average user wishes to export the data they see in the current (filtered or unfiltered) chart through the COPY command. A ""Show SQL"" link or similar on each chart would provide a way for the user to easily take that command and put it in the COPY command to export the data.
+
+### :computer: Environment
+- **Browser Name, Version**:  All
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- **Actual result:**
+N/A
+- **Expected result:**
+N/A
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jp-harvey,,0,
+Https button reverts to http when clicking connect.,https://github.com/mapd/mapd-immerse/issues/4652,330362595,4652,,2018-06-07T17:14:26Z,2018-06-07T17:14:38Z,"### :speech_balloon: Description
+
+Https button reverts to http when clicking connect.
+Although functionality is fine, it visually confusing.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Go to master
+- logout
+- change to Kali
+- Change port # to 10043
+- Click https
+- Click connect
+
+- **Actual result:** 
+Although it connects fine, you'll find that the http button is highlighted instead of the https
+
+- **Expected result:**
+Https button should always be highlighted during connecting and even after logging out.
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![jun-07-2018 10-05-33](https://user-images.githubusercontent.com/16374964/41115171-94040b7c-6a3b-11e8-8bdd-e91838cbc380.gif)
+
+
+### :memo: Other Info",menaczar,"P3,bug,found during 4.0",0,
+Prototype async redux flow patterns,https://github.com/mapd/mapd-immerse/issues/4651,330358175,4651,[object Object],2018-06-07T17:00:04Z,2018-06-13T17:21:11Z,"Problem / goal:
+Redux-saga is causing problems for us because it is difficult to debug, maintain, and reason about async flows built with it. It's likely that we can improve these aspects of async flows in Immerse by starting to move to an improved pattern and/or framework.
+
+Increment (prototype):
+Re-implement a relatively digestible, yet complex saga from Immerse in other async Redux flow patterns and frameworks, so that we can see a real-world example of how they look and act:
+
+- redux-observable
+- redux-thunk + Promises (async / await, some Promise action translator such as redux-promise-middleware)
+
+Stretch goals:
+- redux-loop
+- Full type coverage with something like https://github.com/aikoven/typescript-fsa or https://github.com/piotrwitek/typesafe-actions",jrajav,tech,0,jrajav
+[Chroropleth] The flow for rendering geo measure option for non-geo tables is not intuitive,https://github.com/mapd/mapd-immerse/issues/4646,330097055,4646,,2018-06-07T02:43:51Z,2018-06-07T17:00:57Z,"### :speech_balloon: Description
+Currently when a user wants to create choropleth chart with a non-geo table, user would have to select a join table and column thats compatible with selected dimension before Geo measure options is generated. In other words theres known way for user to know when option for geo measure has been generated
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",ericli5454,"charts-ux,design",2,
+Unable to importing large kml geoshape file(1gb),https://github.com/mapd/mapd-immerse/issues/4644,330074292,4644,,2018-06-07T00:10:54Z,2018-06-07T00:11:09Z,"### :speech_balloon: Description
+Currently users are unable to successfully import large .kml geo file(1kb) thru both s3/manual import
+
+File used:
+https://s3-us-west-1.amazonaws.com/mapd-parquet-testdata/qa/shape_file/nyc_footprint_kml.kml
+
+### :computer: Environment
+- **Browser Name, Version**: Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+Upload 1g kml file either manually (drag and drop) or thru S3
+
+- **Actual result:**
+unable to upload
+<img width=""1192"" alt=""screen shot 2018-06-04 at 10 24 11 am"" src=""https://user-images.githubusercontent.com/35040876/40933371-1c4d5c52-67e6-11e8-9250-d2f08230e30d.png"">
+
+- **Expected result:**
+upload successfully
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info
+Thread from Slack:
+- Simon:
+
+> 
+> So Eric has pulled the KML & KMZ versions of the NYC building footprints dataset, and neither of them will load. The underlying LibKML parser fails with an out-of-memory error. Not even a GDAL problem. ogrinfo command-line tool reports the same, so it's nothing we are provoking. It's a big KML (1.1GB) but looks fine in a text editor. All the other versions of that data set load fine, as do other smaller KMLs I have. LibKML on my system is an Ubuntu lib, as is GDAL itself (although I have my own build of GDAL 2.3 using the same LibKML). LibKML code is from Google but old (not touched for five years) and the Ubuntu version seems to be up-to-date. Thoughts?
+> 
+> I have proven that the problem is in LibKML itself, and shows up even with my own build of that and a simple test program to just try and open the file. Turns out there are two KML ""drivers"" in GDAL, and if you configure GDAL to use the other one instead (which you can do even in the MapD context just by setting an env var) then the other one loads it, but drops all the extended fields from the file, so you only get the name and the geo for each feature.
+> 
+> I think we can justifiably ignore this one as there's a workaround, even if not a very good one, and IMHO, anyone who creates a 1.1GB KML file wants their brain examining along with those who create similarly large GeoJSONs...
+> 
+> For completeness, the LibKML one is falling over in the basic XML parse (using the Expat lib, presumably from the Ubuntu apt DSO install of such)
+> 
+> LibKML attempts to read in the entire document and gets Expat to parse the whole thing in one go. This is stupid, as Expat is explicitly written to support streaming and parsing of such files in chunks.
+> 
+> Shelving this because there's no easy solution
+> 
+
+-Andrew:
+
+> Agreed. Just document as a known issue and wait & see if someone cares about massive KMLs?",ericli5454,"P3,enhancement,found during 4.0",0,
+"Provide reasonable default selectors for all charts (e.g. # records for measure), so when possible they can render immediately with minimal input",https://github.com/mapd/mapd-immerse/issues/4642,330047899,4642,,2018-06-06T21:58:29Z,2018-06-06T21:58:53Z,"### :speech_balloon: Description
+
+e.g. provide geo column selection for geo charts when selecting a geo data source, select # records for single-measure charts by default
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,"charts-ux,enhancement",0,
+Adding custom measure without agg. generates error and kick user out to dashboard page,https://github.com/mapd/mapd-immerse/issues/4629,329636434,4629,,2018-06-05T21:44:34Z,2018-06-08T07:42:03Z,"### :speech_balloon: Description
+If user creates a new dash and a new chart with custom measure without an aggregate and measure requires an aggregate. The user would encounter an error pop-up, and accepting the pop-up would kick the user back to the dashboard screen (unsaved dashboard data would be lost). This behavior currently affects Bubble, Bar, Choropleth, Pie, Heat Map, and Geo Heat map charts. 
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+1. Create a new dashboard
+2. Add a new chart to dashboard (Needs to  be Bubble, Bar, Choropleth, Pie, Heat Map, and Geo Heat map chart)
+3. Select Data Source, add a dimension, and then in the measures section add a column without aggregate.
+
+Example for bar chart:
+- Data Source: flights
+- Dimension: carrier_name
+- Measure: -> Custom Measure: depdelay
+
+- **Actual result:**
+User encounters an error pop-up, and accepting the pop-up would kick the user back to the dashboard screen 
+
+![kickout_bar](https://user-images.githubusercontent.com/35040876/41004427-ab4051b0-68ce-11e8-9342-371780a95f25.gif)
+
+- **Expected result:**
+Should direct to correct chart render error, and accepting popup directs back to chart
+
+![correct_bar](https://user-images.githubusercontent.com/35040876/41004423-a71fc8f4-68ce-11e8-9dfc-90607ddf015d.gif)
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",ericli5454,"P2,bug,found during 4.0",2,ericli5454
+Choropleth to create filter on zooming  #1,https://github.com/mapd/mapd-immerse/issues/4628,329634717,4628,,2018-06-05T21:38:37Z,2018-06-07T18:39:22Z,"### :speech_balloon: Description
+
+Zooming in and out choropleth doesn't affect count widget. 
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create choropleth geo map
+- zoom in and out
+
+- **Actual result:**
+Count widget doesn't change
+
+- **Expected result:**
+Count widget should reflect visible shapes number.
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",menaczar,"BE-Choropleth,enhancement,geospatial",6,
+Example of a Vega or Vega-lite chart using mapd-connector,https://github.com/mapd/mapd-immerse/issues/4627,329615101,4627,,2018-06-05T20:36:01Z,2018-06-05T20:36:01Z,"### :speech_balloon: Description
+@dipti-kothari is working on a Bitcoin visualization demo and I suggested that she could use Vega with the data connector. This is a task to make sure we can support her and find other applications for this example.
+
+https://vega.github.io/vega/
+https://vega.github.io/vega-lite/
+https://mapd.github.io/mapd-connector/
+https://github.com/mapd/mapd-connector/blob/master/examples/browser.js
+
+This example could be used as the base for her next project involving a 3D map. One ready-made chart library with 3D charts is https://plot.ly/javascript/#3d-charts",biovisualize,,0,
+"Do not change table type on detected geo columns in table importer, only show geo options",https://github.com/mapd/mapd-immerse/issues/4623,329538334,4623,,2018-06-05T16:43:05Z,2018-06-05T16:43:19Z,"### :speech_balloon: Description
+
+Necessary to properly support csv's with geo columns, which should send back geo copy_params but with a table type of Delimited.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,"geospatial,import",0,
+Raygun report is broken,https://github.com/mapd/mapd-immerse/issues/4621,329466886,4621,,2018-06-05T13:52:50Z,2018-06-05T17:01:18Z,"### :speech_balloon: Description
+It's been a while that clicking on the ""report"" button of error popup doesn't report to Raygun. We could fix it or we could take the opportunity to pipe all errors to Segment (which can then redispatch to any error reporting framework). Note that even when the Raygun reporting was working, there was no way to relate a report to a specific problem, for example when it was reported on Zendesk.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Find a dashboard that pops up the error with a ""report"" button
+- log in Raygun
+- **Actual result:** the report doesn't show-up
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",biovisualize,,1,
+Point-map with multilayer/MSD has backward compatibility issues,https://github.com/mapd/mapd-immerse/issues/4620,329267996,4620,,2018-06-05T01:14:47Z,2018-06-06T22:21:58Z,"### :speech_balloon: Description
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Go to any of the dashboards below:
+  - http://immerse-master.prod.frontend.builds.mapd.com/#/dashboard/1060?_k=oucyut
+  - http://minos.mapd.com:8000/#/dashboard/426?_k=9jbbt4
+  - http://kali.mapd.com:9092/#/dashboard/564?_k=yjofff
+- launch the point map in the edit mode
+- Try to select any other chart type (BUG 1)
+- Tap on the button (+ new layer)
+- Tap the button (Master) (BUG 2)
+
+**Actual result:**
+**BUG 1:** All chart types buttons are disabled
+**BUG 2:** MAP will not render on MASTER 
+
+**Expected result:**
+**BUG 1:** All chart types buttons are _**enabled**_
+**BUG 2:** MAP _**should always**_ render on MASTER 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![pointmap compatability](https://user-images.githubusercontent.com/10747240/40949475-1803c1bc-6823-11e8-876c-2242a48643c9.gif)
+
+### :memo: Other Info",Davidiskander,"P0,bug,found during 4.0,regression",3,
+[Geospatial] Choropleth Performance Lag when generating pop-up,https://github.com/mapd/mapd-immerse/issues/4619,329258161,4619,,2018-06-05T00:10:31Z,2018-06-05T05:36:15Z,"### :speech_balloon: Description
+Currently, there seems to be a lag in generating pop-up after hovering mouse over geo-shape of Choropleth Charts. This behavior seems more apparent with larger polygon shapes
+
+### :computer: Environment
+- **Browser Name, Version**: Chrome
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create Choropleth Chart with larger polygon shapes
+- Hover over polygon shape to generate pop-up
+
+- **Actual result:**
+Seems to be a lag of ~1.5-2 secs before generating pop-up
+
+- **Expected result:**
+Should generate pop-up at faster rate
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![tool_tip_delay](https://user-images.githubusercontent.com/35040876/40947930-1e02fdb6-681a-11e8-8198-114b39f7a63a.gif)
+
+
+
+### :memo: Other Info",ericli5454,"enhancement,found during 4.0,geospatial,performance",1,
+Range Chart Y Axis on Histogram/Line chart not aligned with main Y Axis,https://github.com/mapd/mapd-immerse/issues/4617,329250012,4617,,2018-06-04T23:22:36Z,2018-06-05T05:03:28Z,"### :speech_balloon: Description
+The X Axis with 'Show Range Chart' enabled doesn't seem to account for the label present on the 
+Y axis of the main chart causing the Y axes to be misaligned. This may also be causing an issue when the measurement is locked on the X Axis of the Range chart (all elements of the main X axis are sent to the left). 
+
+### :computer: Environment
+- **All Browsers**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create Histogram or Line chart (Source: 'flights' | Dimension X Axis: BIN 'actualelapsedtime' | Measure Height : '# Records')
+- Enable 'Show Range Chart' on the right-side menu
+- Observe alignment of Y Axes
+
+
+- **Actual result:**
+The Y axes are not aligned. The lock icon on the Range chart causes the main X Axis to be pushed to the left side. 
+- **Expected result:**
+The Y Axes on the charts are aligned. The lock icon on the Range chart has no impact on the GUI of the main X Axis.
+
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![screen shot 2018-06-04 at 3 39 32 pm](https://user-images.githubusercontent.com/39566471/40946618-5104129c-6813-11e8-89fe-eeb7131e08b2.png)
+
+![screen shot 2018-06-04 at 4 03 17 pm](https://user-images.githubusercontent.com/39566471/40946628-5da80aa8-6813-11e8-9851-7f3b55e1a996.png)
+
+### :memo: Other Info",AlexHarutyunyan,"P3,bug,regression",1,
+Auto Populate Longitude and Latitude on the map charts,https://github.com/mapd/mapd-immerse/issues/4615,329243309,4615,,2018-06-04T22:48:06Z,2018-06-04T22:48:06Z,"### :speech_balloon: Description
+
+
+For the charts that use longitude and latitude, we should see if we could auto-populate these fields for the user.  Example if the data column is title Longitude or Long, we could populate either of these in the longitude and same for latitude. 
+
+In the use cases where the data has multiple longitudes and latitudes columns, we could offer a drop menu asking which one they would like to use. An example in the flights_123M data, there are two sets. dest_lat/dest_lon and origin_lat/orgin_log. The drop menu could be as simple as **dest** and **origin**, and based on the user's selection we populate the correct longitude and latitude fields. 
+
+
+.........
+Some difficulties that we will have:
+- if the user titles the longitude and latitude something that is unrecognizable.   
+- possibly when we are trying to identify if the Geo data has points versus longitude/latitude.
+
+                                                                              
+
+
+![image](https://user-images.githubusercontent.com/37127288/40945438-ab4bac66-680d-11e8-8dad-a87e6ca5320b.png)
+
+
+
+
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",Christian-Baptiste,,0,
+Missing a removable GEO Zoom Filter Indicator,https://github.com/mapd/mapd-immerse/issues/4614,329239747,4614,,2018-06-04T22:31:30Z,2018-06-05T05:03:56Z,"### :speech_balloon: Description
+
+When a user has a dashboard open and they zoom to a particular area this is treated as a filter. The problem is we don't show it as a filter in the cross filter section thus the user doesn't have a way to clear such filter. 
+
+To make things worse, if the user had zoomed/or moved to an area that doesn't have data, this zeros out the rest of their charts in that dashboard. This can lead to a lot of confusion when the user doesn't realize what chart has the filter thus we should always place a clearable filter at the top filter area like we do with other filters. 
+
+
+
+Desired behavior would be to either return the user their previous zoom state that had data or to a zoom to all data state (meaning the zoomed map would show to the size or where any data points exist).
+
+
+
+
+
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",Christian-Baptiste,"P3,enhancement,found during 4.0",1,Christian-Baptiste
+Address confusion around filtering and zooming. ,https://github.com/mapd/mapd-immerse/issues/4613,329235505,4613,,2018-06-04T22:12:53Z,2018-06-04T22:40:40Z,"### :speech_balloon: Description
+
+Users have different intentions at different times.  Sometimes the user is intending on cross filtering based on a particular location(s) or based on a particular date/time range. 
+
+Other times their intentions are to change their view to move around or to zoom in particular data in a map or move around to see data over different dates. 
+
+The current behavior is to treat zooming as a filter (kind of).  This causes a lot of confusion and in some cases could render a dashboard useless without giving the user any idea why they are no longer seeing any data. 
+
+One suggestion is to make an implicit request from the user to know their intent. Another is to use a different type of controls.
+
+However, we offer these enhancements we need to give users the ability to both in an intuitive way.
+
+
+
+>>>>>
+One quick win that we could do is place a clearable filter pill anytime we are treating the zoom as a filter.
+
+
+
+
+
+
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",Christian-Baptiste,design,1,Christian-Baptiste
+[Geo] mapd_geo point column as measures and dimensions for geo charts,https://github.com/mapd/mapd-immerse/issues/4612,329219064,4612,,2018-06-04T21:12:51Z,2018-06-04T21:13:32Z,"### :speech_balloon: Description
+
+Support for (and quicker, more in-process UX for) selecting mapd_geo point column as a measure and/or dimension for the geo chart types.
+",jrajav,"Epic,geospatial",0,
+[Internet Explorer] Eula accept button doesn't appears until resizing window,https://github.com/mapd/mapd-immerse/issues/4611,329218408,4611,,2018-06-04T21:10:38Z,2018-06-06T00:42:46Z,"### :speech_balloon: Description
+Currently when user attempts to login to kali immerse, the Eula accept button populates would not appear until resizing window. This could cause a major issue with user experience. 
+
+### :computer: Environment
+- **Browser Name, Version**: Internet Explorer
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Login to Kali immerse with internet explorer
+
+- **Actual result:**
+-  Eula accept button populates would not appear until resizing window
+
+- **Expected result:**
+- Eula accept button should appear should appear after login to kali immerse with Internet Explorer browser. 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",ericli5454,"P1,bug,found during 4.0,regression",0,
+[Geo - Pointmap] Ability to mapd_geo point column as a dual measure,https://github.com/mapd/mapd-immerse/issues/4608,329217586,4608,,2018-06-04T21:08:03Z,2018-06-05T12:25:44Z,"### :speech_balloon: Description
+
+*For Pointmap*
+
+mapd_geo point column should be selectable in some form as an alternative to selecting two distinct float-number columns as longitude and latitude.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,geospatial,1,
+Accessibility Design Iterations,https://github.com/mapd/mapd-immerse/issues/4606,329146864,4606,[object Object],2018-06-04T17:24:05Z,2018-06-05T19:23:37Z,"### :speech_balloon: 
+
+All government accounts require apps to be accessible. With the IQT work starting to take priority I would like to get in front of this issue before we are rushed into it.   Making apps both accessible and visually appealing can be a difficult challenge. If we wait until the last minute we will inevitably be forced to rush design changes that never look good. As a result, I would like to start to do some design cycles on this as soon as possible.
+
+
+
+
+Some obvious changes:
+- Change button color. The current light teal button color doesn't offer enough contrast.
+- Change the light gray background areas to be dark enough to create passing contrast.
+- Place tooltips on all icons
+- Possibly offer alternative CSS to allow user control over text size, and additional contrast, etc.
+- Test current font size, weight, and shades throughout the app.
+- Continued work on default minimum size on charting elements. 
+- Add points to things like line charts to make it easier to locate where the hover is.
+- Improve zoom controls
+- more to come.
+
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",Christian-Baptiste,,0,Christian-Baptiste
+Review best practices for colors on demos,https://github.com/mapd/mapd-immerse/issues/4605,329136553,4605,,2018-06-04T16:50:09Z,2018-06-04T16:50:32Z,"### :speech_balloon: Description
+We should validate if we are using the best practices for our demos, especially around colors. For example, @AnnetteMapD mentioned that using a dark to light palette is not so intuitive for the NY Taxi heatmap. Let's have a round of design to make sure our demos are reflecting the best practices we can provide.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+For example, this heatmap on the NY Taxi demo:
+
+![image 3](https://user-images.githubusercontent.com/824534/40930441-b0c65af0-67f5-11e8-859d-a0a0db895166.png)
+
+Could maybe use a light to dark palette:
+
+<img width=""555"" alt=""screen shot 2018-06-04 at 12 42 00 pm"" src=""https://user-images.githubusercontent.com/824534/40930463-bf519f8a-67f5-11e8-94a3-d5b708ce08c6.png"">
+
+
+### :memo: Other Info",biovisualize,"design,enhancement",0,Christian-Baptiste
+[Geo - Pointmap] Ability to set mapd_geo point column as a dual dimension,https://github.com/mapd/mapd-immerse/issues/4604,329076119,4604,,2018-06-04T14:19:21Z,2018-06-04T21:10:18Z,"### :speech_balloon: Description
+
+*For Pointmap*
+
+mapd_geo appears as an option in the dimension selector for pointmap and, when selected, automatically adds two dimensions: `ST_x(mapd_geo)` and `ST_y(mapd_geo)`.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+<img width=""1623"" alt=""screen shot 2018-06-03 at 12 36 19 pm"" src=""https://user-images.githubusercontent.com/2074135/40922620-4d644a48-67d8-11e8-9796-fc8a33a148bc.png"">
+
+
+### :memo: Other Info",jrajav,geospatial,0,
+Combo chart GUI inconsistencies ,https://github.com/mapd/mapd-immerse/issues/4594,328698863,4594,,2018-06-02T01:00:23Z,2018-06-13T23:20:56Z,"### :speech_balloon: Description
+There are some inconsistencies on the Combo chart that don't appear on other similar charts 
+### :computer: Environment
+- **Chrome: 66.0.3359.181, Firefox: 60.0.1, Safari: Version 11.1 **: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a line Combo chart (Source: 'flights' | Dimension: 'airtime' | Measure Y Axis: 'carrier_name')
+- **Actual result:**
+The label on the Y Axis measure reads top to bottom (also contains '# Unique' unlike Line chart). Combo chart contains what seems like a scroll bar. This bar doesn't seem to appear in any other charts. Please see highlight in attached image.
+- **Expected result:**
+The label reads bottom to top (does not contain #Unique). The scroll bar is only visible when needed. 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![screen shot 2018-06-01 at 5 33 12 pm](https://user-images.githubusercontent.com/39566471/40868762-18faf69a-65c5-11e8-815e-c9275ea56ef8.png)
+
+### :memo: Other Info",AlexHarutyunyan,"P4,bug,combo-chart,found during 4.0",7,clhenrick
+TaxiDemo - Combo chart loosing focus chart data when opening the range slider ,https://github.com/mapd/mapd-immerse/issues/4593,328695427,4593,,2018-06-02T00:22:13Z,2018-06-05T15:50:08Z,"### :speech_balloon: Description
+Combo chart losing focus chart data when opening the range slider. 
+*Note so far the only data source that seems to be affected is TaxiDemo. 
+
+
+
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Chose combo chart
+- Chose TaxiDemo as the data source (note we tried this with other data and didn't have the same problem)
+- Chose dimension pickup_datetime
+- Chose AVG trip_distance as the measure. 
+- Line chart for Visual Data Mapping
+- Turn range chart on
+- Adjust range chart
+- Focus chart goes blank
+- Moving range does nothing to show the missing data
+- Turning range off still shows the focus chart selected and with no data
+- *NOTE no filter icon shows up until I click in the chart header
+- The only thing that brings the data back is to remove the filter. 
+
+- **Actual result:**
+- **Expected result:**
+Should be able to zoom in on the selected data, should see the line chart.
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+![image](https://user-images.githubusercontent.com/37127288/40868107-a6461a86-65be-11e8-9486-f601e361e749.png)
+
+### :memo: Other Info
+
+
+http://immerse-master.prod.frontend.builds.mapd.com/#/dashboard/1482?_k=h5i4tt
+
+",Christian-Baptiste,bug,1,biovisualize
+Zooming in on scatter plot view generates a filter,https://github.com/mapd/mapd-immerse/issues/4591,328687593,4591,,2018-06-01T23:21:30Z,2018-06-13T18:40:07Z,"### :speech_balloon: Description
+Currently a zoom on scatter plot would generate a filter, this is inconsistent with the zoom behavior in point map and geo_heat which do not create any filters.
+
+### :computer: Environment
+- **Browser Name, Version**: All Browsers
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a scatter plot and save to dashboard
+- Zoom in on scatter plot
+
+- **Actual result:**
+Scatter plot zoom generates a filter
+
+- **Expected result:**
+Scatter plot zoom behavior should be consistent with geo_heat and point map
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![scatter_zoom](https://user-images.githubusercontent.com/35040876/40867260-c4975452-65b7-11e8-9836-f2f6b6ff7640.gif)
+
+
+### :memo: Other Info",ericli5454,enhancement,3,
+Geo import table name pre-population inconsistencies,https://github.com/mapd/mapd-immerse/issues/4590,328681525,4590,,2018-06-01T22:43:47Z,2018-06-01T23:01:55Z,"If you import a local geo file, it pre-populates the table name with the name of the file.
+
+If you import a local geo archive, it pre-populates the table name with the name of the archive file, rather than the name of the geo file it decides to pull from the archive file (which would match the above).
+
+If you import from an archive on S3, it doesn't pre-populate the table name at all.
+
+Importing from a geo file on S3 is currently broken (see #4589) but that should be consistent too.",simoneves,"P3,bug,s3-import",0,jrajav
+Mapbox watermark appears on top of popups in Firefox ,https://github.com/mapd/mapd-immerse/issues/4588,328678186,4588,,2018-06-01T22:25:45Z,2018-06-01T22:25:45Z,"### :speech_balloon: Description
+The 
+### :computer: Environment
+- **Browser Firefox, 60.0.1 **: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- On Kali open 'Campaign Performance Dashboard - Clicks' dashboard
+- Duplicate Dashboard
+- Navigate to back to the original 'Campaign Performance Dashboard - Clicks' dashboard and Duplicate dashboard again to trigger error. 
+- **Actual result:**
+Mapbox watermark will appear in the error Popup.
+Also observed in other Popups like Sharing.
+- **Expected result:**
+Mapbox watermark should be behind all popups. 
+
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+![screen shot 2018-06-01 at 2 58 09 pm](https://user-images.githubusercontent.com/39566471/40865894-b636819c-65af-11e8-9c2d-7d1cb31c55e5.png)
+![screen shot 2018-05-23 at 4 04 02 pm](https://user-images.githubusercontent.com/39566471/40865909-c2213664-65af-11e8-8460-fce0d66b7e76.png)
+
+### :memo: Other Info",AlexHarutyunyan,"P3,bug,found during 4.0",0,
+Deprecate legacy line chart,https://github.com/mapd/mapd-immerse/issues/4587,328675593,4587,[object Object],2018-06-01T22:11:44Z,2018-06-05T19:25:13Z,"### :speech_balloon: Description
+The line chart was replaced by the combo chart, but both are still available in the UI. This Epic lists the issues that should be fixed before we can retire the legacy line chart.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",biovisualize,Epic,0,biovisualize
+[Combo] Binning doesn't change for the smaller one when setting a date filter,https://github.com/mapd/mapd-immerse/issues/4586,328675186,4586,,2018-06-01T22:09:40Z,2018-06-08T23:32:12Z,"### :speech_balloon: Description
+When setting a filter on a single date, the binning doesn't change to the smallest suitable increment.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Set a combo chart and set a filter as in the screenshot or go there http://kali.mapd.com:9092/#/dashboard/565?_k=66j33q
+- **Actual result:** binning should be on a smaller increment than month
+- **Expected result:** binning is in month
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+<img width=""899"" alt=""screen shot 2018-05-30 at 1 53 50 pm"" src=""https://user-images.githubusercontent.com/824534/40865566-efcdff2c-65c6-11e8-928c-1598c8bc0d43.png"">
+
+
+### :memo: Other Info",biovisualize,"P1,bug,combo-chart",0,
+Dummy test PR for quantile testing - DO NOT MERGE,https://github.com/mapd/mapd-immerse/pull/4583,328670312,4583,,2018-06-01T21:46:08Z,2018-06-01T21:50:20Z,"### 💬  Description
+ 
+### 📄 Github Issue
+Closes #0
+
+### :camera_flash: Screenshot",vastcharade,,1,
+Zoom limitations for Scatter chart,https://github.com/mapd/mapd-immerse/issues/4576,328615132,4576,,2018-06-01T18:19:15Z,2018-06-01T23:11:51Z,"### :speech_balloon: Description
+Currently there are no zooming limitations for the Scatter chart, allowing the user to zoom out to measurements where the points are impossible to see or zoom in so far that the user could drag and drop forever and not encounter a single point. The scatter map can be reset by removing the filter, but it would be nice if there was some limitation even if the user decides to use this chart incorrectly. 
+
+The infinite zoom also causes errors in the console and will actually hang immerse with certain datasets and measurements while the zooming in/out past a reasonable measure. 
+
+### :computer: Environment
+- **All Browser**: 
+- **mapd-immerse Version or Branch**: master
+
+
+### :camera_flash: Screenshots
+![screen shot 2018-06-01 at 11 23 03 am](https://user-images.githubusercontent.com/39566471/40856866-30759960-658e-11e8-8a36-19c0ecdd2cc8.png)
+
+### :memo: Other Info",AlexHarutyunyan,"design,enhancement",1,Davidiskander
+Immerse won't redraw choropleth,https://github.com/mapd/mapd-immerse/issues/4575,328595121,4575,,2018-06-01T17:07:40Z,2018-06-08T21:27:21Z,"### :speech_balloon: Description
+I found this 4 rows dataset but it has huge polygons for water worldwide. The unexpected behavior I'm seeing is: when I reverse the colors on the *Color Pallet*, BE sends the correct image where I can verify in the console but the chart it self-doesn't update all polygons colors accordingly unless I hover on the polygons.
+Find the chart here: http://kali.mapd.com:9092/#/dashboard/576?_k=1kp6yw
+
+### :computer: Environment
+- **Browser Name, Version**: Latest Chrome, Mac
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create a new dashboard
+- Create a new chart
+- Select data source: water_polygons_generalized_3857
+- Select choropleth chart type
+- Dimension: mapd_geo, Measure: FID
+- Geo Join:  water_polygons_generalized_3857, mapd_geo
+- Reverse the colors on the color palette 
+- Wait and observe the colors changing
+
+**Actual result:**
+The BE returns the correct image in the network calls, but immerse won't re-draw unless I hover over the image/choropleth 
+
+**Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+https://mapd.slack.com/files/U6E0U2F8A/FB03Y7JJX/big_polygons_rendering.gif
+
+### :memo: Other Info
+- No console errors
+- BE is returning the image in a timely manner
+",Davidiskander,"BE-Choropleth,Needs PM Review,P1,bug,found during 4.0",1,
+[WIP] label truncation,https://github.com/mapd/mapd-immerse/pull/4570,328468559,4570,,2018-06-01T10:39:35Z,2018-06-01T12:11:14Z,"### 💬  Description
+Exposes the label truncation option from mapd3. potential solution for #4363
+
+### 📄 Github Issue
+Closes #0
+
+### :camera_flash: Screenshot",biovisualize,,1,
+Should handle import GEO Files errors gracefully ,https://github.com/mapd/mapd-immerse/issues/4566,328304033,4566,,2018-05-31T21:28:50Z,2018-05-31T21:28:50Z,"### :speech_balloon: Description
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-Noticed that the backend could through an error but Immerse would just be in what looks like loading
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+<img width=""1439"" alt=""screen shot 2018-05-31 at 2 21 58 pm"" src=""https://user-images.githubusercontent.com/10747240/40809123-390336ec-64de-11e8-9705-bbaf55056fc9.png"">
+<img width=""1440"" alt=""screen shot 2018-05-31 at 2 22 11 pm"" src=""https://user-images.githubusercontent.com/10747240/40809124-391b0b0a-64de-11e8-8467-258027939be1.png"">
+
+### :memo: Other Info",Davidiskander,"P3,bug,found during 4.0,geospatial",0,
+Raster chart legend lock/unlock state is not saved,https://github.com/mapd/mapd-immerse/issues/4564,328260149,4564,,2018-05-31T19:05:39Z,2018-06-07T23:44:06Z,"### :speech_balloon: Description
+Legend lock is not keeping its state when dashboard saved and defaults to its min max scale when locking the color legend on a raster charts, Pointmap, Geo Heatmap, and Choropleth.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-  Lock the color legend on any of the charts, and Apply then Save the dashboard. Reopen the chart to see the lock is unlocked and min max is default values.
+- **Actual result:**
+Legend lock state is not saved for raster charts
+- **Expected result:**
+Legend lock/unlock state should be saved and persistent
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",uyanga-gb,"P1,bug,found during 4.0",0,
+Enhance file upload to use chunking instead of multi part POST request ,https://github.com/mapd/mapd-immerse/issues/4563,328254891,4563,,2018-05-31T18:48:57Z,2018-05-31T18:48:57Z,"### :speech_balloon: Description
+Currently the file uploader has a nice progress bar that gives feedback to the user, however it uses a multipart POST request that holds a single request open waiting for a response. The implications of this are that if there is a connection interruption the file must be uploaded again from the beginning, and large files will hold a single connection open for a long time depending on the size of the file and the bandwidth of the connection. This is problematic in Cloud since connections are not held open indefinitely, and most web servers have an idle timeout on the connections. They will thus be killed if the file takes too long.
+
+Using a library that can chunk the uploads into multiple requests instead of a single POST request will mitigate the issues with connections being killed due to timeouts, and will make the upload more robust in cases of poor connections, allowing the browser to resume an upload instead of having to start from the beginning every time.
+
+### :computer: Environment
+- **Browser Name, Version**: All
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+Upload a file to MapD and cause a network event such as turning off wireless / unplugging the network cable. The file upload fails and does not resume.
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info
+
+This requires both server side and client side code to work, and there are several existing libraries that implement this. Since MapD Cloud does not use MapD Webserver we should ensure whichever library is chosen is easily integrated into both, however it may be deemed unnecessary to have this functionality in MapD Webserver at all. Legacy mode should still be supported for older browsers anyway, and a detection could be done on the Immerse side to see if the destination webserver supported the chunked uploads. 
+
+Initial investigation shows these are two that are likely easily integrated into MapD Cloud:
+
+https://github.com/23/resumable.js - likely the most compatible
+https://github.com/blueimp/jQuery-File-Upload - requires jquery
+",jp-harvey,,0,
+Formatting doesn't roll back to previous when cancelling edit,https://github.com/mapd/mapd-immerse/issues/4560,328192731,4560,,2018-05-31T15:43:09Z,2018-05-31T15:43:17Z,"### :speech_balloon: Description
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- set-up any chart, set a format
+- cancel
+- **Actual result:** the format is applied
+- **Expected result:** it should revert to what it was before
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",biovisualize,formatting,0,
+Multilayered Pointmap Chart with Decimal Theme generates errors during Drag and Drop/Zoom In and Out,https://github.com/mapd/mapd-immerse/issues/4550,327542688,4550,,2018-05-30T01:39:39Z,2018-06-06T00:06:08Z,"### :speech_balloon: Description
+Errors spotted in console when dragging and dropping Multilayered Pointmap
+### :computer: Environment
+- **Chrome, 66.0.3359.181**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Open Dashboard and Create New Pointmap Chart (Add Chart)
+- Create chart using DataSource: 'tweets_2017_may'(kali) | Dimension: 'followees' | Measure Lon: AVG 'lon' | Measure Lat: AVG 'lat' | Measure Size: 'COUNT # Records'
+- Add Layer with Dimension: 'amount' | Measure Lon: AVG 'lon' | Measure Lat: AVG 'lat'
+- Open console,  drag the map around, drop it in new position and observe. 
+- **Actual result:**
+While dragging the map around or zooming in and out of it, uncaught errors are generated in the console
+- **Expected result:**
+Using the map should not generate any errors
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+![drag-drop point map.gif](https://images.zenhubusercontent.com/5b05a3aa4b5806bc2bd45a14/cd5f202c-f4ec-40d9-b2fd-3dea53869bbc)
+
+### :memo: Other Info
+The map does not generate this error message in previous builds. Checked on Demos.",AlexHarutyunyan,"P3,bug,found during 4.0,regression",0,
+Add legend to pointmap when density gradient mode is active,https://github.com/mapd/mapd-immerse/issues/4548,327536547,4548,,2018-05-30T00:59:16Z,2018-05-30T00:59:16Z,"### :speech_balloon: Description
+Add a legend to BE-rendered pointmap for when accumulation rendering/density gradient mode is active. 
+Currently there is no legend and it is unclear to the user what value the colors represent. All they get is the intuition by color alone what is more dense. But by how much? Adding a legend could make that clear.
+
+The values to use for the legend are currently returned as meta-data as part of the render_vega() call to the server. These returned values in the meta-data can be used to drive a legend.
+
+The behavior of the legend can than be similar to other quantitative legends - when locking the colors can stay fixed, when unlocked, the colors would be dynamic.
+
+### :computer: Environment
+N/A
+
+### :page_with_curl: Steps To Reproduce
+N/A
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",vastcharade,"charts-ux,component-raster,enhancement",0,
+[Geo import] Make geo type detection and / or disabling of column type selectors more granular in Importer,https://github.com/mapd/mapd-immerse/issues/4539,326573888,4539,,2018-05-25T15:41:02Z,2018-05-25T15:41:18Z,"### :speech_balloon: Description
+
+Shapefiles are mostly predictable but geojsons and csv's with lat/lon columns can both have arbitrary column types that should be able to be overridden by the user - and csv's with lat/lon columns should be toggle-able back and forth between geo and non, currently this would be one-way.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",jrajav,"geospatial,import",0,
+"[Geo import] Indicate geo columns with a map pin icon, wherever they can be selected (chart columns, table importer)",https://github.com/mapd/mapd-immerse/issues/4538,326565525,4538,,2018-05-25T15:18:01Z,2018-05-29T16:32:16Z,"### :speech_balloon: Description
+
+Indicate geo columns with a map pin icon for a visual indicator of geo features being active on them.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+-
+- **Actual result:**
+- **Expected result:**
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+![image](https://user-images.githubusercontent.com/2074135/40552300-e2559c32-6004-11e8-8c27-aff49f53aee4.png)
+
+
+### :memo: Other Info",jrajav,"geospatial,import",3,
+Unable to reach resolution for 'Failed To Load Dashboard' error popup ,https://github.com/mapd/mapd-immerse/issues/4536,326353983,4536,,2018-05-25T01:51:42Z,2018-05-30T17:56:54Z,"### :speech_balloon: Description
+'Failed To Load Dashboard' popup displays some errors in the console  
+### :computer: Environment
+- **Safari, 11.1**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Create New Dashboard and Edit Title
+- Add Chart to Dashboard ( Type: Bar | Data Source: 'flights' | Dimension: 'airtime' | Measure Width: # Records)
+- Save Dashboard
+- Copy Dashboard Url, open a new tab in browser and paste the url in the new tab (2 tabs with the same dashboard)
+- Navigate back to Dashboards and delete the newly created Dashboard
+- Open up the second tab that still contains the Dashboard prior to deletion and refresh the page
+- **Actual result:**
+'Failed To Load Dashboard' error popup appears, but the 'No' and 'Report' buttons fail to navigate away from page. 
+- **Expected result:**
+'No' button returns the user back to the list of Dashboards. 
+'Report' button navigates to the error report page. 
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+![Deleted Dashboard.gif](https://images.zenhubusercontent.com/5b05a3aa4b5806bc2bd45a14/bcb9bd83-4d8c-4c6f-902b-ba86570ca7ea)
+
+![Screen Shot 2018-05-24 at 12.43.41 PM.png](https://images.zenhubusercontent.com/5b05a3aa4b5806bc2bd45a14/0804709a-d2f8-4d98-9356-198f76834838)
+### :memo: Other Info
+In this scenario an error report may not be appropriate since the Dashboard no longer exists. ",AlexHarutyunyan,"P4,bug,found during 4.0",0,
+Stacked Bar: auto rotate x axis labels,https://github.com/mapd/mapd-immerse/pull/4533,326337026,4533,,2018-05-24T23:58:50Z,2018-05-31T19:24:48Z,"### 💬  Description
+New `mapd3` feature to allow `config.labelsAreRotated` to have an ""auto"" option.
+ 
+### 📄 Github Issue
+Closes #4416 
+
+### :camera_flash: Screenshot",clhenrick,,12,AlexHarutyunyan
+Turning off binning on geo table hangs immerse.,https://github.com/mapd/mapd-immerse/issues/4524,325894246,4524,,2018-05-23T22:19:58Z,2018-06-14T13:51:21Z,"### :speech_balloon: Description
+Turning off binning on geo table hangs immerse.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- Go to Kali
+- Create histogram (nyc_buildings) has to be geo table
+- heightroof vs #Records
+- Turn off binning on heightroof.
+
+- **Actual result:**
+Immerse hangs
+- **Expected result:**
+Should render correctly.
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+
+### :memo: Other Info",menaczar,"P2,bug,found during 4.0",1,alexbaden
+Stacked Bar: Fix Aggregate Measures,https://github.com/mapd/mapd-immerse/pull/4523,325890220,4523,,2018-05-23T22:05:19Z,2018-05-30T17:54:40Z,"### 💬  Description
+Only construct the SQL subquery for topN when a 2nd dimension is enabled by the user, handle a custom measure.
+
+### 📄 Github Issue
+Closes #4518 
+Closes #4520 
+
+### :camera_flash: Screenshot",clhenrick,,23,AlexHarutyunyan
+[stacked bar] doesn't seem to work with custom measures,https://github.com/mapd/mapd-immerse/issues/4520,325804908,4520,[object Object],2018-05-23T17:34:01Z,2018-06-05T19:18:07Z,"### :speech_balloon: Description
+Maybe I'm doing it wrong, but all the custom measures I try fail. It's normal for categorical measures as there's an issue with it anyway, but numerical should work.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: master
+
+### :page_with_curl: Steps To Reproduce
+- set-up a stacked bar chart as in the screenshot
+- **Actual result:** fails with error `Exception: Exception occurred: org.apache.calcite.runtime.CalciteContextException: From line 6, column 10 to line 6, column 34: No match found for function signature Custom(<NUMERIC>)`
+- **Expected result:** should work the same as when using the measure directly
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+<img width=""1674"" alt=""screen shot 2018-05-23 at 1 29 58 pm"" src=""https://user-images.githubusercontent.com/824534/40440968-8f0b2114-5e8d-11e8-9587-ecc281e5a096.png"">
+
+### :memo: Other Info",biovisualize,"P1,bug,found during 4.0,stacked-bar-chart",4,clhenrick
+[stacked bar] Inconsistent measure aggregations,https://github.com/mapd/mapd-immerse/issues/4518,325749817,4518,[object Object],2018-05-23T15:06:47Z,2018-05-31T15:05:46Z,"### :speech_balloon: Description
+I would expect to see bars or at maybe a value of 0 when using min, avg and other aggregations that currently just doesn't show any bars. Maybe we are filtering out zeroes as if they were nulls. There are some values on `max`, so the values are definitely not just nulls.
+
+A separate issue in the same area is `stddev` aggregation gives an error: `Exception: Aggregate function STDDEV not supported`
+
+`# unique` also gives an error: `Exception: Parse failed: Lexical error at line 1, column 292.  Encountered: ""#"" (35), after : """"`
+
+These 2 errors could be extracted into separate tasks.
+
+### :computer: Environment
+- **Browser Name, Version**: 
+- **mapd-immerse Version or Branch**: 
+https://github.com/mapd/mapd-immerse/pull/4511
+chrish/stacked-bar-4435
+
+### :page_with_curl: Steps To Reproduce
+- set-up a stacked bar chart with for example flights, dest_city, carrier_name, arrdelay
+- try all aggregation types for arrdelay
+- **Actual result:** all aggregation should give a meaningful results
+- **Expected result:** some errors-out, some gives empty bars, some seem ok (like max)
+
+### :dash: Smoke Test
+- [ ] is feature working / bug resolved in chrome
+- [ ] is feature working / bug resolved in safari
+- [ ] is feature working / bug resolved in firefox
+- [ ] is feature working / bug resolved in ie 11
+- [ ] is feature working / bug resolved in ie edge
+
+### :camera_flash: Screenshots
+<img width=""1191"" alt=""screen shot 2018-05-23 at 10 56 51 am"" src=""https://user-images.githubusercontent.com/824534/40433080-27e47b70-5e79-11e8-9d12-052f9a34be78.png"">
+<img width=""1680"" alt=""screen shot 2018-05-23 at 10 56 29 am"" src=""https://user-images.githubusercontent.com/824534/40433081-27fbcafa-5e79-11e8-88b4-4432e585c8c1.png"">
+<img width=""1680"" alt=""screen shot 2018-05-23 at 10 56 21 am"" src=""https://user-images.githubusercontent.com/824534/40433082-280dbd46-5e79-11e8-906c-58ec4c689b5a.png"">
+<img width=""1672"" alt=""screen shot 2018-05-23 at 10 56 06 am"" src=""https://user-images.githubusercontent.com/824534/40433084-28217c8c-5e79-11e8-8be7-e2a674faeb34.png"">
+<img width=""1679"" alt=""screen shot 2018-05-23 at 10 55 58 am"" src=""https://user-images.githubusercontent.com/824534/40433085-2833d4f4-5e79-11e8-953d-ec5fda01a1a4.png"">
+<img width=""1678"" alt=""screen shot 2018-05-23 at 10 55 35 am"" src=""https://user-images.githubusercontent.com/824534/40433086-28541890-5e79-11e8-98a2-b89a1db22e00.png"">
+
+
+### :memo: Other Info",biovisualize,"P1,bug,found during 4.0,stacked-bar-chart",2,clhenrick
+Ideas for new chart editor panel,https://github.com/mapd/mapd-immerse/issues/4517,325515542,4517,,2018-05-23T01:17:57Z,2018-05-24T17:25:57Z,"### :speech_balloon: 
+
+Conceptual for future discussions.  - The following mockup is only to start discussions of what improvements we might make in the future to the chart editor panels. Please don't take anything in these screens as planned work. 
+
+![2 y axis copy](https://user-images.githubusercontent.com/37127288/40398352-6ba40138-5dec-11e8-930f-8a5fb16ecfb9.png)
+
+
+Some of the ideas in this design:
+
+1. Combining the most if not all of the right panel content into a more contextual left panel.
+2. (not really depicted here), identifying Dashboard versus individual chart data source(s). Basically allowing the user to set a dashboard source file as the default that is used in most of the charts so the user doesn't have to keeps looking for and selecting the same data set.
+3. (also not really depicted here very well) show dashboard applied filters.
+4. Have chart type selector. An idea here is that we could potentially do progressive disclosure of what objects need or can be included based on the type of chart the user selects. Example if the user select the number chart we could hide the dimension selector. *Note that we currently do a decent job of telling the user the differences with a tool tip. If we turned this information into logic we could guide the user through chart set up and chart changes.
+5. Under Dimension use a date range as a default. Basically any chart that is based on trend or time/date comparison.  Also identifying not only the date range but also the date aggregate that we would display by default. (currently presented as Bins). This selector would be mirrored in the chart presentation area as well. 
+6. For measures we  would continue to provide calculation type in addition to formatting, chart selection (when it makes sense to do so) chart color selector, and if additional filtering was applied.
+7. In use cases like combo charts we could have the additional set for the second Y axis.
+8. In the chart the color would be indicated with the Y labels. 
+9. The y Labels would also display the calculation type.
+
+Please do poke holes and provide ideas. Treat this issue as an open forum for UX ideas and improvements.
+
+
+
+
+
+",Christian-Baptiste,,3,Christian-Baptiste

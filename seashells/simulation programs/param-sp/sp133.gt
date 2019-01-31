@@ -1,0 +1,105 @@
+Phyllotaxis: similarities with oblique rows of dots on shells
+#
+Leaves are initiated below the tip of a growing shoot in a ring-shaped zone. 
+Auxin is known to be involved. In the following simulations it is assumed that
+the generation of a local signal requires an autocatalytic reaction (black) 
+that is antagonized by the depletion of auxin (red) in a larger surrounding:
+S133x
+#
+To account for regularly displaced maxima, the interaction with a second 
+antagonist is required. This is simulated here by the assumption of a short-
+ranging but long lasting inhibitor (green). Thus, the activator maximum 
+disappears shortly after its generation and, new emerge at displaced positions:
+fdelay
+.08
+s133x1
+fdelay
+0
+#
+In the time record, such a mechanism leads to maxima that at regularly displaced
+positions. In the following plot the activity in the leaf-forming ring is plotted as
+function of time. The cylinder is cut open; the left and the right cells are in fact
+neighbors. It could take some time until the pattern is completely regular.
+s133a
+<1
+n
+<2
+#
+As can be seen, with a trigger of a new maximum a very rapid depletion of 
+auxin (red) occurs in the whole leaf-forming zone (simulated here by a rapid
+diffusion, not by active transport). There would be no memory as to where  
+the penultimate leave was. This achieved by a long-lasting inhibitor:
+r133a1
+fdelay
+.08
+n
+fdelay
+0
+#
+.
+In biological textbooks the leaf position is frequently plotted on concentric
+circles, with the youngest leaves close to the center. The helical arrangement 
+is easy to see:
+r133a2
+n
+<2
+#
+If the range of the long-lasting inhibition is somewhat larger, the new leaves
+can only at maximum distance from the preceding one. In other words, the 
+maxima appear with 180 degree arrangement in the course of time. First the 
+space - time plot:
+s133b
+<1
+#
+.
+.
+.
+ .....and now what happens in the leaf-forming zone...:
+r133b1
+fdelay
+.08
+n
+fdelay
+0
+<1
+#
+.
+.
+.
+    .... and in the outside-in plot...
+r133b2
+n
+<1
+#
+.
+If the diameter of the leaf-forming zone is larger, then there is space for 
+two instead of one maximum. The maxima appear in pairs at 180 degree and
+each subsequent pair is displaced by 90 degree. First the space-time plot:
+s133c
+<1
+n
+#
+.
+.
+.
+ ... and again what happens in the leaf-forming zone...
+r133c1
+fdelay
+.08
+n
+fdelay
+0
+#
+ .
+ .
+ .
+   ....and the outside-in plot
+r133c2
+n
+#
+.
+.
+Thus, the assumption of two antagonistic reactions describe the main 
+phyllotactic pattern in a straightforward manner
+EOF-GT
+EOF-GT  

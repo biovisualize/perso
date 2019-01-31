@@ -1,0 +1,9 @@
+ FILES: help/*.hlm     TITLES ----------------------------------------------
+ 1-cmd    List of Commands                                                   
+ 2-param  Rates of diffusion, decay, basic production; coupling of system... 
+ 3-integ  Integer parameters to control program flow (Field size, iterati... 
+ 4-ini-sp Program SP: Initially activated cells, selectable by KI            
+ 5-xt-gra Program SP: types of XT-plots that can be selected by KD           
+ 6-xy-gra Program XY: possible modes of graphic display (parameter: KD)      
+ 7-graphp Program SP and XY: Variables used for the graphic display          
+ -----------------------------------------------------------------------------

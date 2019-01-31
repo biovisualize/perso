@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css">
+<style>
+div {
+  border: 1px solid silver;
+}
+html, body, #app {
+  height:100%;
+}
+#app {
+  flex-direction: column;
+}
+#main-content {
+  flex-grow: 1;
+}
+#top-bar {
+  height: 48px;
+}
+</style>
+</head>
+<body>
+
+<div id="app" class="ui padded grid">
+  <div id="top-bar" class="row"></div>
+  <div id="main-content" class="row">
+    <div id="code" class="eight wide stretched column">
+      <div id="query-code" class="row"></div>
+      <div id="transform-code" class="row"></div>
+    </div>
+    <div id="chart" class="eight wide column"></div>
+  </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

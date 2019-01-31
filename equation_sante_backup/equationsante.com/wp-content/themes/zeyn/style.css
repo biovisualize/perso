@@ -1,0 +1,76 @@
+/*
+Theme Name:         Zeyn
+Theme URI:          http://www.detheme.com
+Description:        The Awesome Wordpress Theme by detheme
+Version:            1.2.6
+Author:             detheme
+Tags: 				editor-style, featured-images,post-formats, translation-ready
+Author URI:         http://detheme.com
+License:            MIT License
+License URI:        http://www.opensource.org/licenses/mit-license.php
+Text Domain: 		detheme
+Domain Path: 		/languages/
+*/
+.wp-caption {
+	max-width: 100%;
+}
+.wp-caption-text {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+	font-size: 12px;
+	font-style: italic;
+	line-height: 1.5;
+	margin: 9px 0;
+	padding-right: 10px;
+}
+.gallery-caption {
+	background-color: rgba(0, 0, 0, 0.7);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+	color: #fff;
+	font-size: 12px;
+	line-height: 1.5;
+	margin: 0;
+	max-height: 50%;
+	opacity: 0;
+	padding: 6px 8px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	text-align: left;
+	width: 100%;
+}
+
+.gallery-caption:before {
+	content: "";
+	height: 100%;
+	min-height: 49px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.bypostauthor {
+
+}
+.alignright{
+	float:right;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+.alignleft{
+	float:left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.aligncenter {
+	display:block;
+	margin:0 auto;
+	margin-bottom: 20px;
+}
+
+.alignright, .alignleft, .aligncenter {
+	vertical-align: baseline;
+}
